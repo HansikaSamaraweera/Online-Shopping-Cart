@@ -14,7 +14,7 @@ class MyAccount extends Component {
                <h1>My Account</h1>
 
                 <button onClick={this.onClickMethod}>Sign Out</button>
-                <h3>hello5</h3>
+
 
 
             </div>
