@@ -9,9 +9,8 @@ import Footer from "./components/Footer";
 import Admin from "./Admin";
 import {Switch} from "react-bootstrap";
 import Register from "./components/ProjectTask/Register";
-import ProjectBoard from "./components/DisplayAdminandStoreMan";
-import AddUserTask from "./components/ProjectTask/AddUserTask";
 import LoginPage from "./components/ProjectTask/LoginPage";
+import MyAccount from "./components/ProjectTask/MyAccount";
 
 class App extends Component{
 
@@ -21,29 +20,14 @@ class App extends Component{
         <Router>
         <div className="App">
             <Navigationbar />
-
-
-
             <Switch>
              <Route path="/" exact component={Home} />
              <Route path="/Admin" component={Admin} />
              <Route path="/login" component={LoginPage} />
              <Route path="/Register" component={Register} />
-                {/*Check wheather login person is Admin or not*/}
-                <div>
-                    {'ADMIN' === 'ADMIN'?
-                        <div>
-                            <Route exact path="/Admin" component={ProjectBoard}/>
-                            <Route  exact path="/Admin/AddUserTask" component={AddUserTask}/>
-                        </div>
-                        :null
-                    }
-                </div>
+                <Route path="/MyAccount" component={MyAccount} />
+
             </Switch>
-
-
-
-
             <Footer />
         </div>
         </Router>
