@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Link, Route} from "react-router-dom";
 import ProjectBoard from "./components/DisplayAdminandStoreMan";
 import AddUserTask from "./components/ProjectTask/AddUserTask";
 import store from "./store";
+import {BrowserRouter as Router,Route} from "react-router-dom";
 import {Provider} from "react-redux";
+
 class Admin extends Component {
 
     constructor(props) {
@@ -11,24 +12,26 @@ class Admin extends Component {
     }
     render() {
         return (
+
+            <Provider store={store}>
+                <Router>
+
             <div>
-
                 <p>Admin DashBoard</p>
-
                 <div>
-                    {console.log("check")}
-                    {'ADMIN' === 'ADMIN'?
+                    {sessionStorage.getItem("sessionPost") === 'ADMIN'?
                         <div>
+                            <Route exact path="/Admin" component={ProjectBoard}/>
+                            <Route  exact path="/Admin/AddUserTask" component={AddUserTask}/>
 
                         </div>
-                        :
-                        <div> <p>Access Restricted</p></div>
+                        :null
                     }
                 </div>
 
-
             </div>
-
+                </Router>
+            </Provider>
         );
     }
 }
