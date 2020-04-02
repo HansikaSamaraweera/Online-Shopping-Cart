@@ -19,16 +19,19 @@ class LoginForm extends Component {
         this.OnChange=this.OnChange.bind(this);
         this.onSubmit=this.onSubmit.bind(this);
     }
+
     onSubmit(e){
         e.preventDefault();
         this.name=this.state.name;
         this.password=this.state.password;
         this.props.checklogin(this.name);
+
         //console.log(this.props.login_user.user_det.name)
     }
     OnChange(e){
         this.setState({[e.target.name]:e.target.value})
     }
+
 
     render() {
         const{errors,name,password,isLoading}=this.state;
@@ -43,7 +46,8 @@ class LoginForm extends Component {
         }
 
         if(sessionStorage.getItem("sessionName")!==null){
-            return( <div>loggged in</div>);
+            return(
+                <div> Successfully Logged In {window.location.replace("/")} </div>);
         }else {
             return (
                 <div className="col-md-4 m-auto">
