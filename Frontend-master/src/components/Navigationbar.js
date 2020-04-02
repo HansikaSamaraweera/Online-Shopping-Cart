@@ -24,10 +24,17 @@ function Navigationbar() {
 
                     </NavDropdown>
                     </Nav>
-                    <Nav>
-                        <Nav.Link ><Link to="/Register" >REGISTER</Link></Nav.Link>
-                        <Nav.Link ><Link to="/login" >SIGN IN</Link></Nav.Link>
-                    </Nav>
+
+                        <div>
+                            {sessionStorage.getItem("sessionName") === null?
+                                <Nav>
+                                    <Nav.Link ><Link to="/Register" >REGISTER</Link></Nav.Link>
+                                    <Nav.Link ><Link to="/login" >SIGN IN</Link></Nav.Link>
+                                 </Nav>
+                                :<div>{sessionStorage.getItem("sessionName")}
+                                    <Nav.Link href="/MyAccount">My Account</Nav.Link>
+                                </div>}
+                        </div>
                 </Navbar.Collapse>
                 <br/>
                 <br/>
