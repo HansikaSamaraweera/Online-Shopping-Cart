@@ -62,7 +62,7 @@ class AddUserTask extends Component {
     render() {
         const{errors}=this.state;
         return (
-            <div className="addProjectTask">
+            <div className="addUserTask">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 m-auto">
