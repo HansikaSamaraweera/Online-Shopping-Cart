@@ -12,11 +12,11 @@ class DisplayAdminandStoreMan extends Component {
     }
     render() {
         const {user_tasks}=this.props.user_tasks;
-        let BoardContent;
+        let displayData;
         let admin=[]
         let stockmanagers=[]
 
-        const BoardAlgorithm=user_tasks=>{
+        const displayMain=user_tasks=>{
             if(user_tasks.length<1){
                 return (
                     <div className="alert alert-info text-center" role="alert">
@@ -53,7 +53,7 @@ class DisplayAdminandStoreMan extends Component {
                             <div className="col-md-4">
                                 <div className="card text-center mb-2">
                                     <div className="card-header bg-primary text-white">
-                                        <h3>STOCK MANAGER</h3>
+                                        <h3>STORE MANAGERS</h3>
                                     </div>
                                 </div>
                                 {stockmanagers}
@@ -67,7 +67,7 @@ class DisplayAdminandStoreMan extends Component {
                 )
             }
         }
-        BoardContent= BoardAlgorithm(user_tasks);
+        displayData= displayMain(user_tasks);
         return (
             <div>
                 <div className="container">
@@ -77,7 +77,7 @@ class DisplayAdminandStoreMan extends Component {
                     </Link>
                     <br/>
                     <hr/>
-                    {BoardContent}
+                    {displayData}
                 </div>
             </div>
         );
