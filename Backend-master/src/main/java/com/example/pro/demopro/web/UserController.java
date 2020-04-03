@@ -6,6 +6,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/api/Users")
@@ -22,8 +25,12 @@ public class UserController {
         if(check==false) {
             User newCus = userService.saveOrUpdateCustomer(user);
             return new ResponseEntity<User>(newCus, HttpStatus.CREATED);
+        }else{
+            Map<String ,String> er=new HashMap<>();
+            er.put("error","user name existed");
+            return new ResponseEntity<Map<String ,String>>(er, HttpStatus.BAD_REQUEST);
         }
-        return null;
+
     }
     @GetMapping("/all")
     public Iterable<User> getAllPts(){
