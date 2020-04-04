@@ -47,17 +47,14 @@ class AddUserTask extends Component {
         }
         if(newProjectTask.password===newProjectTask.cpassword) {
             this.props.addProjectTask(newProjectTask, this.props.history);
-            //console.log(sessionStorage.getItem("sessionData"));
-            this.props.history.push('/')
+
         }else{
             document.getElementById("pswrd").value='';
            document.getElementById("cpswrd").value='';
         }
     }
 
-    onNameCheck(){
 
-    }
 
     render() {
         const{errors}=this.state;
@@ -74,7 +71,7 @@ class AddUserTask extends Component {
                                 {/*Name*/}
                                 <div className="form-group">
                                     <input type="text"
-                                           className={classnames("form-control form-control-lg",{"is-invalid":errors.name})}
+                                           className={classnames("form-control form-control-lg",{"is-invalid":errors.error})}
                                            name="name"
                                            value={this.state.name}
                                            placeholder="User Name"
@@ -82,10 +79,12 @@ class AddUserTask extends Component {
                                            required
                                     />
                                     {
-                                        errors.name && (
-                                            <div className="invalid-feedback">{errors.name}</div>
+                                        errors.error && (
+                                            <div className="invalid-feedback">{errors.error}</div>
                                         )
                                     }
+
+
                                 </div>
                                 {/*email*/}
                                 <div className="form-group">
@@ -97,11 +96,7 @@ class AddUserTask extends Component {
                                            onChange={this.onChange}
                                            required
                                     />
-                                    {
-                                        errors.email && (
-                                            <div className="invalid-feedback">{errors.email}</div>
-                                        )
-                                    }
+
                                 </div>
                                 {/*Post*/}
                                 <div className="form-group">
@@ -128,11 +123,7 @@ class AddUserTask extends Component {
                                            onChange={this.onChange}
                                            required
                                     />
-                                    {
-                                        errors.password && (
-                                            <div className="invalid-feedback">{errors.password}</div>
-                                        )
-                                    }
+
                                 </div>
                                 {/*confirm password*/}
                                 <div className="form-group">
@@ -145,11 +136,7 @@ class AddUserTask extends Component {
                                            onChange={this.onChange}
                                            required
                                     />
-                                    {
-                                        errors.cpassword && (
-                                            <div className="invalid-feedback">{errors.cpassword}</div>
-                                        )
-                                    }
+
                                 </div>
 
                                 <input type="submit" className="btn btn-primary btn-block mt-4"/>
@@ -170,4 +157,4 @@ const mapStateToProps= state=>({
     errors: state.errors
 })
 
-export default connect(null,{addProjectTask: addNewUser}) (AddUserTask);
+export default connect(mapStateToProps,{addProjectTask: addNewUser}) (AddUserTask);
