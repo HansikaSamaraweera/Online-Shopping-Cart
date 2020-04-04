@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {addNewUser} from "../../actions/projectTaskActions";
+import {addNewUserCus} from "../../actions/projectTaskActions";
 import classnames from "classnames";
 
 class Register extends Component {
@@ -15,7 +15,8 @@ class Register extends Component {
             email:"",
             password:"",
             cpassword:"",
-            errors:[]
+            errors:[],
+
         }
         this.onChange=this.onChange.bind(this);
         this.onSubmit=this.onSubmit.bind(this);
@@ -42,8 +43,14 @@ class Register extends Component {
             cpassword:this.state.cpassword
 
         }
+        this.state.load=false;
         if(newProjectTask.password===newProjectTask.cpassword) {
             this.props.addProjectTask(newProjectTask, this.props.history);
+
+            /*sessionStorage.setItem("sessionName",newProjectTask.name);
+            sessionStorage.setItem("sessionPost",newProjectTask.post);
+            window.location.replace("/")*/
+
         }else{
             document.getElementById("pswrd").value='';
            document.getElementById("cpswrd").value='';
@@ -65,7 +72,7 @@ class Register extends Component {
                                 {/*Name*/}
                                 <div className="form-group">
                                     <input type="text"
-                                           className={classnames("form-control form-control-lg",{"is-invalid":errors.name})}
+                                           className={classnames("form-control form-control-lg", {"is-invalid":errors.error})}
                                            name="name"
                                            value={this.state.name}
                                            placeholder="User Name"
@@ -73,10 +80,11 @@ class Register extends Component {
                                            required
                                     />
                                     {
-                                        errors.name && (
-                                            <div className="invalid-feedback">{errors.name}</div>
+                                        errors.error && (
+                                            <div className="invalid-feedback">{errors.error}</div>
                                         )
                                     }
+
                                 </div>
                                 {/*email*/}
                                 <div className="form-group">
@@ -88,11 +96,7 @@ class Register extends Component {
                                            onChange={this.onChange}
                                            required
                                     />
-                                    {
-                                        errors.email && (
-                                            <div className="invalid-feedback">{errors.email}</div>
-                                        )
-                                    }
+
                                 </div>
                                 {/*Post*/}
                                 <div className="form-group">
@@ -118,11 +122,7 @@ class Register extends Component {
                                            onChange={this.onChange}
                                            required
                                     />
-                                    {
-                                        errors.password && (
-                                            <div className="invalid-feedback">{errors.password}</div>
-                                        )
-                                    }
+
                                 </div>
                                 {/*confirm password*/}
                                 <div className="form-group">
@@ -152,7 +152,7 @@ class Register extends Component {
     }
 }
 Register.prototypes={
-    addProjectTaskTask: PropTypes.func.isRequired,
+    addProjectTask: PropTypes.func.isRequired,
     errors:PropTypes.object.isRequired
 }
 
@@ -160,4 +160,4 @@ const mapStateToProps= state=>({
     errors: state.errors
 })
 
-export default connect(null,{addProjectTask: addNewUser}) (Register);
+export default connect(mapStateToProps,{addProjectTask: addNewUserCus}) (Register);
