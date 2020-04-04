@@ -6,6 +6,25 @@ export const addNewUser =(user, history)=>async dispatch=>{
     try {
         await axios.post("http://localhost:8080/api/Users", user);
         history.push("/");
+        window.location.replace("/Admin")
+        dispatch({
+            type:GET_ERRORS,
+            payload:{}
+        })
+    }catch (error) {
+        dispatch({
+            type:GET_ERRORS,
+            payload:error.response.data
+        })
+    }
+};
+export const addNewUserCus =(user, history)=>async dispatch=>{
+    try {
+        await axios.post("http://localhost:8080/api/Users", user);
+       // history.push("/");
+        sessionStorage.setItem("sessionName",user.name);
+        sessionStorage.setItem("sessionPost",user.post);
+        window.location.replace("/")
         dispatch({
             type:GET_ERRORS,
             payload:{}
