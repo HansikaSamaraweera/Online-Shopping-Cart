@@ -11,17 +11,13 @@ class UserItem extends Component {
                     ID: {user_task.id}
                 </div>
                 <div className="card-body bg-light">
-                    <h5 className="card-title">Status</h5>
                     <p className="card-text text-truncate ">
                         {user_task.name}
                     </p>
-                    <a href="/" className="btn btn-primary">
-                        View / Update
-                    </a>
+                    <p className="card-text text-truncate ">
+                        {user_task.email}
+                    </p>
 
-                    <button className="btn btn-danger ml-4">
-                        Delete
-                    </button>
                 </div>
             </div>
         );
