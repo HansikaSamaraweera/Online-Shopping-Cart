@@ -33,6 +33,7 @@ function Navigationbar() {
                                  </Nav>
                                 :<div>{sessionStorage.getItem("sessionName")}
                                     <Nav.Link href="/MyAccount">My Account</Nav.Link>
+
                                 </div>}
                         </div>
                 </Navbar.Collapse>
