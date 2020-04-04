@@ -14,7 +14,7 @@ class MyAccount extends Component {
                <h1>My Account</h1>
 
                 <button onClick={this.onClickMethod}>Sign Out</button>
-                <h1>hello</h1>
+                <h1>{sessionStorage.getItem("sessionName")}</h1>
 
 
             </div>
