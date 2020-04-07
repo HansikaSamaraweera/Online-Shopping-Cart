@@ -14,7 +14,9 @@ function Navigationbar() {
                     <Nav className="mr-auto">
                         <Nav.Link href="/">HOME</Nav.Link>
                         <Nav.Link href="/">PRODUCTS</Nav.Link>
-                        <Nav.Link href="#pricing">MY CART</Nav.Link>
+
+                        <Nav.Link><Link to="/ViewCart"><i className="fas fa-shopping-cart"></i></Link></Nav.Link>
+
                         <Nav.Link href="#pricing">CHECKOUT</Nav.Link>
                         <NavDropdown title="Dashboard" id="collasible-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">WISHLIST</NavDropdown.Item>
