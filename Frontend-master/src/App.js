@@ -14,7 +14,7 @@ import MyAccount from "./components/ProjectTask/MyAccount";
 
 class App extends Component{
 
-  render() {
+    render() {
     return (
         <Provider store={store}>
         <Router>
