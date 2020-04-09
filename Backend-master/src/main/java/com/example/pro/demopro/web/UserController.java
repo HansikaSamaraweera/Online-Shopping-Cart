@@ -37,7 +37,11 @@ public class UserController {
         System.out.println(check);
         if(check==false) {
             User newCus = userService.saveOrUpdateCustomer(user);
-            sendmail(user.getEmail());
+            String xcon="Your account has been created In Our Shopping Store.Your position is **STORE MANAGER**."+"\n\n"+" username:"+user.getName()+" password:"+user.getPassword()+"We have send you the login credentials via this email. Please reset your password **AS SOON AS YOU RECIEVED THIS EMAIL***";
+
+            if(user.getPost().equals("STOCK_MANAGER")) {
+                sendmail(user.getEmail(), xcon);
+            }
             return new ResponseEntity<User>(newCus, HttpStatus.CREATED);
         }else{
             Map<String ,String> er=new HashMap<>();
@@ -66,7 +70,7 @@ public class UserController {
         return new ResponseEntity<User>(user,HttpStatus.OK);
     }
 
-    private void sendmail(String useremail) throws MessagingException {
+    private void sendmail(String useremail,Object xcon) throws MessagingException {
 
         Properties props=new Properties();
         props.put("mail.smtp.auth", "true");
@@ -85,8 +89,8 @@ public class UserController {
 
         msg.setFrom(new InternetAddress(username,false));
         msg.setRecipients(Message.RecipientType.TO,InternetAddress.parse(useremail));
-        msg.setSubject("Hi");
-        msg.setContent("test massage","text/html");
+        msg.setSubject("Created a New Login");
+        msg.setContent(xcon,"text/html");
         msg.setSentDate(new Date());
 
         Transport.send(msg);
