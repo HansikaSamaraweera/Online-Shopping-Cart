@@ -11,6 +11,10 @@ import {Switch} from "react-bootstrap";
 import Register from "./components/ProjectTask/Register";
 import LoginPage from "./components/ProjectTask/LoginPage";
 import MyAccount from "./components/ProjectTask/MyAccount";
+import ItemHome from "./components/Product/ItemHome";
+import ViewCart from "./components/Product/ViewCart";
+import HomeBody from "./components/Product/HomeBody";
+import Comment from "./components/Product/Comment";
 
 class App extends Component{
 
@@ -21,13 +25,15 @@ class App extends Component{
         <div className="App">
             <Navigationbar />
             <Switch>
-             <Route path="/" exact component={Home} />
+             <Route path="/" exact component={HomeBody} />
              <Route path="/Admin" component={Admin} />
              <Route path="/login" component={LoginPage} />
              <Route path="/Register" component={Register} />
-                <Route path="/MyAccount" component={MyAccount} />
-
+             <Route path="/MyAccount" component={MyAccount} />
+             <Route path="/ViewCart" component={ViewCart} />
+                <Route path="/Comment" component={Comment} />
             </Switch>
+
             <Footer />
         </div>
         </Router>
