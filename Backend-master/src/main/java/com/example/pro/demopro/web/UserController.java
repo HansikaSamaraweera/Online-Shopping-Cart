@@ -2,12 +2,19 @@ package com.example.pro.demopro.web;
 import com.example.pro.demopro.domain.User;
 import com.example.pro.demopro.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.util.Date;
+import java.util.Properties;
 
 @CrossOrigin
 @RestController
@@ -17,19 +24,29 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Value("${gmail.username}")
+    private String username;
+
+    @Value("${gmail.password}")
+    private String password;
+
     @PostMapping("")
-    public ResponseEntity<?> addCustomer(@RequestBody User user){
+    public ResponseEntity<?> addCustomer(@RequestBody User user) throws MessagingException {
         String x=user.getName();
         boolean check=userService.checkName(x);
         System.out.println(check);
         if(check==false) {
             User newCus = userService.saveOrUpdateCustomer(user);
+            sendmail(user.getEmail());
             return new ResponseEntity<User>(newCus, HttpStatus.CREATED);
         }else{
             Map<String ,String> er=new HashMap<>();
             er.put("error","user name existed");
             return new ResponseEntity<Map<String ,String>>(er, HttpStatus.BAD_REQUEST);
         }
+
+
+
 
     }
     @GetMapping("/all")
@@ -48,4 +65,31 @@ public class UserController {
         User user=userService.findByName(name);
         return new ResponseEntity<User>(user,HttpStatus.OK);
     }
+
+    private void sendmail(String useremail) throws MessagingException {
+
+        Properties props=new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(props,
+                new javax.mail.Authenticator(){
+                    protected PasswordAuthentication getPasswordAuthentication(){
+                        return new PasswordAuthentication(username,password);
+                    }
+                }
+        );
+        Message msg=new MimeMessage(session);
+
+        msg.setFrom(new InternetAddress(username,false));
+        msg.setRecipients(Message.RecipientType.TO,InternetAddress.parse(useremail));
+        msg.setSubject("Hi");
+        msg.setContent("test massage","text/html");
+        msg.setSentDate(new Date());
+
+        Transport.send(msg);
+    }
+
 }
