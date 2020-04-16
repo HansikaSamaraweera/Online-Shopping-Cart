@@ -15,6 +15,7 @@ import ItemHome from "./components/Product/ItemHome";
 import ViewCart from "./components/Product/ViewCart";
 import HomeBody from "./components/Product/HomeBody";
 import Comment from "./components/Product/Comment";
+import NewCategory from "./components/Category/NewCategory";
 
 class App extends Component{
 
@@ -32,6 +33,7 @@ class App extends Component{
              <Route path="/MyAccount" component={MyAccount} />
              <Route path="/ViewCart" component={ViewCart} />
                 <Route path="/Comment" component={Comment} />
+                <Route path="/NewCategory" component={NewCategory} />
             </Switch>
 
             <Footer />
