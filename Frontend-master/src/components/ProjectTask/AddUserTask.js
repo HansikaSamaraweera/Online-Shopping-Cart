@@ -107,7 +107,7 @@ class AddUserTask extends Component {
                                             required
                                     >
                                         <option value="">Select Position</option>
-                                        <option value="STOCK_MANAGER">STOCK MANAGER</option>
+                                        <option value="STORE_MANAGER">STORE MANAGER</option>
                                         <option value="ADMIN">ADMIN</option>
                                     </select>
 

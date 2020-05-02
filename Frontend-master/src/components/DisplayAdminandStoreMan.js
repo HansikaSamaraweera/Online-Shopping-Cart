@@ -32,7 +32,7 @@ class DisplayAdminandStoreMan extends Component {
                     if(tasks[i].props.user_task.post==="ADMIN"){
                         admin.push(tasks[i]);
                     };
-                    if(tasks[i].props.user_task.post==="STOCK_MANAGER"){
+                    if(tasks[i].props.user_task.post==="STORE_MANAGER"){
                         stockmanagers.push(tasks[i]);
                     };
 

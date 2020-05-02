@@ -39,7 +39,7 @@ public class UserController {
             User newCus = userService.saveOrUpdateCustomer(user);
             String xcon="Your account has been created In Our Shopping Store.Your position is **STORE MANAGER**."+"\n\n"+" username:"+user.getName()+" password:"+user.getPassword()+"We have send you the login credentials via this email. Please reset your password **AS SOON AS YOU RECIEVED THIS EMAIL***";
 
-            if(user.getPost().equals("STOCK_MANAGER")) {
+            if(user.getPost().equals("STORE_MANAGER")) {
                 sendmail(user.getEmail(), xcon);
             }
             return new ResponseEntity<User>(newCus, HttpStatus.CREATED);
