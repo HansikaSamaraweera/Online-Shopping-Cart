@@ -3,6 +3,7 @@ import classnames from "classnames";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {login} from "../../actions/projectTaskActions";
+import logo from '../images/pic1.gif';
 
 
 class LoginForm extends Component {
@@ -50,26 +51,32 @@ class LoginForm extends Component {
                 <div> Successfully Logged In {window.location.replace("/")} </div>);
         }else {
             return (
-                <div className="col-md-4 m-auto">
+
+                <div className="col-md-3 m-auto alert-danger" >
+                    <div className="m-3">
+                        <br/>
+                    </div>
+                    <img src={logo} height="200" width="250"/>
                     <form onSubmit={this.onSubmit}>
                         <div className="form-group text-center">
-                            <label className="display-3">Sign In</label>
-                            <input type="text" className="form-control form-control-lg"
-                                   placeholder="User name"
+                            <label className="btn-block m-2 h4">Login</label>
+                            <input type="text" className="form-control alert-link"
+                                   placeholder="User Name"
                                    required
                                    name="name"
                                    value={this.state.name}
                                    error={this.state.errors.name}
                                    onChange={this.OnChange}/>
                             <br/>
-                            <input type="password" className="form-control form-control-lg"
-                                   placeholder="password"
+                            <input type="password" className="form-control alert-link"
+                                   placeholder="Password"
                                    required
                                    name="password"
                                    value={this.state.password}
                                    error={this.state.errors.password}
                                    onChange={this.OnChange}/>
-                            <input type="submit" className="btn btn-primary btn-block mt-4"/>
+                            <input type="submit" className="btn btn-outline-info btn-block mt-4"/>
+                            <br/>
                         </div>
                     </form>
                 </div>
