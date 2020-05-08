@@ -31,21 +31,32 @@ public class UserController {
     private String password;
 
     @PostMapping("")
-    public ResponseEntity<?> addCustomer(@RequestBody User user) throws MessagingException {
+    public ResponseEntity<?> addCustomer(@RequestBody User user) {
         String x=user.getName();
         boolean check=userService.checkName(x);
-        System.out.println(check);
+
         if(check==false) {
-            User newCus = userService.saveOrUpdateCustomer(user);
-            String xcon="Your account has been created In Our Shopping Store.Your position is **STORE MANAGER**."+"\n\n"+" username:"+user.getName()+" password:"+user.getPassword()+"We have send you the login credentials via this email. Please reset your password **AS SOON AS YOU RECIEVED THIS EMAIL***";
+            User newCus ;
+            String xcon="Your account has been created In Our Shopping Store.Your position is **STORE MANAGER**."+"\n\n"+" Username:"+user.getName()+" Temperory Password:"+user.getPassword()+"We have send you the login credentials via this email. Please reset your password **AS SOON AS YOU RECIEVED THIS EMAIL***";
 
             if(user.getPost().equals("STORE_MANAGER")) {
-                sendmail(user.getEmail(), xcon);
+                try {
+                    sendmail(user.getEmail(), xcon);
+                    newCus=userService.saveOrUpdateCustomer(user);
+                }catch (MessagingException e){
+                    Map<String ,String> er=new HashMap<>();
+                    er.put("error","Error");
+                    return new ResponseEntity<Map<String ,String>>(er, HttpStatus.BAD_REQUEST);
+                }
+
+            }else{
+                newCus=userService.saveOrUpdateCustomer(user);
             }
+
             return new ResponseEntity<User>(newCus, HttpStatus.CREATED);
         }else{
             Map<String ,String> er=new HashMap<>();
-            er.put("error","user name existed");
+            er.put("error","Username Existed");
             return new ResponseEntity<Map<String ,String>>(er, HttpStatus.BAD_REQUEST);
         }
 
