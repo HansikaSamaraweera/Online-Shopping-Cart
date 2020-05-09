@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {addNewUserCus} from "../../actions/projectTaskActions";
 import classnames from "classnames";
+import "../../admin.css";
 
 class Register extends Component {
 
@@ -60,19 +61,23 @@ class Register extends Component {
     render() {
         const{errors}=this.state;
         return (
-            <div className="addProjectTask">
-                <div className="container">
+            <div className="container">
+                <br/>
+                <div className="col-md-7 m-auto alert-dark">
                     <div className="row">
                         <div className="col-md-8 m-auto">
-                            <Link to="/" className="btn btn-light">
-                                Back to Main
+                            <br/>
+                            <Link to="/" className="btn mb-0 btn-outline-info">
+                                <i className="fas fa-angle-double-left"> Back to Main </i>
                             </Link>
-                            <h4 className="display-4 text-center">Register</h4>
+                            <br/>
+                            <br/>
+                            <h4 className="display-4 text-center" id="register">Register</h4>
                             <form onSubmit={this.onSubmit}>
                                 {/*Name*/}
                                 <div className="form-group">
                                     <input type="text"
-                                           className={classnames("form-control form-control-lg", {"is-invalid":errors.error})}
+                                           className={classnames("form-control alert-link", {"is-invalid":errors.error})}
                                            name="name"
                                            value={this.state.name}
                                            placeholder="User Name"
@@ -89,7 +94,7 @@ class Register extends Component {
                                 {/*email*/}
                                 <div className="form-group">
                                     <input type="email"
-                                           className={classnames("form-control form-control-lg",{"is-invalid":errors.email})}
+                                           className={classnames("form-control alert-link",{"is-invalid":errors.email})}
                                            name="email"
                                            value={this.state.email}
                                            placeholder="Email"
@@ -100,7 +105,7 @@ class Register extends Component {
                                 </div>
                                 {/*Post*/}
                                 <div className="form-group">
-                                    <select className="form-control form-control-lg"
+                                    <select className="form-control alert-link"
                                             name="post"
                                             required
                                             value={this.state.post}
@@ -114,7 +119,7 @@ class Register extends Component {
                                 {/*password*/}
                                 <div className="form-group">
                                     <input type="password"
-                                           className={classnames("form-control form-control-lg",{"is-invalid":errors.password})}
+                                           className={classnames("form-control alert-link",{"is-invalid":errors.password})}
                                            id="pswrd"
                                            name="password"
                                            value={this.state.password}
@@ -128,7 +133,7 @@ class Register extends Component {
                                 <div className="form-group">
                                     <input type="password"
                                            id="cpswrd"
-                                           className={classnames("form-control form-control-lg",{"is-invalid":errors.cpassword})}
+                                           className={classnames("form-control alert-link",{"is-invalid":errors.cpassword})}
                                            name="cpassword"
                                            value={this.state.cpassword}
                                            placeholder="Confirm Password"
@@ -144,6 +149,8 @@ class Register extends Component {
 
                                 <input type="submit" className="btn btn-primary btn-block mt-4"/>
                             </form>
+                            <br/>
+                            <br/>
                         </div>
                     </div>
                 </div>

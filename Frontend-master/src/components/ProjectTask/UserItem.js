@@ -1,21 +1,22 @@
 import React, {Component} from 'react';
+import "../../admin.css";
 
 class UserItem extends Component {
     render() {
 
         const {user_task}=this.props;
         return (
-            <div className="card mb-1 bg-light">
+            <div className="card mb-1 " id="postDis">
 
-                <div className="card-header text-primary">
+                <div className=" m-3 text-black">
                     ID: {user_task.id}
                 </div>
-                <div className="card-body bg-light">
-                    <p className="card-text text-truncate ">
-                        {user_task.name}
+                <div className="">
+                    <p className="text-black font-weight-bold ">
+                        Username: {user_task.name}
                     </p>
-                    <p className="card-text text-truncate ">
-                        {user_task.email}
+                    <p className="text-truncate ">
+                        Email: {user_task.email}
                     </p>
 
                 </div>

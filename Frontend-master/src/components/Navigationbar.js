@@ -1,6 +1,7 @@
 import React from 'react';
 import {Nav,NavItem,Navbar,NavDropdown} from 'react-bootstrap';
 import {Link} from "react-router-dom";
+import "../admin.css";
 
 function Navigationbar() {
 
@@ -33,8 +34,10 @@ function Navigationbar() {
                                     <Nav.Link ><Link to="/Register" >REGISTER</Link></Nav.Link>
                                     <Nav.Link ><Link to="/login" >SIGN IN</Link></Nav.Link>
                                  </Nav>
-                                :<div>{sessionStorage.getItem("sessionName")}
-                                    <Nav.Link href="/MyAccount">My Account</Nav.Link>
+                                :<div className=" m-auto alert-dark">
+                                    <p id="login">Welcome</p>
+                                    <h5 id="login">{sessionStorage.getItem("sessionName")}</h5>
+                                    <Nav.Link href="/MyAccount"><i className="fas fa-user-circle"> My Account </i></Nav.Link>
 
                                 </div>}
                         </div>

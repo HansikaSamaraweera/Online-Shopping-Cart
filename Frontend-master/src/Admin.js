@@ -4,6 +4,9 @@ import AddUserTask from "./components/ProjectTask/AddUserTask";
 import store from "./store";
 import {BrowserRouter as Router,Route} from "react-router-dom";
 import {Provider} from "react-redux";
+import text from "../src/components/images/pic8.gif";
+import cry from "../src/components/images/cry.gif";
+import "./admin.css";
 
 class Admin extends Component {
 
@@ -17,15 +20,22 @@ class Admin extends Component {
                 <Router>
 
             <div>
-                <p>Admin DashBoard</p>
+                <br/>
                 <div>
                     {sessionStorage.getItem("sessionPost") === 'ADMIN'?
-                        <div>
+                        <div className="pre-scrollable blockquote h-25" id="scoll">
                             <Route exact path="/Admin" component={ProjectBoard}/>
                             <Route  exact path="/Admin/AddUserTask" component={AddUserTask}/>
 
                         </div>
-                        :null
+                        :<div className="text-center">
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <img src={text} /><img src={cry} width="100px" height="100px"/>
+                        <br/>
+                        </div>
                     }
                 </div>
 

@@ -1,0 +1,26 @@
+#scoll {
+    max-height:500px;
+}
+#postDis{
+    background: #ddffef;
+    font-family:"Comic Sans MS" ;
+    font-size: 15px;
+    color: #dc1b56;
+}
+#fot{
+    font-size: 10px;
+}
+#addUserTask{
+    font-size: 10px;
+
+}
+#register{
+    font-family:"Comic Sans MS" ;
+    font-size: 20px;
+    color: #dc1b56;
+}
+#login{
+    font-family:"Comic Sans MS" ;
+    font-size: 15px;
+    color: #dc1b56;
+}

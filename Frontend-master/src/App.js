@@ -23,7 +23,7 @@ class App extends Component{
     return (
         <Provider store={store}>
         <Router>
-        <div className="App">
+        <div className="App ">
             <Navigationbar />
             <Switch>
              <Route path="/" exact component={HomeBody} />

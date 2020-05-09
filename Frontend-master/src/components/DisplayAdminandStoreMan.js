@@ -41,18 +41,18 @@ class DisplayAdminandStoreMan extends Component {
                 <React.Fragment>
                     <div className="container">
                         <div className="row">
-                            <div className="col-md-4">
-                                <div className="card text-center mb-2">
-                                    <div className="card-header bg-secondary text-white">
+                            <div className="col-md-6">
+                                <div className="card text-center  mb-3" >
+                                    <div className="card-header  text-primary">
                                         <h3>ADMIN</h3>
                                     </div>
-                                    {admin}
-                                </div>
 
+                                </div>
+                                {admin}
                             </div>
-                            <div className="col-md-4">
-                                <div className="card text-center mb-2">
-                                    <div className="card-header bg-primary text-white">
+                            <div className="col-md-6">
+                                <div className="card text-center mb-3">
+                                    <div className="card-header  text-primary">
                                         <h3>STORE MANAGERS</h3>
                                     </div>
                                 </div>
@@ -72,7 +72,7 @@ class DisplayAdminandStoreMan extends Component {
             <div>
                 <div className="container">
 
-                    <Link to="/Admin/addUserTask" className="btn btn-primary mb-3" users={user_tasks}>
+                    <Link to="/Admin/addUserTask" className="btn btn-outline-danger mb-3" users={user_tasks}>
                         <i className="fas fa-plus-circle"> ADD NEW USER</i>
                     </Link>
                     <br/>

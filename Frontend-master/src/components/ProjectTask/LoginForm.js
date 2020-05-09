@@ -51,7 +51,8 @@ class LoginForm extends Component {
                 <div> Successfully Logged In {window.location.replace("/")} </div>);
         }else {
             return (
-
+                <div>
+                <br/>
                 <div className="col-md-3 m-auto alert-danger" >
                     <div className="m-3">
                         <br/>
@@ -79,6 +80,7 @@ class LoginForm extends Component {
                             <br/>
                         </div>
                     </form>
+                </div>
                 </div>
             );
         }

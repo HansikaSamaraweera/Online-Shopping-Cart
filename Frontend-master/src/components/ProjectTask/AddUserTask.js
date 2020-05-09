@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {addNewUser} from "../../actions/projectTaskActions";
 import classnames from "classnames";
+import Loader from 'react-loader-spinner';
+import "../../admin.css";
 
 
 class AddUserTask extends Component {
@@ -15,7 +17,8 @@ class AddUserTask extends Component {
             email:"",
             password:"",
             cpassword:"",
-            errors:[]
+            errors:[],
+            loader:"notloading"
 
         }
         this.onChange=this.onChange.bind(this);
@@ -42,10 +45,11 @@ class AddUserTask extends Component {
             post:this.state.post,
             email:this.state.email,
             password:this.state.password,
-            cpassword:this.state.cpassword
-
+            cpassword:this.state.cpassword,
         }
         if(newProjectTask.password===newProjectTask.cpassword) {
+
+            this.setState({loader:"loading"});
             this.props.addProjectTask(newProjectTask, this.props.history);
 
         }else{
@@ -58,20 +62,24 @@ class AddUserTask extends Component {
 
     render() {
         const{errors}=this.state;
+        const {loader}=this.state;
+        console.log(loader);
         return (
-            <div className="addUserTask">
-                <div className="container">
+            <div className="col-md-7 m-auto alert-danger">
+                <div className="container" id="addUserTask">
                     <div className="row">
-                        <div className="col-md-8 m-auto">
-                            <Link to="/Admin" className="btn btn-light">
-                                Back to Main
+                        <div className="col-md-9 m-auto">
+                            <br/>
+                            <Link to="/Admin" className="btn btn-outline-danger m-3">
+                                <i className="fas fa-angle-double-left"> Back to Main </i>
                             </Link>
-                            <h4 className="display-4 text-center">Add New User</h4>
+                            <br/>
+                            <h6 className="display-5 text-center">Add New User</h6>
                             <form onSubmit={this.onSubmit}>
                                 {/*Name*/}
-                                <div className="form-group">
+                                <div className="form-group text-center ">
                                     <input type="text"
-                                           className={classnames("form-control form-control-lg",{"is-invalid":errors.error})}
+                                           className={classnames("form-control alert-link",{"is-invalid":errors.error})}
                                            name="name"
                                            value={this.state.name}
                                            placeholder="User Name"
@@ -89,7 +97,7 @@ class AddUserTask extends Component {
                                 {/*email*/}
                                 <div className="form-group">
                                     <input type="email"
-                                           className={classnames("form-control form-control-lg",{"is-invalid":errors.email})}
+                                           className={classnames("form-control alert-link",{"is-invalid":errors.email})}
                                            name="email"
                                            value={this.state.email}
                                            placeholder="Email"
@@ -100,7 +108,7 @@ class AddUserTask extends Component {
                                 </div>
                                 {/*Post*/}
                                 <div className="form-group">
-                                    <select className="form-control form-control-lg"
+                                    <select className="form-control alert-link"
                                             name="post"
                                             value={this.state.post}
                                             onChange={this.onChange}
@@ -115,7 +123,7 @@ class AddUserTask extends Component {
                                 {/*password*/}
                                 <div className="form-group">
                                     <input type="password"
-                                           className={classnames("form-control form-control-lg",{"is-invalid":errors.password})}
+                                           className={classnames("form-control alert-link",{"is-invalid":errors.password})}
                                            id="pswrd"
                                            name="password"
                                            value={this.state.password}
@@ -129,7 +137,7 @@ class AddUserTask extends Component {
                                 <div className="form-group">
                                     <input type="password"
                                            id="cpswrd"
-                                           className={classnames("form-control form-control-lg",{"is-invalid":errors.cpassword})}
+                                           className={classnames("form-control alert-link",{"is-invalid":errors.cpassword})}
                                            name="cpassword"
                                            value={this.state.cpassword}
                                            placeholder="Confirm Password"
@@ -139,8 +147,18 @@ class AddUserTask extends Component {
 
                                 </div>
 
-                                <input type="submit" className="btn btn-primary btn-block mt-4"/>
+                                <input type="submit" className="btn btn-outline-info btn-block mt-4"/>
+                                {console.log(loader)}
+                                {
+
+                                    loader==="loading" ?
+                                        <div><Loader type="ThreeDots" color="#1bad15" height="100" width="100" />
+                                            <p> This may take few seconds..........</p> </div>
+                                        :null
+                                }
+                                <br/>
                             </form>
+                            <p><br/><br/><br/></p>
                         </div>
                     </div>
                 </div>
