@@ -19,8 +19,9 @@ class LoginForm extends Component {
 
         this.OnChange=this.OnChange.bind(this);
         this.onSubmit=this.onSubmit.bind(this);
-    }
 
+
+    }
     onSubmit(e){
         e.preventDefault();
         this.name=this.state.name;

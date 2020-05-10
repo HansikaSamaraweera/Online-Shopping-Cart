@@ -60,102 +60,107 @@ class Register extends Component {
 
     render() {
         const{errors}=this.state;
-        return (
-            <div className="container">
-                <br/>
-                <div className="col-md-7 m-auto alert-dark">
-                    <div className="row">
-                        <div className="col-md-8 m-auto">
-                            <br/>
-                            <Link to="/" className="btn mb-0 btn-outline-info">
-                                <i className="fas fa-angle-double-left"> Back to Main </i>
-                            </Link>
-                            <br/>
-                            <br/>
-                            <h4 className="display-4 text-center" id="register">Register</h4>
-                            <form onSubmit={this.onSubmit}>
-                                {/*Name*/}
-                                <div className="form-group">
-                                    <input type="text"
-                                           className={classnames("form-control alert-link", {"is-invalid":errors.error})}
-                                           name="name"
-                                           value={this.state.name}
-                                           placeholder="User Name"
-                                           onChange={this.onChange}
-                                           required
-                                    />
-                                    {
-                                        errors.error && (
-                                            <div className="invalid-feedback">{errors.error}</div>
-                                        )
-                                    }
+        if(sessionStorage.getItem("sessionName")===null) {
+            return (
+                <div className="container">
+                    <br/>
+                    <div className="col-md-7 m-auto alert-dark">
+                        <div className="row">
+                            <div className="col-md-8 m-auto">
+                                <br/>
+                                <Link to="/" className="btn mb-0 btn-outline-info">
+                                    <i className="fas fa-angle-double-left"> Back to Main </i>
+                                </Link>
+                                <br/>
+                                <br/>
+                                <h4 className="display-4 text-center" id="register">Register</h4>
+                                <form onSubmit={this.onSubmit}>
+                                    {/*Name*/}
+                                    <div className="form-group">
+                                        <input type="text"
+                                               className={classnames("form-control alert-link", {"is-invalid": errors.error})}
+                                               name="name"
+                                               value={this.state.name}
+                                               placeholder="User Name"
+                                               onChange={this.onChange}
+                                               required
+                                        />
+                                        {
+                                            errors.error && (
+                                                <div className="invalid-feedback">{errors.error}</div>
+                                            )
+                                        }
 
-                                </div>
-                                {/*email*/}
-                                <div className="form-group">
-                                    <input type="email"
-                                           className={classnames("form-control alert-link",{"is-invalid":errors.email})}
-                                           name="email"
-                                           value={this.state.email}
-                                           placeholder="Email"
-                                           onChange={this.onChange}
-                                           required
-                                    />
+                                    </div>
+                                    {/*email*/}
+                                    <div className="form-group">
+                                        <input type="email"
+                                               className={classnames("form-control alert-link", {"is-invalid": errors.email})}
+                                               name="email"
+                                               value={this.state.email}
+                                               placeholder="Email"
+                                               onChange={this.onChange}
+                                               required
+                                        />
 
-                                </div>
-                                {/*Post*/}
-                                <div className="form-group">
-                                    <select className="form-control alert-link"
-                                            name="post"
-                                            required
-                                            value={this.state.post}
-                                            onChange={this.onChange}
-                                    >
-                                        <option value="">Select Position</option>
-                                        <option value="CUSTOMER">CUSTOMER</option>
-                                    </select>
+                                    </div>
+                                    {/*Post*/}
+                                    <div className="form-group">
+                                        <select className="form-control alert-link"
+                                                name="post"
+                                                required
+                                                value={this.state.post}
+                                                onChange={this.onChange}
+                                        >
+                                            <option value="">Select Position</option>
+                                            <option value="CUSTOMER">CUSTOMER</option>
+                                        </select>
 
-                                </div>
-                                {/*password*/}
-                                <div className="form-group">
-                                    <input type="password"
-                                           className={classnames("form-control alert-link",{"is-invalid":errors.password})}
-                                           id="pswrd"
-                                           name="password"
-                                           value={this.state.password}
-                                           placeholder="Password"
-                                           onChange={this.onChange}
-                                           required
-                                    />
+                                    </div>
+                                    {/*password*/}
+                                    <div className="form-group">
+                                        <input type="password"
+                                               className={classnames("form-control alert-link", {"is-invalid": errors.password})}
+                                               id="pswrd"
+                                               name="password"
+                                               value={this.state.password}
+                                               placeholder="Password"
+                                               onChange={this.onChange}
+                                               required
+                                        />
 
-                                </div>
-                                {/*confirm password*/}
-                                <div className="form-group">
-                                    <input type="password"
-                                           id="cpswrd"
-                                           className={classnames("form-control alert-link",{"is-invalid":errors.cpassword})}
-                                           name="cpassword"
-                                           value={this.state.cpassword}
-                                           placeholder="Confirm Password"
-                                           onChange={this.onChange}
-                                           required
-                                    />
-                                    {
-                                        errors.cpassword && (
-                                            <div className="invalid-feedback">{errors.cpassword}</div>
-                                        )
-                                    }
-                                </div>
+                                    </div>
+                                    {/*confirm password*/}
+                                    <div className="form-group">
+                                        <input type="password"
+                                               id="cpswrd"
+                                               className={classnames("form-control alert-link", {"is-invalid": errors.cpassword})}
+                                               name="cpassword"
+                                               value={this.state.cpassword}
+                                               placeholder="Confirm Password"
+                                               onChange={this.onChange}
+                                               required
+                                        />
+                                        {
+                                            errors.cpassword && (
+                                                <div className="invalid-feedback">{errors.cpassword}</div>
+                                            )
+                                        }
+                                    </div>
 
-                                <input type="submit" className="btn btn-primary btn-block mt-4"/>
-                            </form>
-                            <br/>
-                            <br/>
+                                    <input type="submit" className="btn btn-primary btn-block mt-4"/>
+                                </form>
+                                <br/>
+                                <br/>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        );
+            );}
+            else{
+                return (<div> {window.location.replace("/login")} </div>);
+            }
+
     }
 }
 Register.prototypes={

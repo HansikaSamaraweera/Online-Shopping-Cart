@@ -16,14 +16,16 @@ import ViewCart from "./components/Product/ViewCart";
 import HomeBody from "./components/Product/HomeBody";
 import Comment from "./components/Product/Comment";
 import NewCategory from "./components/Category/NewCategory";
+import SessionCon from "./components/ProjectTask/SessionCon";
 
 class App extends Component{
 
     render() {
-    return (
+        return (
         <Provider store={store}>
         <Router>
         <div className="App ">
+            <SessionCon/>
             <Navigationbar />
             <Switch>
              <Route path="/" exact component={HomeBody} />
