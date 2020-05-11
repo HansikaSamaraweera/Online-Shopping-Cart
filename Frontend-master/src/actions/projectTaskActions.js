@@ -21,7 +21,7 @@ export const addNewUser =(user, history)=>async dispatch=>{
 export const addNewUserCus =(user, history)=>async dispatch=>{
     try {
         await axios.post("http://localhost:8080/api/Users", user);
-        // history.push("/");
+       // history.push("/");
         sessionStorage.setItem("sessionName",user.name);
         sessionStorage.setItem("sessionPost",user.post);
         window.location.replace("/")
@@ -40,19 +40,19 @@ export const addNewUserCus =(user, history)=>async dispatch=>{
 export const getUsers=()=>async dispatch=>{
     const res=await axios.get("http://localhost:8080/api/Users/all");
 
-    dispatch({
-        type: GET_PROJECT_TASK,
-        payload: res.data
-    })
+        dispatch({
+            type: GET_PROJECT_TASK,
+            payload: res.data
+        })
 
 }
 
 export const login = name =>async dispatch=>{
     const res=await axios.get(`http://localhost:8080/api/Users/name/${name}`);
 
-    dispatch({
-        type: GET_USER,
-        payload: res.data
-    })
+        dispatch({
+            type: GET_USER,
+            payload: res.data
+        })
 
 }
