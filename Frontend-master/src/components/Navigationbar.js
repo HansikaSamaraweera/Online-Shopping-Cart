@@ -1,5 +1,5 @@
 import React from 'react';
-import {Nav,NavItem,Navbar,NavDropdown} from 'react-bootstrap';
+import {Nav,Navbar,NavDropdown} from 'react-bootstrap';
 import {Link} from "react-router-dom";
 import "../admin.css";
 
@@ -22,7 +22,7 @@ function Navigationbar() {
                         <NavDropdown title="Dashboard" id="collasible-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">WISHLIST</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="/NewCategory">ADD PRODUCTS TYPES</NavDropdown.Item>
+                            <NavDropdown.Item href="/AddCategory">ADD PRODUCTS TYPES</NavDropdown.Item>
                             <NavDropdown.Item><Link to="/Admin" >ADD STORE MANAGERS </Link></NavDropdown.Item>
 
                     </NavDropdown>

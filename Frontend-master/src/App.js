@@ -15,14 +15,17 @@ import ItemHome from "./components/Product/ItemHome";
 import ViewCart from "./components/Product/ViewCart";
 import HomeBody from "./components/Product/HomeBody";
 import Comment from "./components/Product/Comment";
-import NewCategory from "./components/Category/NewCategory";
 import SessionCon from "./components/ProjectTask/SessionCon";
+
 import ProductList from "./components/item/productList";
 import EditProduct from "./components/item/EditProduct";
 import CreateProduct from "./components/item/CreateProduct";
 
-class App extends Component{
+import AddCategory from "./components/Category/AddCategory";
+import CategoryList from "./components/Category/CategoryList";
 
+
+class App extends Component{
     render() {
         return (
         <Provider store={store}>
@@ -38,10 +41,15 @@ class App extends Component{
              <Route path="/MyAccount" component={MyAccount} />
              <Route path="/ViewCart" component={ViewCart} />
                 <Route path="/Comment" component={Comment} />
+
                 <Route path="/NewCategory" component={NewCategory} />
                 <Route path="/addProduct" component={CreateProduct} />
                 <Route path="/EditProduct" component={EditProduct} />
                 <Route path="/ProductList" component={ProductList} />
+
+                <Route path='/AddCategory' component={AddCategory} />
+                <Route path='/CategoryList' component={CategoryList} />
+
             </Switch>
 
             <Footer />
