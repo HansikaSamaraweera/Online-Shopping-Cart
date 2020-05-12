@@ -33,7 +33,7 @@ class Admin extends Component {
                         <br/>
                         <br/>
                         <br/>
-                        <img src={text} /><img src={cry} width="100px" height="100px"/>
+                        <img src={text} alt="" /><img src={cry} width="100px" height="100px" alt=""/>
                         <br/>
                         </div>
                     }
