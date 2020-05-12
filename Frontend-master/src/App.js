@@ -15,11 +15,13 @@ import ItemHome from "./components/Product/ItemHome";
 import ViewCart from "./components/Product/ViewCart";
 import HomeBody from "./components/Product/HomeBody";
 import Comment from "./components/Product/Comment";
-import NewCategory from "./components/Category/NewCategory";
 import SessionCon from "./components/ProjectTask/SessionCon";
+import AddCategory from "./components/Category/AddCategory";
+import CategoryList from "./components/Category/CategoryList";
+
+
 
 class App extends Component{
-
     render() {
         return (
         <Provider store={store}>
@@ -35,7 +37,8 @@ class App extends Component{
              <Route path="/MyAccount" component={MyAccount} />
              <Route path="/ViewCart" component={ViewCart} />
                 <Route path="/Comment" component={Comment} />
-                <Route path="/NewCategory" component={NewCategory} />
+                <Route path='/AddCategory' component={AddCategory} />
+                <Route path='/CategoryList' component={CategoryList} />
             </Switch>
 
             <Footer />
