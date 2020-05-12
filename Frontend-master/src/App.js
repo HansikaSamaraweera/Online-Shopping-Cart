@@ -42,10 +42,9 @@ class App extends Component{
              <Route path="/ViewCart" component={ViewCart} />
                 <Route path="/Comment" component={Comment} />
 
-                <Route path="/NewCategory" component={NewCategory} />
 
 
-                
+
                 <Route path="/addProduct" component={CreateProduct} />
                 <Route path="/EditProduct" component={EditProduct} />
                 <Route path="/ProductList" component={ProductList} />
