@@ -17,6 +17,9 @@ import HomeBody from "./components/Product/HomeBody";
 import Comment from "./components/Product/Comment";
 import NewCategory from "./components/Category/NewCategory";
 import SessionCon from "./components/ProjectTask/SessionCon";
+import ProductList from "./components/item/productList";
+import EditProduct from "./components/item/EditProduct";
+import CreateProduct from "./components/item/CreateProduct";
 
 class App extends Component{
 
@@ -36,6 +39,9 @@ class App extends Component{
              <Route path="/ViewCart" component={ViewCart} />
                 <Route path="/Comment" component={Comment} />
                 <Route path="/NewCategory" component={NewCategory} />
+                <Route path="/addProduct" component={CreateProduct} />
+                <Route path="/EditProduct" component={EditProduct} />
+                <Route path="/ProductList" component={ProductList} />
             </Switch>
 
             <Footer />
