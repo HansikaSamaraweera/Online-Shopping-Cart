@@ -22,7 +22,7 @@ function Navigationbar() {
                         <NavDropdown title="Dashboard" id="collasible-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">WISHLIST</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="/AddCategory">ADD PRODUCTS TYPES</NavDropdown.Item>
+                            <NavDropdown.Item href="/AdminAsCategory/AddCategory" >ADD PRODUCTS TYPES</NavDropdown.Item>
                             <NavDropdown.Item><Link to="/Admin" >ADD STORE MANAGERS </Link></NavDropdown.Item>
 
                     </NavDropdown>
