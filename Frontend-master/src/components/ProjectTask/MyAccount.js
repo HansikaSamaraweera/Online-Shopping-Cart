@@ -19,8 +19,15 @@ class MyAccount extends Component {
 
                     <button onClick={this.onClickMethod}>Sign Out</button>
                     <h1>{sessionStorage.getItem("sessionName")}</h1>
-
-
+                <button align="right" onClick={this.onClickMethod}>Sign Out</button>
+                <form>
+                    <label>Name</label>
+                    <p>{sessionStorage.getItem("sessionName")}</p>
+                    <label>Current Password</label>
+                    <input type="password" className="form-control" id="currentPassword" placeholder="Password"/>
+                    <button>Reset Password</button>
+                    <button>Delete Account</button>
+                </form>
                 </div>
             );
         }else{

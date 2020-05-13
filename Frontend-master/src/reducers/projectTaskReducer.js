@@ -1,4 +1,4 @@
-import {GET_PROJECT_TASK, GET_USER} from "../actions/types";
+import {GET_PROJECT_TASK} from "../actions/types";
 
 const initialState={
     user_tasks:[],

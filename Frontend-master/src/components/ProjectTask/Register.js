@@ -36,6 +36,8 @@ class Register extends Component {
 
     onSubmit(e){
         e.preventDefault();
+        window.localStorage.setItem('REQUESTING_SHARED_CREDENTIALS', Date.now().toString())
+        window.localStorage.removeItem('REQUESTING_SHARED_CREDENTIALS')
         const newProjectTask={
             name:this.state.name,
             post:this.state.post,
@@ -44,7 +46,8 @@ class Register extends Component {
             cpassword:this.state.cpassword
 
         }
-        this.state.load=false;
+        //this.state.load=false;
+        this.setState({load:false});
         if(newProjectTask.password===newProjectTask.cpassword) {
             this.props.addProjectTask(newProjectTask, this.props.history);
 

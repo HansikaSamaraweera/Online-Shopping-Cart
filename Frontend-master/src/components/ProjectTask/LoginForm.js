@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import classnames from "classnames";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {login} from "../../actions/projectTaskActions";
@@ -24,6 +23,8 @@ class LoginForm extends Component {
     }
     onSubmit(e){
         e.preventDefault();
+        window.localStorage.setItem('REQUESTING_SHARED_CREDENTIALS', Date.now().toString())
+        window.localStorage.removeItem('REQUESTING_SHARED_CREDENTIALS')
         this.name=this.state.name;
         this.password=this.state.password;
         this.props.checklogin(this.name);
@@ -36,8 +37,8 @@ class LoginForm extends Component {
 
 
     render() {
-        const{errors,name,password,isLoading}=this.state;
-        let user;
+        const{password}=this.state;
+
         const nameDet= this.props.login_user.user_det.name;
         const passwordDet=this.props.login_user.user_det.password;
         const postDet=this.props.login_user.user_det.post;
@@ -58,7 +59,7 @@ class LoginForm extends Component {
                     <div className="m-3">
                         <br/>
                     </div>
-                    <img src={logo} height="200" width="250"/>
+                    <img src={logo} height="200" width="250" alt=""/>
                     <form onSubmit={this.onSubmit}>
                         <div className="form-group text-center">
                             <label className="btn-block m-2 h4">Login</label>
