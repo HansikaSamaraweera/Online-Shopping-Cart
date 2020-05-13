@@ -8,6 +8,7 @@ import text from "../src/components/images/pic8.gif";
 import cry from "../src/components/images/cry.gif";
 import "./admin.css";
 
+
 class Admin extends Component {
 
     constructor(props) {

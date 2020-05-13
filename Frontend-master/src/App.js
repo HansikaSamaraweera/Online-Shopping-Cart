@@ -17,9 +17,9 @@ import HomeBody from "./components/Product/HomeBody";
 import Comment from "./components/Product/Comment";
 import SessionCon from "./components/ProjectTask/SessionCon";
 import AdminAsCategory from "./AdminAsCategory";
-
-
-
+import WishList from "./components/WishList/WishList";
+import ResetPassword from "./components/ProjectTask/ResetPassword";
+import EditProfile from "./components/ProjectTask/EditProfile";
 class App extends Component{
     render() {
         return (
@@ -37,6 +37,9 @@ class App extends Component{
              <Route path="/ViewCart" component={ViewCart} />
                 <Route path="/Comment" component={Comment} />
                 <Route path="/AdminAsCategory" component={AdminAsCategory} />
+                <Route path="/WishList" component={WishList} />
+                <Route path="/ResetPassword" component={ResetPassword} />
+                <Route path="/EditProfile" component={EditProfile} />
             </Switch>
 
             <Footer />

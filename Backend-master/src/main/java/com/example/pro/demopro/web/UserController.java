@@ -7,13 +7,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 @CrossOrigin
@@ -105,6 +104,13 @@ public class UserController {
         msg.setSentDate(new Date());
 
         Transport.send(msg);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteProjectTask(@PathVariable String id){
+        userService.delete(id);
+
+        return new ResponseEntity<String>("Account deleted", HttpStatus.OK);
     }
 
 }

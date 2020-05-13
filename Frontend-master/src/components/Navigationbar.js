@@ -2,6 +2,7 @@ import React from 'react';
 import {Nav,Navbar,NavDropdown} from 'react-bootstrap';
 import {Link} from "react-router-dom";
 import "../admin.css";
+import icons8 from "./images/icons8.png"
 
 function Navigationbar() {
 
@@ -26,6 +27,7 @@ function Navigationbar() {
                             <NavDropdown.Item><Link to="/Admin" >ADD STORE MANAGERS </Link></NavDropdown.Item>
 
                     </NavDropdown>
+                        <Nav.Link><Link to="/WishList"><i className="fas fa-heart"></i></Link></Nav.Link>
                     </Nav>
 
                         <div>
