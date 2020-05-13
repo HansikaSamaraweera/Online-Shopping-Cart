@@ -47,7 +47,7 @@ class AddCategory extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 m-auto">
-                            <Link to="/CategoryList" className="btn btn-group-lg btn-block btn-success">
+                            <Link to="/AdminAsCategory/CategoryList" className="btn btn-group-lg btn-block btn-success">
                                 Category List
                             </Link>
                             <br/>
