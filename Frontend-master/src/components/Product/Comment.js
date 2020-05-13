@@ -24,13 +24,18 @@ class Comment extends Component {
     }
     onSubmit(e){
         e.preventDefault();
-        const newMessage ={
-            message : this.state.message,
-            p:"Frock",
-            user:"ccc"
-        };
-        // console.log(newMessage);
-        this.props.addComment(newMessage,this.props.history);
+
+        if(sessionStorage.getItem("sessionName")!=null) {
+            const newMessage = {
+                message: this.state.message,
+                p: "Shirt",
+                user: sessionStorage.getItem("sessionName")
+            };
+            console.log(newMessage);
+            this.props.addComment(newMessage, this.props.history);
+        }else{
+            alert("Please Login or Register to add Comment!!!");
+        }
     }
 
     render() {
