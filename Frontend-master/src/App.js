@@ -16,7 +16,8 @@ import ViewCart from "./components/Product/ViewCart";
 import HomeBody from "./components/Product/HomeBody";
 import Comment from "./components/Product/Comment";
 import SessionCon from "./components/ProjectTask/SessionCon";
-import AdminAsCategory from "./AdminAsCategory";
+import AddCategory from "./components/Category/AddCategory";
+import CategoryList from "./components/Category/CategoryList";
 
 
 
@@ -36,7 +37,8 @@ class App extends Component{
              <Route path="/MyAccount" component={MyAccount} />
              <Route path="/ViewCart" component={ViewCart} />
                 <Route path="/Comment" component={Comment} />
-                <Route path='/AdminAsCategory' component={AdminAsCategory} />
+                <Route path='/AddCategory' component={AddCategory} />
+                <Route path='/CategoryList' component={CategoryList} />
             </Switch>
 
             <Footer />

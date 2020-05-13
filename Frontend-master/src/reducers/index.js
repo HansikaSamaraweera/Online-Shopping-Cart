@@ -7,7 +7,7 @@ export default combineReducers({
 
     errors:errorsReducer,
     user_task:projectTaskReducer,
-    user_details:userDet
+    user_details:userDet,
 
 
 });

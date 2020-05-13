@@ -1,5 +1,6 @@
 import axios from 'axios';
-import {GET_ERRORS, GET_PROJECT_TASK,GET_USER} from "./types";
+import {GET_ERRORS, GET_PRODUCT, GET_PROJECT_TASK, GET_USER} from "./types";
+import productList from "../components/item/productList";
 
 
 export const addNewUser =(user, history)=>async dispatch=>{
@@ -55,4 +56,30 @@ export const login = name =>async dispatch=>{
         payload: res.data
     })
 
+}
+
+export const addProduct = (product,history) => async dispatch => {
+    try {
+        await axios.post('http://localhost:8080/api/Products', product);
+        history.push("/ProductList");
+        dispatch({
+            type:GET_ERRORS,
+            payload:{}
+        })
+    }
+    catch (error) {
+        dispatch({
+            type:GET_ERRORS,
+            payload:error.response.data
+        })
+    }
+}
+
+
+export  const getBacklog = () => async  dispatch => {
+    const res = await axios.get("http://localhost:8080/api/Products/all")
+    dispatch({
+        type:GET_PRODUCT,
+        payload:res.data
+    })
 }
