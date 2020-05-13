@@ -8,6 +8,7 @@ import classnames from "classnames";
 import {addComment} from "../../actions/ProductAction";
 import ItemHome from "./ItemHome";
 import axios from "axios";
+import qs from 'query-string';
 
 class Comment extends Component {
     constructor(props) {
@@ -16,16 +17,19 @@ class Comment extends Component {
             message : "",
             p:"",
             user:"",
-            name:""
+            name:"",
+
         };
         console.log(this.props);
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        //alert(qs.parse(this.props.location.search, { ignoreQueryPrefix: true })._k);
+
     }
 
 componentDidMount() {
 
-    axios.get('http://localhost:8080/api/Products/'+this.props.match.params.id)
+    axios.get('http://localhost:8080/api/Products/'+qs.parse(this.props.location.search, { ignoreQueryPrefix: true })._k)
         .then(responce =>{
             this.setState({
                 name : responce.data.name

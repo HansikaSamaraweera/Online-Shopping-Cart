@@ -29,7 +29,9 @@ const Product = props => (
             <button type="button" className="btn btn-primary btn-block">Add To Cart</button>
 
             <button type="button" className="btn btn-primary btn-block">Add To Wish List</button>
-            <Link to={"/Comment/"+props.todo.id} className="btn btn-info btn-block">Comment & Reviews</Link>
+            <Link to={"/Comment/id?_k="+props.todo.id} className="btn btn-info btn-block">Comment & Reviews</Link>
+
+
 
         </div>
     </div>

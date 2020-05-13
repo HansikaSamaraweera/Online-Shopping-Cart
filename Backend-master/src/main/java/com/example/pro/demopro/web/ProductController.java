@@ -50,9 +50,9 @@ public class ProductController {
 
     @GetMapping("/{p_id}")
     public ResponseEntity<?> getPbyId(@PathVariable String p_id){
-        System.out.println(p_id+"ililililililililililililililiili");
+        //System.out.println(p_id+"ililililililililililililililiili");
         Product product = productService.findById(p_id);
-        System.out.println(product+"hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+        System.out.println(product.getName());
         return new ResponseEntity<Product>(product, HttpStatus.OK);
 
     }
