@@ -6,18 +6,38 @@ import {connect} from "react-redux";
 import {addNewUser} from "../../actions/projectTaskActions";
 import classnames from "classnames";
 import {addComment} from "../../actions/ProductAction";
+import ItemHome from "./ItemHome";
+import axios from "axios";
 
 class Comment extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             message : "",
             p:"",
-            user:""
+            user:"",
+            name:""
         };
+        console.log(this.props);
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
+
+componentDidMount() {
+
+    axios.get('http://localhost:8080/api/Products/'+this.props.match.params.id)
+        .then(responce =>{
+            this.setState({
+                name : responce.data.name
+
+            });
+            console.log(this.state.name);
+        })
+        .catch(function (error) {
+            console.log(error)
+        })
+}
+
 
     onChange(e){
         this.setState({[e.target.name]: e.target.value})
@@ -28,7 +48,7 @@ class Comment extends Component {
         if(sessionStorage.getItem("sessionName")!=null) {
             const newMessage = {
                 message: this.state.message,
-                p: "Shirt",
+                p:this.state.name,
                 user: sessionStorage.getItem("sessionName")
             };
             console.log(newMessage);
@@ -42,7 +62,7 @@ class Comment extends Component {
         return (
             <div className={"container"}>
                 <h2 className={"text-capitalize card card-body my-3 bg-info text-white"}>
-                    <h6>Product Name</h6>
+                    <h6>{this.state.name} </h6>
                     Comments & Reviews </h2>
                 <div className={"row"}>
                     <div className={" col-10 mx-auto col-md-12 mt-4 jumbotron"}>

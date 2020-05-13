@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 const Message = props => (
     <tr>
         <td>{props.todo.user}</td>
-        <td>{props.todo.product}</td>
+        <td>{props.todo.p}</td>
         <td>{props.todo.message}</td>
     </tr>
 )

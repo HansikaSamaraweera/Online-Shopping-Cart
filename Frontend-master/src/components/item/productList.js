@@ -12,7 +12,7 @@ const Product = props => (
             <Link to={"/EditProduct/"+props.product.id}>Edit</Link>
         </td>
     </tr>
-)
+);
 
 export default class ProductList extends Component{
     constructor(props) {

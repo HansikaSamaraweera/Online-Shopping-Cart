@@ -23,6 +23,5 @@ public class ReviewsController {
     @GetMapping(value = "/get")
     public Iterable<Reviews> getByName( ){
         return reviewsService.getByName( );
-
     }
 }
