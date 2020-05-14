@@ -39,9 +39,11 @@ function Navigationbar() {
                                     <Nav.Link ><Link to="/login" >SIGN IN</Link></Nav.Link>
                                  </Nav>
                                 :<div className=" m-auto alert-dark">
-                                    <p id="login">Welcome</p>
-                                    <h5 id="login">{sessionStorage.getItem("sessionName")}</h5>
-                                    <Nav.Link href="/MyAccount"><i className="fas fa-user-circle"> My Account </i></Nav.Link>
+                                    <h6 id="login">Welcome</h6>
+                                    <h6 id="login">{sessionStorage.getItem("sessionName")}</h6>
+                                    <Nav.Link href="/MyAccount"><i className="fas fa-user-circle "> My Account </i></Nav.Link>
+                                    <button className="btn-danger btn-block " onClick={onClickMethod}>
+                                        <i className="fas fa-sign-out-alt">Log Out</i></button>
 
                                 </div>}
                         </div>
@@ -53,6 +55,14 @@ function Navigationbar() {
 
 
         );
+
+}
+function onClickMethod(){
+    window.localStorage.setItem('CREDENTIALS_FLUSH', Date.now().toString())
+    window.localStorage.removeItem('CREDENTIALS_FLUSH')
+    console.log("sign out");
+    sessionStorage.clear();
+    window.location.replace("/login");
 
 }
 export default Navigationbar;
