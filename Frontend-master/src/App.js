@@ -20,6 +20,7 @@ import AdminAsCategory from "./AdminAsCategory";
 import WishList from "./components/WishList/WishList";
 import ResetPassword from "./components/ProjectTask/ResetPassword";
 import EditProfile from "./components/ProjectTask/EditProfile";
+import Offers from "./components/Category/Offers";
 class App extends Component{
     render() {
         return (
@@ -40,6 +41,7 @@ class App extends Component{
                 <Route path="/WishList" component={WishList} />
                 <Route path="/ResetPassword" component={ResetPassword} />
                 <Route path="/EditProfile" component={EditProfile} />
+                <Route path="/Offers" component={Offers} />
             </Switch>
 
             <Footer />
