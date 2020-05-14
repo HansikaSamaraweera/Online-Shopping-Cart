@@ -49,10 +49,10 @@ class MyAccount extends Component {
                         </div>
                             <img className="card-img-top" src="" alt=""/>
                                     <div className="card-body">
-                                        <h4 className="card-title">Name:{sessionStorage.getItem("sessionName")}</h4>
+                                        {/*<h4 className="card-title">Name:{sessionStorage.getItem("sessionName")}</h4>
                                                 <p className="card-text text-truncate">
                                                     Email:{this.props.user.email}
-                                                </p>
+                                                </p>*/}
                                         <button onClick={this.delete.bind(this, this.state.user.id)}className="btn btn-primary">Delete Account</button>
                                             </div>
                             </div>
