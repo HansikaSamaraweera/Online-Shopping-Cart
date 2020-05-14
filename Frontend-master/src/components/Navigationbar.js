@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import "../admin.css";
 
 
+
 function Navigationbar() {
 
     return (
@@ -28,7 +29,7 @@ function Navigationbar() {
 
                     </NavDropdown>
                         <Nav.Link href="/Offers">OFFERS</Nav.Link>
-                        <Nav.Link><Link to="/WishList"><i className="fas fa-heart"></i></Link></Nav.Link>
+                        <Nav.Link><Link to="/WhishList_Admin/WishList"><i className="fas fa-heart"></i></Link></Nav.Link>
                     </Nav>
 
                         <div>
