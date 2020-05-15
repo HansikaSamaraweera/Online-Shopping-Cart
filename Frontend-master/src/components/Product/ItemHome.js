@@ -26,12 +26,10 @@ const Product = props => (
         <div className="card-body">
             {/*<Link  to="/ViewCart" className="btn btn-primary btn-block"></Link>*/}
 
-            <button type="button" className="btn btn-primary btn-block">Add To Cart</button>
-
+            {/*<button type="button" className="btn btn-primary btn-block" onClick={}>Add To Cart</button>*/}
+            <Link to={"/ViewProduct/id?_k="+props.todo.id} className="btn btn-info btn-block">Add To Cart</Link>
             <button type="button" className="btn btn-primary btn-block">Add To Wish List</button>
             <Link to={"/Comment/id?_k="+props.todo.id} className="btn btn-info btn-block">Comment & Reviews</Link>
-
-
 
         </div>
     </div>
@@ -39,16 +37,17 @@ const Product = props => (
         </div>
     </div>
 
-
 );
-
-
 
 class ItemHome extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {pro : []};
+        this.state = {
+            pro : [],
+
+
+        };
     }
 
 
@@ -67,17 +66,18 @@ productList(){
         });
 }
 
+
+
+
     render() {
         return (
-
                     <div>
                         {this.productList()}
+
                     </div>
-
-
-
         );
     }
+
 }
 
 export default ItemHome;

@@ -4,7 +4,11 @@ import CartList from "./CartList";
 import {Link, Route} from "react-router-dom";
 
 class ViewCart extends Component {
+
+
+
     render() {
+
         return (
 
             <div className={"container"}>
