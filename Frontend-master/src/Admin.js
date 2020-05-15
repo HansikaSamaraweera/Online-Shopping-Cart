@@ -8,10 +8,15 @@ import text from "../src/components/images/pic8.gif";
 import cry from "../src/components/images/cry.gif";
 import "./admin.css";
 
+
 class Admin extends Component {
 
     constructor(props) {
         super(props);
+    }
+    componentDidMount() {
+        window.localStorage.setItem('REQUESTING_SHARED_CREDENTIALS', Date.now().toString())
+        window.localStorage.removeItem('REQUESTING_SHARED_CREDENTIALS')
     }
     render() {
         return (
@@ -45,5 +50,6 @@ class Admin extends Component {
         );
     }
 }
+//check changes 123
 
 export default Admin;

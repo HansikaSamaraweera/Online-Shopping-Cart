@@ -4,6 +4,8 @@ import UserItem from "./ProjectTask/UserItem";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {getUsers} from "../actions/projectTaskActions";
+import MyAccount from "./ProjectTask/MyAccount";
+
 
 class DisplayAdminandStoreMan extends Component {
 
@@ -27,7 +29,6 @@ class DisplayAdminandStoreMan extends Component {
                 const tasks=user_tasks.map(user_task => (
                     <UserItem key={user_task.id} user_task={user_task}/>
                 ));
-
                 for(let i=0;i<tasks.length;i++){
                     if(tasks[i].props.user_task.post==="ADMIN"){
                         admin.push(tasks[i]);
