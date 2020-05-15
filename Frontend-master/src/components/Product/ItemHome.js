@@ -28,7 +28,7 @@ const Product = props => (
 
             <button type="button" className="btn btn-primary btn-block">Add To Cart</button>
 
-            <Link to={"/WhishList_Admin/WishList"} className="btn btn-primary btn-block">Add To Wish List</Link>
+            <Link to={"/WhishList_Admin/WishList/id?_k="+props.todo.id} className="btn btn-primary btn-block">Add To Wish List</Link>
             <Link to={"/Comment/id?_k="+props.todo.id} className="btn btn-info btn-block">Comment & Reviews</Link>
 
 

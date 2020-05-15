@@ -1,56 +1,38 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import {
-    getUser,
-    addNewUserCus,
-} from "../../actions/projectTaskActions";
+import axios from "axios";
 
 class ResetPassword extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            password:"",
-            cpassword:"",
-            errors:[]
+            user: {}
         };
-        this.onChange = this.onChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.errors) {
-            this.setState({ errors: nextProps.errors });
-        }
-
-        const { id, password,cpassword } =nextProps.user_task;
-
-        this.setState({
-            id,
-            password,
-            cpassword
-        });
     }
 
     componentDidMount() {
-        const { id } = this.props.match.params;
-        this.props.getUser(id);
+        axios.get('/api/Users/'+this.props.match.params.id)
+            .then(res => {
+                this.setState({ user: res.data });
+                console.log(this.state.user);
+            });
     }
 
-    onSubmit(e) {
+/*onChange = (e) => {
+        const state = this.state.user
+        state[e.target.password] = e.target.value;
+        this.setState({user:state});
+    }
+
+    onSubmit = (e) => {
         e.preventDefault();
-        const updatedTask = {
-            id: this.state.id,
-            password: this.state.password,
-            cpassword: this.state.cpassword
-        };
 
-        this.props.addNewUserCus(updatedTask, this.props.history);
-    }
+        const { password,cpassword } = this.state.user;
 
-    onChange(e) {
-        this.setState({ [e.target.name]: e.target.value });
-    }
+        axios.put('/api/Users/'+this.props.match.params.id, { password,cpassword })
+            .then((result) => {
+                this.props.history.push("/"+this.props.match.params.id)
+            });
+    }*/
 
     render() {
         return(
@@ -76,7 +58,7 @@ class ResetPassword extends Component{
                                 <input type="password"
                                        id="pswrd"
                                        name="password"
-                                       value={this.state.password}
+                                       value={this.state.user.password}
                                        placeholder="Password"
                                        onChange={this.onChange}
                                        required
@@ -88,7 +70,7 @@ class ResetPassword extends Component{
                                 <input type="password"
                                        id="cpswrd"
                                        name="cpassword"
-                                       value={this.state.cpassword}
+                                       value={this.state.user.cpassword}
                                        placeholder="Confirm Password"
                                        onChange={this.onChange}
                                        required
@@ -107,19 +89,6 @@ class ResetPassword extends Component{
     );
     }
 }
-ResetPassword.propTypes = {
-    user_task: PropTypes.object.isRequired,
-    errors: PropTypes.object.isRequired,
-    getUser: PropTypes.func.isRequired,
-    addNewUserCus: PropTypes.func.isRequired
-};
+export default ResetPassword;
 
-const mapStateToProps = state => ({
-    user_task: state.user_task.user_task,
-    errors: state.errors
-});
 
-export default connect(
-    mapStateToProps,
-    { getUser, addNewUserCus}
-)(ResetPassword);

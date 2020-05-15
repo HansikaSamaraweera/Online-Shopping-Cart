@@ -23,13 +23,13 @@ class EditProfile extends Component{
             this.setState({ errors: nextProps.errors });
         }
 
-        const { id, name,email } =nextProps.user_task;
+        /*const { id, name,email } =nextProps.user;
 
         this.setState({
             id,
             name,
             email
-        });
+        });*/
     }
 
     componentDidMount() {
@@ -72,8 +72,9 @@ class EditProfile extends Component{
                                         />
 
                                     </div>
+
                                     {/*email*/}
-                                    <div className="form-group">
+                                    {/*<div className="form-group">
                                         <input type="text"
                                                id="mail"
                                                name="email"
@@ -82,7 +83,7 @@ class EditProfile extends Component{
                                                onChange={this.onChange}
                                                required
                                         />
-                                    </div>
+                                    </div>*/}
                                     <input type="submit" className="btn btn-outline-success btn-block col-md-6 m-auto" value="Save"/>
                                 </form>
                                 <p><br/><br/><br/></p>
