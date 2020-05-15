@@ -17,10 +17,10 @@ import HomeBody from "./components/Product/HomeBody";
 import Comment from "./components/Product/Comment";
 import SessionCon from "./components/ProjectTask/SessionCon";
 import AdminAsCategory from "./AdminAsCategory";
-import ResetPassword from "./components/ProjectTask/ResetPassword";
-import EditProfile from "./components/ProjectTask/EditProfile";
-import Offers from "./components/Category/Offers";
-import WhishList_Admin from "./WhishList_Admin";
+import ViewProduct from "./components/Product/ViewProduct";
+
+
+
 class App extends Component{
     render() {
         return (
@@ -36,12 +36,9 @@ class App extends Component{
              <Route path="/Register" component={Register} />
              <Route path="/MyAccount" component={MyAccount} />
              <Route path="/ViewCart" component={ViewCart} />
+                <Route path="/ViewProduct" component={ViewProduct} />
                 <Route path="/Comment" component={Comment} />
                 <Route path="/AdminAsCategory" component={AdminAsCategory} />
-                <Route path="/WhishList_Admin" component={WhishList_Admin} />
-                <Route path="/ResetPassword" component={ResetPassword} />
-                <Route path="/EditProfile" component={EditProfile} />
-                <Route path="/Offers" component={Offers} />
             </Switch>
 
             <Footer />
