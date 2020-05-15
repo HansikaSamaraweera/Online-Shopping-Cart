@@ -1,38 +1,82 @@
 import React, { Component } from "react";
 import axios from "axios";
+import {GET_USER} from "../../actions/types";
 
 class ResetPassword extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            user: {}
+            passwordcurrent:"",
+            password:"",
+            cpassword:"",
+            user123:[],
+            newuser:[]
         };
-    }
+        this.OnChange=this.OnChange.bind(this);
+        this.onSubmit=this.onSubmit.bind(this);
 
+    }
     componentDidMount() {
-        axios.get('/api/Users/'+this.props.match.params.id)
-            .then(res => {
-                this.setState({ user: res.data });
-                console.log(this.state.user);
-            });
+        axios.get(`/api/Users/name/${sessionStorage.getItem("sessionName")}`)
+            .then(responce =>{
+                this.setState({user123 : responce.data});
+            })
+            .catch(function (error) {
+                console.log(error)
+            })
+
     }
 
-/*onChange = (e) => {
-        const state = this.state.user
-        state[e.target.password] = e.target.value;
-        this.setState({user:state});
+    OnChange(e){
+        this.setState({[e.target.name]:e.target.value})
+
     }
 
-    onSubmit = (e) => {
+    onSubmit(e){
         e.preventDefault();
+        this.currentpassword=this.state.passwordcurrent;
+        this.password=this.state.password;
+        this.cpassword=this.state.cpassword;
+        console.log(this.currentpassword+this.password+this.cpassword);
 
-        const { password,cpassword } = this.state.user;
+        this.checkpw=this.state.user123.password;
+        this.id=this.state.user123.id;
+        this.name=this.state.user123.name;
+        this.post=this.state.user123.post;
+        this.email=this.state.user123.email;
 
-        axios.put('/api/Users/'+this.props.match.params.id, { password,cpassword })
-            .then((result) => {
-                this.props.history.push("/"+this.props.match.params.id)
-            });
-    }*/
+        //console.log(this.checkpw);
+       if(this.checkpw!==this.currentpassword){
+            alert("please enter correct current password");
+        }else if(this.cpassword!==this.password){
+           alert("Password Mismatching");
+       }else{
+
+           const requestOptions = {
+               method: 'POST',
+               headers: { 'Content-Type': 'application/json' },
+               body: JSON.stringify({
+                   id:this.id ,
+                   name:this.name,
+                   post:this.post,
+                   email: this.email,
+                   password:this.password
+
+               })
+           };
+           fetch('/api/Users/update', requestOptions)
+               .then(response => response.json())
+               .then(data => this.setState({ newuser: data.id }));
+
+           if(this.state.newuser!==null){
+               this.setState({newuser:null})
+               window.location.replace("/");
+           }
+
+       }
+    }
+
+
 
     render() {
         return(
@@ -47,8 +91,9 @@ class ResetPassword extends Component{
                             {/*current password*/}
                             <div className="form-group">
                                 <input type="password"
+                                       name="passwordcurrent"
                                        placeholder="Current Password"
-                                       onChange={this.onChange}
+                                       onChange={this.OnChange}
                                        required
                                 />
 
@@ -58,9 +103,9 @@ class ResetPassword extends Component{
                                 <input type="password"
                                        id="pswrd"
                                        name="password"
-                                       value={this.state.user.password}
+                                       value={this.state.password["password"]}
                                        placeholder="Password"
-                                       onChange={this.onChange}
+                                       onChange={this.OnChange}
                                        required
                                 />
 
@@ -70,9 +115,9 @@ class ResetPassword extends Component{
                                 <input type="password"
                                        id="cpswrd"
                                        name="cpassword"
-                                       value={this.state.user.cpassword}
+                                       value={this.state.cpassword["cpassword"]}
                                        placeholder="Confirm Password"
-                                       onChange={this.onChange}
+                                       onChange={this.OnChange}
                                        required
                                 />
 
