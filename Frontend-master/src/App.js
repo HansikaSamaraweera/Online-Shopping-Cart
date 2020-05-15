@@ -19,6 +19,7 @@ import SessionCon from "./components/ProjectTask/SessionCon";
 import AdminAsCategory from "./AdminAsCategory";
 import ViewProduct from "./components/Product/ViewProduct";
 import Offers from "./components/Category/Offers";
+import ResetPassword from "./components/ProjectTask/ResetPassword";
 
 class App extends Component{
     render() {
@@ -39,6 +40,7 @@ class App extends Component{
                 <Route path="/Comment" component={Comment} />
                 <Route path="/AdminAsCategory" component={AdminAsCategory} />
                 <Route path="/Offers" component={Offers} />
+                <Route path="/ResetPassword" component={ResetPassword} />
             </Switch>
 
             <Footer />
