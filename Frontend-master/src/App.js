@@ -18,8 +18,7 @@ import Comment from "./components/Product/Comment";
 import SessionCon from "./components/ProjectTask/SessionCon";
 import AdminAsCategory from "./AdminAsCategory";
 import ViewProduct from "./components/Product/ViewProduct";
-
-
+import Offers from "./components/Category/Offers";
 
 class App extends Component{
     render() {
@@ -39,6 +38,7 @@ class App extends Component{
                 <Route path="/ViewProduct" component={ViewProduct} />
                 <Route path="/Comment" component={Comment} />
                 <Route path="/AdminAsCategory" component={AdminAsCategory} />
+                <Route path="/Offers" component={Offers} />
             </Switch>
 
             <Footer />
