@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {addCategory} from "../../actions/categoryModule";
 import classnames from "classnames";
-
+import "../../category.css";
 
 class AddCategory extends Component {
     constructor(props) {
@@ -42,67 +42,64 @@ class AddCategory extends Component {
     render() {
         const { errors } = this.state;
         return (
-            <div className="addCategory">
-                <br/>
-                <div className="container">
+            <div className="col-md-7 m-auto alert-light">
+                <div className="container" id="addCategory">
                     <div className="row">
-                        <div className="col-md-8 m-auto">
-                            <Link to="/CategoryList" className="btn btn-group-lg btn-block btn-success">
+                        <div className="col-md-9 m-auto">
+                            <br/>
+                            <Link to="/AdminAsCategory/CategoryList" className="btn btn-block-success m-3">
                                 Category List
                             </Link>
                             <br/>
-                            <div className="container">
-                            <h2 className="text-center">
-                                Add Category
-                            </h2>
-                                <div className='col-sm-12'>
-                            <form onSubmit={this.onSubmit} className="form-horizontal">
-                                <div className="jumbotron">
+                            <h6 className="text-center" id="tit"> Add Category</h6>
+                            <form onSubmit={this.onSubmit}>
                                 <div className="form-group">
+                                    {/*Category Name*/}
                                     <input
                                         type="text"
-                                        className={classnames("form-control form-control-lg", {
+                                        className={classnames("form-control", {
                                             "is-invalid": errors.cName
                                         })}
                                         name="cName"
                                         value={this.state.cName}
                                         placeholder="Category Name"
                                         onChange={this.onChange}
+                                        required
                                     />
                                     {errors.cName && (
                                         <div className="invalid-feedback">{errors.cName}</div>
                                     )}
                                 </div>
+                                {/*Category Type*/}
                                 <div className="form-group">
                                     <select
-                                        className="form-control form-control-lg"
+                                        className="form-control"
                                         name="cType"
                                         value={this.state.cType}
                                         onChange={this.onChange}
+                                        required
                                     >
                                         <option value="">Select Type</option>
                                         <option value="PREMIUM COLLECTION">PREMIUM COLLECTION</option>
                                         <option value="LINEN COLLECTION">LINEN COLLECTION</option>
                                     </select>
                                 </div>
+                                {/*Date*/}
                                 <div className="form-group">
-                  <input
-                      type="date"
-                      className="form-control form-control-lg"
-                      name="cDate"
-                      value={this.state.cDate}
-                      onChange={this.onChange}
-                  />
-                                </div>
-                                <input
-                                    type="submit"
-                                    className="btn btn-primary btn-block mt-4"
-                                />
-                                </div>
-                            </form>
+                                    <input
+                                        type="date"
+                                        className="form-control"
+                                        name="cDate"
+                                        value={this.state.cDate}
+                                        onChange={this.onChange}
+                                        required
+                                    />
                                 </div>
 
-                            </div>
+                                <input type="submit" className="btn btn-primary btn-block col-md-7 m-auto"/>
+                                <br/>
+                            </form>
+                            <p><br/><br/><br/></p>
                         </div>
                     </div>
                 </div>

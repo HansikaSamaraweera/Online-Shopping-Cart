@@ -16,14 +16,16 @@ import ViewCart from "./components/Product/ViewCart";
 import HomeBody from "./components/Product/HomeBody";
 import Comment from "./components/Product/Comment";
 import SessionCon from "./components/ProjectTask/SessionCon";
-
-import ProductList from "./components/item/productList";
-import EditProduct from "./components/item/EditProduct";
+import AdminAsCategory from "./AdminAsCategory";
+import ViewProduct from "./components/Product/ViewProduct";
+import Offers from "./components/Category/Offers";
+import ResetPassword from "./components/ProjectTask/ResetPassword";
 import CreateProduct from "./components/item/CreateProduct";
-
+import EditProduct from "./components/item/EditProduct";
+import ProductList from "./components/WishList/ProductList";
 import AddCategory from "./components/Category/AddCategory";
-import CategoryList from "./components/Category/CategoryList";
-
+import category from "./reducers/category";
+import CategoryList from "./components/Category/CategoryList"
 
 class App extends Component{
     render() {
@@ -40,6 +42,7 @@ class App extends Component{
              <Route path="/Register" component={Register} />
              <Route path="/MyAccount" component={MyAccount} />
              <Route path="/ViewCart" component={ViewCart} />
+                <Route path="/ViewProduct" component={ViewProduct} />
                 <Route path="/Comment" component={Comment} />
 
 
@@ -51,6 +54,10 @@ class App extends Component{
 
                 <Route path='/AddCategory' component={AddCategory} />
                 <Route path='/CategoryList' component={CategoryList} />
+
+                <Route path="/AdminAsCategory" component={AdminAsCategory} />
+                <Route path="/Offers" component={Offers} />
+                <Route path="/ResetPassword" component={ResetPassword} />
 
             </Switch>
 

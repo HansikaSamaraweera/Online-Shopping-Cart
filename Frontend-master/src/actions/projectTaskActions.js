@@ -108,3 +108,15 @@ export const getProduct = (p_id, history) => async dispatch =>{
     }
 }
 
+
+export const getUser = (id, history) => async dispatch => {
+    try {
+        const res = await axios.get(`/api/Users/${id}`);
+        dispatch({
+            type: GET_PROJECT_TASK,
+            payload: res.data
+        });
+    } catch (error) {
+        history.push("/");
+    }
+};

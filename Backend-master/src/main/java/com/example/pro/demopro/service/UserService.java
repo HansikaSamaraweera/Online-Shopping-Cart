@@ -2,7 +2,6 @@ package com.example.pro.demopro.service;
 import com.example.pro.demopro.domain.User;
 import com.example.pro.demopro.repositary.UserRepositary;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -28,5 +27,10 @@ public class UserService {
     }
 
     public boolean checkName(String name){return userRepositary.existsByName(name);}
+
+    public void delete(String id){
+        User user = findById(id);
+        userRepositary.delete(user);
+    }
 
 }

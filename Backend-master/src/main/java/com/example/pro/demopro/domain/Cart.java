@@ -4,23 +4,50 @@ package com.example.pro.demopro.domain;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Date;
+
 
 @Document(collection = "Cart")
 public class Cart {
 
     @Id
     private String id;
-    private int itemNo;
+    private String itemNo;
     private String pname;
+    private String user;
+    private String date;
+    private String price;
 
-    private User user;
+    public String getPrice() {
+        return price;
+    }
 
-    public User getUser() {
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getPname() {
+        return pname;
+    }
+
+    public void setPname(String pname) {
+        this.pname = pname;
+    }
+
+    public String getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(String user) {
         this.user = user;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getId() {
@@ -31,11 +58,11 @@ public class Cart {
         this.id = id;
     }
 
-    public int getItemNo() {
+    public String getItemNo() {
         return itemNo;
     }
 
-    public void setItemNo(int itemNo) {
+    public void setItemNo(String itemNo) {
         this.itemNo = itemNo;
     }
 
