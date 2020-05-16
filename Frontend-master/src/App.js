@@ -21,6 +21,9 @@ import ViewProduct from "./components/Product/ViewProduct";
 import Offers from "./components/Category/Offers";
 import ResetPassword from "./components/ProjectTask/ResetPassword";
 import WhishList_Admin from "./WhishList_Admin";
+import Storeman from "./Storeman";
+import ProductList from "./components/item/ProductList";
+import EditProduct from "./components/item/EditProduct";
 class App extends Component{
     render() {
         return (
@@ -42,6 +45,9 @@ class App extends Component{
                 <Route path="/Offers" component={Offers} />
                 <Route path="/ResetPassword" component={ResetPassword} />
                 <Route path="/WhishList_Admin" component={WhishList_Admin} />
+                <Route path="/Products" component={Storeman} />
+                <Route exact path="/ProductList" component={ProductList}/>
+                <Route  path="/EditProduct" component={EditProduct}/>
             </Switch>
 
             <Footer />

@@ -16,7 +16,7 @@ function Navigationbar() {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
                         <Nav.Link href="/">HOME</Nav.Link>
-                        <Nav.Link href="/">PRODUCTS</Nav.Link>
+                        <Nav.Link href="/Products">PRODUCTS</Nav.Link>
 
                         <Nav.Link><Link to="/ViewCart"><i className="fas fa-shopping-cart"></i></Link></Nav.Link>
 

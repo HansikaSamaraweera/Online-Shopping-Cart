@@ -3,7 +3,7 @@ import {Link, Route} from "react-router-dom";
 import ViewCart from "./ViewCart";
 import {BrowserRouter as Router} from "react-router-dom";
 import axios from 'axios';
-import productList from "../item/productList";
+import productList from "../item/ProductList";
 
 const Product = props => (
 
