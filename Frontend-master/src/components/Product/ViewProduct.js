@@ -20,6 +20,7 @@ class ViewProduct extends Component {
             pName:"",
             user:"",
             curTime : new Date().toLocaleString(),
+            day: (new Date().getDate() + "/"+ parseInt(new Date().getMonth()+1) +"/"+ new Date().getFullYear()).toLocaleString()
         }
         this.onSubmit = this.onSubmit.bind(this);
     }
@@ -56,11 +57,12 @@ class ViewProduct extends Component {
         };
         this.props.addItem(newCart, this.props.history)
         alert("Added to Cart!")
-
+    }
     }
 
+    handleOnClick(){
 
-
+        this.props.history.push('/ViewCart/'+this.state.id)
     }
 
     render() {
@@ -83,8 +85,8 @@ class ViewProduct extends Component {
                             </ul>
                             <div className="card-body">
                                 {/*<Link  to="/ViewCart" className="btn btn-primary btn-block"></Link>*/}
-                                <form >
-                                <button type="submit" className="btn btn-primary btn-block" onClick={this.onSubmit}  >Add To Cart</button>
+                                <form onSubmit={this.onSubmit}>
+                                <button type="submit" className="btn btn-primary btn-block" onClick={'/ViewCart/'+this.state.id} >Add To Cart</button>
                                 </form>
 
                             </div>

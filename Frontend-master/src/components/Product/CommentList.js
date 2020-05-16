@@ -10,7 +10,7 @@ const Message = props => (
         <td>{props.todo.p}</td>
         <td>{props.todo.message}</td>
     </tr>
-)
+);
 
 
 class CommentList extends Component {
