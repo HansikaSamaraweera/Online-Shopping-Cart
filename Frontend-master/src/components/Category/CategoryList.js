@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
+import "../../category.css";
 
 class CategoryList extends Component {
     constructor(props) {
@@ -28,7 +28,8 @@ class CategoryList extends Component {
                 </Link></div>
                     <h1 className="bg-primary display-5">Category List</h1>
                 {categories.map((post) => (
-                    <div className="card w-50 m-auto" key={post.id}>
+                    <div className="card w-50 m-auto" key={post.id} id="catList">
+                        <div className="col">
                         <div className="card-header">
                             <div className="card mb-sm-n1 bg-light">
                                 <div className="card-header text-white bg-success">ID: {post.id}</div>
@@ -43,6 +44,7 @@ class CategoryList extends Component {
                                 </p>
                         </div>
 
+                    </div>
                     </div>
                     </div>
                 ))}

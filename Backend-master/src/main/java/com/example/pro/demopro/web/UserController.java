@@ -112,5 +112,13 @@ public class UserController {
 
         return new ResponseEntity<String>("Account deleted", HttpStatus.OK);
     }
+    @PostMapping("/update")
+    public ResponseEntity<?> updateCustomer(@RequestBody User user) {
+        User newCus ;
+        newCus=userService.saveOrUpdateCustomer(user);
+        return new ResponseEntity<User>(newCus, HttpStatus.OK);
+
+    }
+
 
 }

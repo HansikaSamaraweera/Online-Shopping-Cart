@@ -9,10 +9,11 @@ import c7 from "../images/c7.PNG"
 import c8 from "../images/c8.PNG"
 import c9 from "../images/c9.PNG"
 import { MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBRow} from 'mdbreact';
+import "../../admin.css";
 
 const Offers = () => {
     return (
-        <MDBRow>
+        <MDBRow className="pre-scrollable" id="ss">
             <MDBCard style={{ width: "26rem" }}>
                 <MDBCardImage className="img-fluid" src={c1} waves />
                 <MDBCardBody>

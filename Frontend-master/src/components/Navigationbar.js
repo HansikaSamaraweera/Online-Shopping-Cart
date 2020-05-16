@@ -20,16 +20,16 @@ function Navigationbar() {
 
                         <Nav.Link><Link to="/ViewCart"><i className="fas fa-shopping-cart"></i></Link></Nav.Link>
 
-                        <Nav.Link href="#pricing">CHECKOUT</Nav.Link>
+                        <Nav.Link href="">CHECKOUT</Nav.Link>
                         <NavDropdown title="Dashboard" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">WISHLIST</NavDropdown.Item>
+                            <NavDropdown.Item href="">WISHLIST</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="/AdminAsCategory/AddCategory" >ADD PRODUCTS TYPES</NavDropdown.Item>
                             <NavDropdown.Item><Link to="/Admin" >ADD STORE MANAGERS </Link></NavDropdown.Item>
 
                     </NavDropdown>
                         <Nav.Link href="/Offers">OFFERS</Nav.Link>
-                        <Nav.Link><Link to="/WhishList_Admin/WishList"><i className="fas fa-heart"></i></Link></Nav.Link>
+                        <Nav.Link href="/WhishList_Admin/WishListSave"><i className="fas fa-heart"></i></Nav.Link>
                     </Nav>
 
                         <div>

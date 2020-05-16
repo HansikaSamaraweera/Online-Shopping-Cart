@@ -1,56 +1,82 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import {
-    getUser,
-    addNewUserCus,
-} from "../../actions/projectTaskActions";
+import axios from "axios";
+import {GET_USER} from "../../actions/types";
 
 class ResetPassword extends Component{
     constructor(props) {
         super(props);
         this.state = {
+            passwordcurrent:"",
             password:"",
             cpassword:"",
-            errors:[]
+            user123:[],
+            newuser:[]
         };
-        this.onChange = this.onChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
+        this.OnChange=this.OnChange.bind(this);
+        this.onSubmit=this.onSubmit.bind(this);
+
     }
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.errors) {
-            this.setState({ errors: nextProps.errors });
-        }
-
-        const { id, password,cpassword } =nextProps.user_task;
-
-        this.setState({
-            id,
-            password,
-            cpassword
-        });
-    }
-
     componentDidMount() {
-        const { id } = this.props.match.params;
-        this.props.getUser(id);
+        axios.get(`/api/Users/name/${sessionStorage.getItem("sessionName")}`)
+            .then(responce =>{
+                this.setState({user123 : responce.data});
+            })
+            .catch(function (error) {
+                console.log(error)
+            })
+
     }
 
-    onSubmit(e) {
+    OnChange(e){
+        this.setState({[e.target.name]:e.target.value})
+
+    }
+
+    onSubmit(e){
         e.preventDefault();
-        const updatedTask = {
-            id: this.state.id,
-            password: this.state.password,
-            cpassword: this.state.cpassword
-        };
+        this.currentpassword=this.state.passwordcurrent;
+        this.password=this.state.password;
+        this.cpassword=this.state.cpassword;
+        console.log(this.currentpassword+this.password+this.cpassword);
 
-        this.props.addNewUserCus(updatedTask, this.props.history);
+        this.checkpw=this.state.user123.password;
+        this.id=this.state.user123.id;
+        this.name=this.state.user123.name;
+        this.post=this.state.user123.post;
+        this.email=this.state.user123.email;
+
+        //console.log(this.checkpw);
+       if(this.checkpw!==this.currentpassword){
+            alert("please enter correct current password");
+        }else if(this.cpassword!==this.password){
+           alert("Password Mismatching");
+       }else{
+
+           const requestOptions = {
+               method: 'POST',
+               headers: { 'Content-Type': 'application/json' },
+               body: JSON.stringify({
+                   id:this.id ,
+                   name:this.name,
+                   post:this.post,
+                   email: this.email,
+                   password:this.password
+
+               })
+           };
+           fetch('/api/Users/update', requestOptions)
+               .then(response => response.json())
+               .then(data => this.setState({ newuser: data.id }));
+
+           if(this.state.newuser!==null){
+               this.setState({newuser:null})
+               window.location.replace("/");
+           }
+
+       }
     }
 
-    onChange(e) {
-        this.setState({ [e.target.name]: e.target.value });
-    }
+
 
     render() {
         return(
@@ -65,8 +91,9 @@ class ResetPassword extends Component{
                             {/*current password*/}
                             <div className="form-group">
                                 <input type="password"
+                                       name="passwordcurrent"
                                        placeholder="Current Password"
-                                       onChange={this.onChange}
+                                       onChange={this.OnChange}
                                        required
                                 />
 
@@ -76,9 +103,9 @@ class ResetPassword extends Component{
                                 <input type="password"
                                        id="pswrd"
                                        name="password"
-                                       value={this.state.password}
+                                       value={this.state.password["password"]}
                                        placeholder="Password"
-                                       onChange={this.onChange}
+                                       onChange={this.OnChange}
                                        required
                                 />
 
@@ -88,9 +115,9 @@ class ResetPassword extends Component{
                                 <input type="password"
                                        id="cpswrd"
                                        name="cpassword"
-                                       value={this.state.cpassword}
+                                       value={this.state.cpassword["cpassword"]}
                                        placeholder="Confirm Password"
-                                       onChange={this.onChange}
+                                       onChange={this.OnChange}
                                        required
                                 />
 
@@ -107,19 +134,6 @@ class ResetPassword extends Component{
     );
     }
 }
-ResetPassword.propTypes = {
-    user_task: PropTypes.object.isRequired,
-    errors: PropTypes.object.isRequired,
-    getUser: PropTypes.func.isRequired,
-    addNewUserCus: PropTypes.func.isRequired
-};
+export default ResetPassword;
 
-const mapStateToProps = state => ({
-    user_task: state.user_task.user_task,
-    errors: state.errors
-});
 
-export default connect(
-    mapStateToProps,
-    { getUser, addNewUserCus}
-)(ResetPassword);

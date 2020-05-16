@@ -39,7 +39,6 @@ class MyAccount extends Component {
         if(sessionStorage.getItem("sessionName")!==null) {
             return (
                 <div>
-                    <button className="btn btn-danger text-right" onClick={this.onClickMethod}>Log Out</button>
                     <div className="container">
                     <div className="card">
                         <div className="col-md-6">
@@ -49,10 +48,10 @@ class MyAccount extends Component {
                         </div>
                             <img className="card-img-top" src="" alt=""/>
                                     <div className="card-body">
-                                        {/*<h4 className="card-title">Name:{sessionStorage.getItem("sessionName")}</h4>
+                                        <h4 className="card-title">Name:{sessionStorage.getItem("sessionName")}</h4>
                                                 <p className="card-text text-truncate">
-                                                    Email:{this.props.user.email}
-                                                </p>*/}
+                                                    Email:
+                                                </p>
                                         <button onClick={this.delete.bind(this, this.state.user.id)}className="btn btn-primary">Delete Account</button>
                                             </div>
                             </div>

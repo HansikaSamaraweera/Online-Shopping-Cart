@@ -1,7 +1,9 @@
-import {GET_PRODUCT} from "../actions/types";
+import {GET_PRODUCT, GET_PRODUCT1} from "../actions/types";
 
 const initialState={
-    product_task:{}
+    product_task:[],
+    product_task1:{}
+
 }
 
 export default function (state=initialState,action) {
@@ -12,6 +14,12 @@ export default function (state=initialState,action) {
                 ...state,
                 product_task: action.payload
             };
+
+        case GET_PRODUCT1:
+            return {
+                ...state,
+                product_task1: action.payload
+            }
         default:
             return state;
 

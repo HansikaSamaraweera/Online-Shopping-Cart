@@ -18,9 +18,9 @@ import Comment from "./components/Product/Comment";
 import SessionCon from "./components/ProjectTask/SessionCon";
 import AdminAsCategory from "./AdminAsCategory";
 import ViewProduct from "./components/Product/ViewProduct";
-
-
-
+import Offers from "./components/Category/Offers";
+import ResetPassword from "./components/ProjectTask/ResetPassword";
+import WhishList_Admin from "./WhishList_Admin";
 class App extends Component{
     render() {
         return (
@@ -39,6 +39,9 @@ class App extends Component{
                 <Route path="/ViewProduct" component={ViewProduct} />
                 <Route path="/Comment" component={Comment} />
                 <Route path="/AdminAsCategory" component={AdminAsCategory} />
+                <Route path="/Offers" component={Offers} />
+                <Route path="/ResetPassword" component={ResetPassword} />
+                <Route path="/WhishList_Admin" component={WhishList_Admin} />
             </Switch>
 
             <Footer />
