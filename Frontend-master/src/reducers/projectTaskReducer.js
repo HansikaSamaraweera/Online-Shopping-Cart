@@ -1,4 +1,4 @@
-import {GET_PROJECT_TASK} from "../actions/types";
+import {GET_PROJECT_TASK,DELETE_PRODUCT} from "../actions/types";
 
 const initialState={
     user_tasks:[],
@@ -17,6 +17,14 @@ export default function (state=initialState,action) {
                 ...state,
                 user_det: action.payload
             };*/
+
+        case DELETE_PRODUCT:
+            return {
+                ...state,
+                project: state.project.filter(
+                    project => project.id !== action.payload
+                )
+            };
             default:
             return state;
 

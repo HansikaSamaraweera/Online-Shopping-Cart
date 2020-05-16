@@ -46,7 +46,7 @@ class App extends Component{
 
 
                 <Route path="/addProduct" component={CreateProduct} />
-                <Route path="/EditProduct" component={EditProduct} />
+                <Route path="/EditProduct/:p_id" component={EditProduct} />
                 <Route path="/ProductList" component={ProductList} />
 
                 <Route path='/AddCategory' component={AddCategory} />

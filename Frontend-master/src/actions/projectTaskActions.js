@@ -1,6 +1,6 @@
 import axios from 'axios';
-import {GET_ERRORS, GET_PRODUCT, GET_PROJECT_TASK, GET_USER} from "./types";
-import productList from "../components/item/productList";
+import {DELETE_PRODUCT,GET_PRODUCT1,GET_ERRORS, GET_PRODUCT, GET_PROJECT_TASK, GET_USER} from "./types";
+
 
 
 export const addNewUser =(user, history)=>async dispatch=>{
@@ -56,7 +56,7 @@ export const login = name =>async dispatch=>{
         payload: res.data
     })
 
-}
+};
 
 export const addProduct = (product,history) => async dispatch => {
     try {
@@ -73,7 +73,17 @@ export const addProduct = (product,history) => async dispatch => {
             payload:error.response.data
         })
     }
-}
+};
+
+export  const DeleteProduct = p_id => async  dispatch => {
+    if(window.confirm('You are deleting Product ${p_id}, this action cannot be undone')) {
+        await axios.delete('http://localhost:8080/api/Products/delete/${p_id}');
+        dispatch({
+            type: DELETE_PRODUCT,
+            payload: p_id
+        });
+    }
+};
 
 
 export  const getBacklog = () => async  dispatch => {
@@ -82,4 +92,19 @@ export  const getBacklog = () => async  dispatch => {
         type:GET_PRODUCT,
         payload:res.data
     })
+};
+
+export const getProduct = (p_id, history) => async dispatch =>{
+    try{
+        const res = await axios.get('http://localhost:8080/api/Products/${p_id}');
+        dispatch({
+            type: GET_PRODUCT1,
+            payload: res.data
+        })
+
+    }catch (error) {
+        history.push("/ProductList")
+
+    }
 }
+
