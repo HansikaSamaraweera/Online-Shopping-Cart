@@ -1,25 +1,34 @@
 import React,{Component} from 'react';
 import axios from 'axios';
+import {connect} from "classnames";
+import classnames from "classnames";
+import {Link} from "react-router-dom";
+import PropTypes from "prop-types";
+import {getProduct} from "../../actions/projectTaskActions";
 
-export default class EditProduct extends Component{
+class EditProduct extends Component{
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            product_name: '',
+            product_price: '',
+            product_category: ''
+
+        };
 
         this.onChangeProductName = this.onChangeProductName.bind(this);
         this.onChangeProductPrice = this.onChangeProductPrice.bind(this);
         this.onChangeProductCategory = this.onChangeProductCategory.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
-        this.state = {
-            product_name: '',
-            product_price: '',
-            product_category: ''
-        }
+
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8080/api/products/${p_id}'+this.props.match.params.id)
+
+        axios.get('http://localhost:8080/api/Products/EditProduct'+this.props.match.params.id)
             .then(response => {
 
                 this.setState({
@@ -27,7 +36,8 @@ export default class EditProduct extends Component{
                     product_price : response.data.price,
                     product_category : response.data.category
                 })
-                console.log(response.data.name)
+    
+
             })
             .catch(function (error) {
                 console.log(error)
@@ -60,7 +70,7 @@ export default class EditProduct extends Component{
             price: this.state.product_price,
             category: this.state.product_category
         };
-        axios.post("http://localhost:8080/api/Products/${p_id}"+this.props.match.params.id,obj)
+        axios.post("http://localhost:8080/api/Products/"+this.props.match.params.id,obj)
             .then(res => console.log(res.data));
 
         this.props.history.push('/ProductList')
@@ -103,3 +113,4 @@ export default class EditProduct extends Component{
         );
     }
 }
+export default EditProduct;
