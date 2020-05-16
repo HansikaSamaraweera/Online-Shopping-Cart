@@ -6,8 +6,6 @@ import {addToWishList} from "../../actions/actions";
 import axios from "axios";
 import qs from 'query-string';
 
-
-
 class WishListSave extends Component {
     constructor(props) {
         super(props);
@@ -74,6 +72,7 @@ class WishListSave extends Component {
                            </ul>
                        </div>
                    </div>
+                   /*bnn*/
                    /*<div className="container">
                        <h2>My Wish List</h2>
                        <button type="button" className="btn btn-outline-indigo" data-toggle="modal" data-target="#myModal">Open My Wish List</button>
