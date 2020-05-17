@@ -1,5 +1,6 @@
 package com.example.pro.demopro.web;
 
+import com.example.pro.demopro.domain.Cart;
 import com.example.pro.demopro.domain.Reviews;
 import com.example.pro.demopro.domain.User;
 import com.example.pro.demopro.service.ReviewsService;
@@ -23,5 +24,11 @@ public class ReviewsController {
     @GetMapping(value = "/get")
     public Iterable<Reviews> getByName( ){
         return reviewsService.getByName( );
+    }
+    @GetMapping("/name/{p}")
+    public Iterable<Reviews> getByP(@PathVariable String p){
+        System.out.println(p);
+        return reviewsService.getByP(p);
+
     }
 }

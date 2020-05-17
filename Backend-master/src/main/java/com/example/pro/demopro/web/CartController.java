@@ -30,12 +30,17 @@ public class CartController {
     @GetMapping("/name/{user}")
     public Iterable<Cart> getByUser(@PathVariable String user){
         System.out.println(user);
-         return cartService.getByUser(user);
-
+           return cartService.getByUser(user);
 
     }
     @GetMapping("/all")
     public Iterable<Cart> getAll(){
         return cartService.findAll();
+    }
+
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<?> delete(@PathVariable String id){
+        cartService.delete(id);
+        return new ResponseEntity<String>("Product Deleted", HttpStatus.OK);
     }
 }

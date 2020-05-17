@@ -50,7 +50,8 @@ class LoginForm extends Component {
 
         if(sessionStorage.getItem("sessionName")!==null){
             return(
-                <div> Successfully Logged In {window.location.replace("/")} </div>);
+                <div> Successfully Logged In {window.location.replace("/")}
+                </div>);
         }else {
             return (
                 <div>

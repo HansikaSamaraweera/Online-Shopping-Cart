@@ -27,7 +27,7 @@ class ViewProduct extends Component {
 
     componentDidMount() {
 
-        axios.get('http://localhost:8080/api/Products/'+qs.parse(this.props.location.search, { ignoreQueryPrefix: true })._k)
+        axios.get(' /api/Products/'+qs.parse(this.props.location.search, { ignoreQueryPrefix: true })._k)
             .then(responce =>{
                 this.setState({
                     name : responce.data.name,

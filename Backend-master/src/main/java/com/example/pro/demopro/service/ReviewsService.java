@@ -19,4 +19,8 @@ public class ReviewsService {
     public Iterable<Reviews> getByName() {
         return reviewsRepository.findAll();
     }
+
+    public Iterable<Reviews> getByP(String p) {
+        return reviewsRepository.getByP(p);
+    }
 }

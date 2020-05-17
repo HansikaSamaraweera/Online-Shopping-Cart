@@ -1,6 +1,7 @@
 package com.example.pro.demopro.service;
 
 import com.example.pro.demopro.domain.Cart;
+import com.example.pro.demopro.domain.Product;
 import com.example.pro.demopro.domain.User;
 import com.example.pro.demopro.repositary.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,18 @@ public class CartService {
     }
 
     public Iterable<Cart> getByUser(String user){
+
         return cartRepository.getByUser(user);
     }
 
     public Iterable<Cart> findAll() {
         return cartRepository.findAll();
+    }
+
+    public Cart findById(String id){ return cartRepository.getById(id); }
+
+    public void delete(String id) {
+         Cart cart = findById(id);
+         cartRepository.delete(cart);
     }
 }

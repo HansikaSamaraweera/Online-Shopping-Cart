@@ -10,13 +10,14 @@ const Product = props => (
     <div className={"container"} >
         <div className={"row"}>
         <div className={"col"} style={{backgroundColor:"lavender"}}>
+
     <div className="card card-body my-3 col-sm-4">
         <img className="card-img-top"  alt="Card image cap"></img>
         <div className="card-body">
             <h5 className="card-title">{props.todo.name}</h5>
             <p className="card-text">{props.todo.category} </p>
             <h6 className="card-text">{props.todo.price}</h6>
-            <h6 className="card-text">{props.todo.id}</h6>
+            {/*<h6 className="card-text">{props.todo.id}</h6>*/}
         </div>
         {/*<ul className="list-group list-group-flush">*/}
         {/*    <li className="list-group-item">Cras justo odio</li>*/}
@@ -26,7 +27,7 @@ const Product = props => (
         <div className="card-body">
             {/*<Link  to="/ViewCart" className="btn btn-primary btn-block"></Link>*/}
 
-            <button type="button" className="btn btn-primary btn-block">Add To Cart</button>
+            <Link to={"/ViewProduct/id?_k="+props.todo.id} className="btn btn-info btn-block">Add To Cart</Link>
 
             <Link to={"/WhishList_Admin/WishListSave/id?_k="+props.todo.id} className="btn btn-primary btn-block">Add To Wish List</Link>
             <Link to={"/Comment/id?_k="+props.todo.id} className="btn btn-info btn-block">Comment & Reviews</Link>
@@ -34,9 +35,10 @@ const Product = props => (
 
         </div>
     </div>
+        </div>
 </div>
         </div>
-    </div>
+
 
 
 );
@@ -52,7 +54,7 @@ class ItemHome extends Component {
 
 
     componentDidMount() {
-        axios.get("http://localhost:8080/api/Products/all")
+        axios.get(" /api/Products/all")
             .then(responce =>{
                 this.setState({pro : responce.data});
             })
