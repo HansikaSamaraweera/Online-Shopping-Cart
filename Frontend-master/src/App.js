@@ -21,7 +21,7 @@ import ViewProduct from "./components/Product/ViewProduct";
 import Offers from "./components/Category/Offers";
 import ResetPassword from "./components/ProjectTask/ResetPassword";
 import WhishList_Admin from "./WhishList_Admin";
- import Products from "./components/item/ProductList"
+ import Products from "./Storeman"
 class App extends Component{
     render() {
         return (
