@@ -43,7 +43,7 @@ class App extends Component{
                 <Route path="/Offers" component={Offers} />
                 <Route path="/ResetPassword" component={ResetPassword} />
                 <Route path="/WhishList_Admin" component={WhishList_Admin} />
-                <Route path="/Products" component={ProductList} />
+                <Route path="/Products" component={Products} />
             </Switch>
 
             <Footer />
