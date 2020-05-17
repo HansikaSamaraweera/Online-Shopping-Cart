@@ -17,8 +17,14 @@ public class WishListController {
         return wishListService.addToWishList(wishList);
     }
 
-    @GetMapping(value = "/get")
+    @GetMapping(value = "/name")
     public Iterable<WishList> getByName( ){
         return wishListService.getByName( );
+    }
+
+    @GetMapping("/name/{user}")
+    public Iterable<WishList> getByUser(@PathVariable String user){
+        System.out.println(user);
+        return wishListService.getByUser(user);
     }
 }
