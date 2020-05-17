@@ -29,7 +29,7 @@ class Comment extends Component {
 
 componentDidMount() {
 
-    axios.get('http://localhost:8080/api/Products/'+qs.parse(this.props.location.search, { ignoreQueryPrefix: true })._k)
+    axios.get('/api/Products/'+qs.parse(this.props.location.search, { ignoreQueryPrefix: true })._k)
         .then(responce =>{
             this.setState({
                 name : responce.data.name
@@ -61,6 +61,9 @@ componentDidMount() {
             alert("Please Login or Register to add Comment!!!");
         }
     }
+    sendName(){
+
+    }
 
     render() {
         return (
@@ -84,7 +87,7 @@ componentDidMount() {
                                 </div>
 
                                 <button type={"submit"}
-                                        className={"btn btn-block btn-primary mt-3" }>
+                                        className={"btn btn-block btn-primary mt-3" } >
                                     Post Comment
                                 </button>
                             </form>
@@ -94,7 +97,7 @@ componentDidMount() {
 
                         {/*Load Comment & Revie List*/}
                         <ul className={"list-group my-5 "}>
-                            <CommentList/>
+                            <CommentList id={this.state.name}/>
                         </ul>
                     </div>
                 </div>
