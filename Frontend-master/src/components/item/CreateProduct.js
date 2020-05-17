@@ -72,6 +72,7 @@ import classnames from "classnames";
         return(
 
             <div style={{marginTop: 20}}>
+                <Link to="/ProductList" >View Products</Link>
                 <h3>Add a New Product</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
