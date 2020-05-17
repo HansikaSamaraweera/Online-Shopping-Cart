@@ -21,7 +21,7 @@ import ViewProduct from "./components/Product/ViewProduct";
 import Offers from "./components/Category/Offers";
 import ResetPassword from "./components/ProjectTask/ResetPassword";
 import WhishList_Admin from "./WhishList_Admin";
- import productList from "./components/item/productList"
+ import ProductList from "./components/item/ProductList"
 class App extends Component{
     render() {
         return (
@@ -43,7 +43,7 @@ class App extends Component{
                 <Route path="/Offers" component={Offers} />
                 <Route path="/ResetPassword" component={ResetPassword} />
                 <Route path="/WhishList_Admin" component={WhishList_Admin} />
-                <Route path="/productList" component={productList} />
+                <Route path="/ProductList" component={ProductList} />
             </Switch>
 
             <Footer />
