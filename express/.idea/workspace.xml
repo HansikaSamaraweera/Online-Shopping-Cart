@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b06899a0-822a-4f23-9960-364676cedf6d" name="Default Changelist" comment="" />
+    <list default="true" id="b06899a0-822a-4f23-9960-364676cedf6d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,7 +17,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1c2lohK61wT4cEtZv9yk2YFRXKQ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -22,6 +29,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -61,6 +69,7 @@
       <workItem from="1589768466373" duration="2706000" />
       <workItem from="1589773287698" duration="1356000" />
       <workItem from="1589777173725" duration="1765000" />
+      <workItem from="1589780017900" duration="1161000" />
     </task>
     <servers />
   </component>
@@ -92,6 +101,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589779735963" />
+    <state x="361" y="148" key="Vcs.Push.Dialog.v2" timestamp="1589781395326">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="148" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1589781395326" />
+    <state x="437" y="215" key="git4idea.merge.GitPullDialog" timestamp="1589781387459">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="437" y="215" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1589781387459" />
     <state x="431" y="145" key="search.everywhere.popup" timestamp="1589742836996">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
