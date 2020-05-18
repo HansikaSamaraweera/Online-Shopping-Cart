@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import axios from "axios";
+import "../../admin.css";
+import p1 from "../images/pic1.gif";
 
 class SearchPro extends Component {
 
@@ -41,8 +43,10 @@ class SearchPro extends Component {
        const {products} = this.state;
        return (
            <div>
-               <div>
+               <div className="pre-scrollable" id="s1">
                    <br/>
+                   <img src={p1} height="250" width="300" alt=""/>
+                   <br/><br/>
                    <form onSubmit={this.onSubmit} className="btn-group-toggle">
                        <input type="text" name="name" onChange={this.onChange} className={"btn-primary" } value={this.state.name["name"]}/>
                        <button type="submit" className={"btn-primary"} onChange={this.onChange}>Search Categories</button>
