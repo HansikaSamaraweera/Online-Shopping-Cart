@@ -20,7 +20,7 @@ class CategoryList extends Component {
     render() {
         const { categories } = this.state;
         return (
-            <div className="container">
+            <div className="container" id="cs">
                 <br/>
                 <div className="text-left mb-3">
                 <Link to="/AdminAsCategory/AddCategory" className="btn btn-outline-info" >
@@ -29,7 +29,7 @@ class CategoryList extends Component {
                     <h1 className="bg-primary display-5">Category List</h1>
                 {categories.map((post) => (
                     <div className="card w-50 m-auto" key={post.id} id="catList">
-                        <div className="col">
+                        <div className="row">
                         <div className="card-header">
                             <div className="card mb-sm-n1 bg-light">
                                 <div className="card-header text-white bg-success">ID: {post.id}</div>
