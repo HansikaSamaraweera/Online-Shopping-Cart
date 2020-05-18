@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import store from "./store";
 import {BrowserRouter as Router,Route} from "react-router-dom";
 import {Provider} from "react-redux";
-import WishList from "./components/WishList/WishList";
 import WishListSave from "./components/WishList/WishListSave";
+import WishList from "./components/WishList/WishList";
 
 
 class WhishList_Admin extends Component {
@@ -22,9 +22,8 @@ class WhishList_Admin extends Component {
                         <div>
                             {sessionStorage.getItem("sessionPost") === 'CUSTOMER'?
                                 <div className="pre-scrollable blockquote h-25">
-                                <Route  exact path="/WhishList_Admin/WishListSave" component={WishListSave}/>
-                                    <Route  exact path="/WhishList_Admin/WishList" component={WishList}/>
-
+                                    <Route exact path="/WhishList_Admin/WishListSave" component={WishListSave}/>
+                                    <Route exact path="/WhishList_Admin/WishList" component={WishList}/>
                                 </div>
                                 :<div className="text-center">
                                     <br/>
