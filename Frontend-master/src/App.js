@@ -21,39 +21,43 @@ import ViewProduct from "./components/Product/ViewProduct";
 import Offers from "./components/Category/Offers";
 import ResetPassword from "./components/ProjectTask/ResetPassword";
 import WhishList_Admin from "./WhishList_Admin";
- import ProductList from "./components/item/ProductList"
+import WishListSave from "./components/WishList/WishListSave";
+import EditProfile from "./components/ProjectTask/EditProfile";
+import ProductList from "./components/item/ProductList"
 import NavBar from "./components/NavBar";
 class App extends Component{
     render() {
         return (
-        <Provider store={store}>
-        <Router>
-        <div className="App ">
-            <SessionCon/>
-            <NavBar/>
-            <Navigationbar />
-            <Switch>
-             <Route path="/" exact component={HomeBody} />
-             <Route path="/Admin" component={Admin} />
-             <Route path="/login" component={LoginPage} />
-             <Route path="/Register" component={Register} />
-             <Route path="/MyAccount" component={MyAccount} />
-             <Route path="/ViewCart" component={ViewCart} />
-                <Route path="/ViewProduct" component={ViewProduct} />
-                <Route path="/Comment" component={Comment} />
-                <Route path="/AdminAsCategory" component={AdminAsCategory} />
-                <Route path="/Offers" component={Offers} />
-                <Route path="/ResetPassword" component={ResetPassword} />
-                <Route path="/WhishList_Admin" component={WhishList_Admin} />
-                <Route path="/ProductList" component={ProductList} />
-            </Switch>
+            <Provider store={store}>
+                <Router>
+                    <div className="App ">
+                        <SessionCon/>
+                        <NavBar/>
+                        <Navigationbar />
+                        <Switch>
+                            <Route path="/" exact component={HomeBody} />
+                            <Route path="/Admin" component={Admin} />
+                            <Route path="/login" component={LoginPage} />
+                            <Route path="/Register" component={Register} />
+                            <Route path="/MyAccount" component={MyAccount} />
+                            <Route path="/ViewCart" component={ViewCart} />
+                            <Route path="/ViewProduct" component={ViewProduct} />
+                            <Route path="/Comment" component={Comment} />
+                            <Route path="/AdminAsCategory" component={AdminAsCategory} />
+                            <Route path="/Offers" component={Offers} />
+                            <Route path="/ResetPassword" component={ResetPassword} />
+                            <Route path="/EditProfile" component={EditProfile} />
+                            <Route path="/WhishList_Admin" component={WhishList_Admin} />
+                            <Route path="/WhishList_Admin/WishListSave" component={WishListSave} />
+                            <Route path="/ProductList" component={ProductList} />
+                        </Switch>
 
-            <Footer />
-        </div>
-        </Router>
-        </Provider>
-  );
-  }
+                        <Footer />
+                    </div>
+                </Router>
+            </Provider>
+        );
+    }
 
 }
 
