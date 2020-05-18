@@ -23,8 +23,9 @@ import ResetPassword from "./components/ProjectTask/ResetPassword";
 import WhishList_Admin from "./WhishList_Admin";
 import WishListSave from "./components/WishList/WishListSave";
 import EditProfile from "./components/ProjectTask/EditProfile";
-import ProductList from "./components/item/ProductList"
+import Products from "./Storeman"
 import NavBar from "./components/NavBar";
+import SearchPro from "./components/Product/SearchPro";
 class App extends Component{
     render() {
         return (
@@ -49,7 +50,8 @@ class App extends Component{
                             <Route path="/EditProfile" component={EditProfile} />
                             <Route path="/WhishList_Admin" component={WhishList_Admin} />
                             <Route path="/WhishList_Admin/WishListSave" component={WishListSave} />
-                            <Route path="/ProductList" component={ProductList} />
+                            <Route path="/Products" component={Products} />
+                            <Route path="/Search" component={SearchPro} />
                         </Switch>
 
                         <Footer />
