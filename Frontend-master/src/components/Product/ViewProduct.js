@@ -68,20 +68,21 @@ class ViewProduct extends Component {
     render() {
         return (
             <div className={"container"} >
-                <div className={"row"}>
-                    <div className={"col"} style={{backgroundColor:"lavender"}}>
+                <div className={"row justify-content-center jumbotron"}>
+
                         <div className="card card-body my-3 col-sm-4">
-                            <img className="card-img-top"  alt="Card image cap"></img>
-                            <div className="card-body">
-                                <h5 className="card-title">{this.state.name} </h5>
-                                <p className="card-text"> {this.state.category} </p>
-                                <h6 className="card-text">{this.state.price} </h6>
-                                <h6 className="card-text"> </h6>
-                            </div>
+                            <img className="card-img-top" src="https://rukminim1.flixcart.com/image/332/398/k4hcjgw0/top/y/x/w/m-cm-kt69-cobio-man-original-imafn4xfvjgmagqa.jpeg?q=50" alt="Card image cap">
+
+                            </img>
+                        </div>
+                            <div className="card card-body my-3 col-sm-4">
+
+
                             <ul className="list-group list-group-flush">
-                                <li className="list-group-item">Cras justo odio</li>
-                                <li className="list-group-item">Dapibus ac facilisis in</li>
-                                <li className="list-group-item">Vestibulum at eros</li>
+                                <li className="list-group-item"><h5 className="card-title">{this.state.name} </h5></li>
+                                <li className="list-group-item"><h6 className="card-text"> {this.state.category} </h6></li>
+                                <li className="list-group-item"><h6 className="card-text">Rs.{this.state.price} </h6></li>
+                                <li className="list-group-item"><h6 className="card-text"> {this.state.category} </h6></li>
                             </ul>
                             <div className="card-body">
                                 {/*<Link  to="/ViewCart" className="btn btn-primary btn-block"></Link>*/}
@@ -90,10 +91,11 @@ class ViewProduct extends Component {
                                 </form>
 
                             </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+
+
         );
     }
 }

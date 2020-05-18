@@ -6,24 +6,22 @@ import axios from 'axios';
 import productList from "../item/ProductList";
 
 const Product = props => (
+ <div className={"row justify-content-center"}>
+<div className="card card-body my-3 col-sm-4">
+    <img className="card-img-top" src="https://rukminim1.flixcart.com/image/332/398/k4hcjgw0/top/y/x/w/m-cm-kt69-cobio-man-original-imafn4xfvjgmagqa.jpeg?q=50" alt="Card image cap">
 
-    <div className={"container"} >
-        <div className={"row"}>
-        <div className={"col"} style={{backgroundColor:"lavender"}}>
-
+    </img>
+</div>
     <div className="card card-body my-3 col-sm-4">
-        <img className="card-img-top"  alt="Card image cap"></img>
+
         <div className="card-body">
-            <h5 className="card-title">{props.todo.name}</h5>
-            <p className="card-text">{props.todo.category} </p>
-            <h6 className="card-text">{props.todo.price}</h6>
+            <ul className="list-group list-group-flush">
+            <li className="list-group-item"><h5 className="card-title">{props.todo.name}</h5></li>
+            <li className="list-group-item"><p className="card-text">{props.todo.category} </p></li>
+            <li className="list-group-item"><h6 className="card-text">Rs.{props.todo.price}</h6></li>
             {/*<h6 className="card-text">{props.todo.id}</h6>*/}
+            </ul>
         </div>
-        {/*<ul className="list-group list-group-flush">*/}
-        {/*    <li className="list-group-item">Cras justo odio</li>*/}
-        {/*    <li className="list-group-item">Dapibus ac facilisis in</li>*/}
-        {/*    <li className="list-group-item">Vestibulum at eros</li>*/}
-        {/*</ul>*/}
         <div className="card-body">
             {/*<Link  to="/ViewCart" className="btn btn-primary btn-block"></Link>*/}
 
@@ -32,12 +30,10 @@ const Product = props => (
             <Link to={"/WhishList_Admin/WishListSave/id?_k="+props.todo.id} className="btn btn-primary btn-block">Add To Wish List</Link>
             <Link to={"/Comment/id?_k="+props.todo.id} className="btn btn-info btn-block">Comment & Reviews</Link>
 
-
+        </div>
         </div>
     </div>
-        </div>
-</div>
-        </div>
+
 
 
 
@@ -72,10 +68,16 @@ productList(){
         return (
 
                     <div>
+                    <div className={"container "} >
+                    {/*<div className={"row "}>*/}
+                    {/*<div className={"col"} style={{backgroundColor:"lavender"}}>*/}
+
                         {this.productList()}
                     </div>
 
-
+                    </div>
+                    // </div>
+                    // </div>
 
         );
     }
