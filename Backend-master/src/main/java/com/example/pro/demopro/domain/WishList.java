@@ -9,6 +9,7 @@ public class WishList {
     private String id;
     private String productName;
     private String user;
+    private String price;
 
     public String getId() {
         return id;
@@ -32,5 +33,13 @@ public class WishList {
 
     public void setUser(String user) {
         this.user = user;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 }
