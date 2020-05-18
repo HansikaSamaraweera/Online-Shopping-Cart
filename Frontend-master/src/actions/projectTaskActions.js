@@ -1,5 +1,13 @@
 import axios from 'axios';
-import {DELETE_PRODUCT,GET_PRODUCT1,GET_ERRORS, GET_PRODUCT, GET_PROJECT_TASK, GET_USER} from "./types";
+import {
+    DELETE_PRODUCT,
+    GET_PRODUCT1,
+    GET_ERRORS,
+    GET_PRODUCT,
+    GET_PROJECT_TASK,
+    GET_USER,
+    DELETE_ACCOUNT
+} from "./types";
 
 
 
@@ -107,8 +115,19 @@ export const getProduct = (p_id, history) => async dispatch =>{
 
     }
 }
-
-
+export const deleteAccount = id => async dispatch => {
+    if (
+        window.confirm(
+            `You are deleting your account`
+        )
+    ) {
+        await axios.delete(`/api/Users/${id}`);
+        dispatch({
+            type: DELETE_ACCOUNT,
+            payload: id
+        });
+    }
+};
 export const getUser = (id, history) => async dispatch => {
     try {
         const res = await axios.get(`/api/Users/${id}`);
