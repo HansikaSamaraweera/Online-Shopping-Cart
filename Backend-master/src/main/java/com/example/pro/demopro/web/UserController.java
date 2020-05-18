@@ -10,10 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 
 @CrossOrigin
 @RestController
@@ -106,8 +103,8 @@ public class UserController {
         Transport.send(msg);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteProjectTask(@PathVariable String id){
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<?> deleteAccount(@PathVariable String id){
         userService.delete(id);
 
         return new ResponseEntity<String>("Account deleted", HttpStatus.OK);
