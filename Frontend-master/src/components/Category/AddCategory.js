@@ -42,13 +42,13 @@ class AddCategory extends Component {
     render() {
         const { errors } = this.state;
         return (
-            <div className="col-md-7 m-auto alert-light">
+            <div className="col-md-7 m-auto alert-danger">
                 <div className="container" id="addCategory">
                     <div className="row">
                         <div className="col-md-9 m-auto">
                             <br/>
-                            <Link to="/AdminAsCategory/CategoryList" className="btn btn-block-success m-3">
-                                Category List
+                            <Link to="/AdminAsCategory/CategoryList" className="btn btn-outline-success m-3">
+                                Category List <i className="fas fa-arrow-alt-circle-right"></i>
                             </Link>
                             <br/>
                             <h6 className="text-center" id="tit"> Add Category</h6>
@@ -99,7 +99,7 @@ class AddCategory extends Component {
                                 <input type="submit" className="btn btn-primary btn-block col-md-7 m-auto"/>
                                 <br/>
                             </form>
-                            <p><br/><br/><br/></p>
+                            <p><br/><br/></p>
                         </div>
                     </div>
                 </div>
