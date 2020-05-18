@@ -25,13 +25,13 @@ class ViewCart extends Component {
 
     constructor(props) {
         super(props);
-        console.log(props);
+
         this.state = {
             cart:[],
             user:sessionStorage.getItem("sessionName"),
             day :(new Date().getDate() + "/"+ parseInt(new Date().getMonth()+1) +"/"+ new Date().getFullYear()).toLocaleString(),
             curTime : new Date().toLocaleString(),
-            total:""
+            total: 0
         };
     }
 
@@ -50,12 +50,15 @@ componentDidMount() {
         })
 
 }
-    // cartList(){
-    //     return this.state.cart.map(function (current,i) {
-    //         return <Message todo={current} key={i}/>;
-    //     });
-    // }
 
+calculate(price){
+    this.state.total = Number(price) + this.state.total;
+
+}
+
+payment(){
+        alert(" Pay Your Total Amount! ")
+}
     onClearArray = () => {
         this.setState({ cart: [] });
     };
@@ -69,6 +72,7 @@ componentDidMount() {
     render() {
 
         let list =this.state.cart.map((current) => {
+            this.calculate(current.price);
                 return (
                     <li className={"list-group-item text-capitalize d-flex justify-content-between my-2"}>
                         {/*<p>{current.itemNo}</p>*/}
@@ -99,25 +103,23 @@ componentDidMount() {
                 {/*    {this.cartList()}*/}
                     {list}
                 </ul>
-                <div className="card bg-secondary text-white">
-                    <div className="card-body">
-                        Total Price
+                    <hl className="text-dark"/>
+
+                    <div className="d-flex justify-content-lg-between my-5 ">
+
+                        <h5>Total price</h5>
+                            <h5>Rs.{this.state.total}</h5>
 
                     </div>
-                </div>
-            </div>
 
-                <div className={"container"}>
-                <div className={"card bg-light"}>
-                    <div className={"card-body"}>
-                    <button type="button" className="btn btn-success btn-block">Payment</button>
-                        <button type="button" className="btn btn-success btn-block" onClick={this.onClearArray}>CheckOut</button>
-                        <Link  to="/" className="btn btn-primary btn-block">
+                        <button type="button" className="btn btn-info btn-block" data-toggle="modal" data-target="#exampleModal" onClick={this.payment}>Payment</button>
+                        <button type="button" className="btn btn-primary btn-block" onClick={this.onClearArray}>CheckOut</button>
+                        <Link  to="/" className="btn btn-info btn-block">
                             Edit Cart
                         </Link>
-                    </div>
-                </div>
-                </div>
+
+
+            </div>
         </div>
 
         </div>

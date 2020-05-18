@@ -2,19 +2,23 @@ import React from 'react';
 import {Nav,Navbar,NavDropdown} from 'react-bootstrap';
 import {Link} from "react-router-dom";
 import "../admin.css";
+import NavBar from "./NavBar";
 
 
 
 function Navigationbar() {
 
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-            <a className="navbar-brand" href="#">
-                <img src="https://dcassetcdn.com/design_img/239800/63899/63899_2430670_239800_image.jpg" height="70" width="80"  alt=""/>
-            </a>
+
+
+        <Navbar collapseOnSelect expand="lg" bg="secondary" variant="dark">
+            {/*<a className="navbar-brand" href="#">*/}
+            {/*    <img src="https://dcassetcdn.com/design_img/239800/63899/63899_2430670_239800_image.jpg" height="70" width="80"  alt=""/>*/}
+            {/*</a>*/}
+
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="mr-auto">
+                    <Nav className="mr-auto text-dark">
                         <Nav.Link href="/">HOME</Nav.Link>
                         <Nav.Link href="/Products">PRODUCTS</Nav.Link>
 

@@ -4,7 +4,7 @@ import "../admin.css";
 class Footer extends Component {
     render() {
         return (
-            <footer className="footer m-0 text-center">
+            <footer className="footer navbar navbar-fixed-bottom justify-content-center">
                 <div className="alert-dismissible">
                     <p className="footer-text" id="fot">® 2020 The Fashion District, Inc. All rights reserved.</p>
                 </div>
