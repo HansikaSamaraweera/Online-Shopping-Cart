@@ -42,16 +42,18 @@ class SearchPro extends Component {
        return (
            <div>
                <div>
-                   <form onSubmit={this.onSubmit}>
-                       <input type="text" name="name" onChange={this.onChange} value={this.state.name["name"]}/>
-                       <button type="submit" className={"btn btn-block btn-primary mt-3" } onChange={this.onChange}>submit</button>
+                   <br/>
+                   <form onSubmit={this.onSubmit} className="btn-group-toggle">
+                       <input type="text" name="name" onChange={this.onChange} className={"btn-primary" } value={this.state.name["name"]}/>
+                       <button type="submit" className={"btn-primary"} onChange={this.onChange}>Search Categories</button>
                    </form>
                </div>
-               <div className="container">
-                   <div className="jumbotron"><h1 className="display-3">Search</h1></div>
-                   {products.map((post) => (<div className="card" key={post.name}>
-                       <div className="card-header"> #{post.name} {post.category}               </div>
-                       <div className="card-body"><p className="card-text">{post.price}</p></div>
+               <div className="container btn-outline-mdb-color">
+                   <br/>
+                   {products.map((post) => (
+                       <div className="card" key={post.name}>
+                       <div className="card-header"> {post.name} #{post.category} </div>
+                       <div className="card-body"><p className="card-text">Rs.{post.price}.00</p></div>
                    </div>))}       </div>
 
            </div>

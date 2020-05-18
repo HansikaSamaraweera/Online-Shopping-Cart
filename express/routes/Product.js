@@ -12,7 +12,7 @@ router.get('/getAll',(req,res)=>{
 });
 router.get('/getByName/:name',(req,res)=>{
     const abt=Product.find({
-        name:req.params.name
+        category:req.params.name
     }).then(
         product=>{
             res.send(product)
