@@ -4,6 +4,7 @@ import ViewCart from "./ViewCart";
 import {BrowserRouter as Router} from "react-router-dom";
 import axios from 'axios';
 import productList from "../item/ProductList";
+import WishListSave from "../WishList/WishListSave";
 
 const Product = props => (
  <div className={"row justify-content-center"}>
@@ -27,7 +28,7 @@ const Product = props => (
 
             <Link to={"/ViewProduct/id?_k="+props.todo.id} className="btn btn-info btn-block">Add To Cart</Link>
 
-            <Link to={"/WhishList_Admin/WishListSave/id?_k="+props.todo.id} className="btn btn-primary btn-block">Add To Wish List</Link>
+            <Link to={"../WhishList_Admin/WishListSave/id?_k="+props.todo.id} className="btn btn-primary btn-block">Add To Wish List</Link>
             <Link to={"/Comment/id?_k="+props.todo.id} className="btn btn-info btn-block">Comment & Reviews</Link>
 
         </div>
