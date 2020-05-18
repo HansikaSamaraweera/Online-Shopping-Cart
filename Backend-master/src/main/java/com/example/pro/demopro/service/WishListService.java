@@ -17,4 +17,16 @@ public class WishListService {
     public Iterable<WishList> getByName() {
         return wishListRepository.findAll();
     }
+
+    public Iterable<WishList> getByUser(String user) {
+        return wishListRepository.getByUser(user);
+    }
+
+    public WishList findById(String id){ return wishListRepository.getById(id); }
+
+    public void delete(String id) {
+        WishList wishList = findById(id);
+        wishListRepository.delete(wishList);
+    }
+
 }
