@@ -33,7 +33,7 @@ function Navigationbar() {
 
                     </NavDropdown>
                         <Nav.Link href="/Offers">OFFERS</Nav.Link>
-                        <Nav.Link href="/WhishList_Admin/WishListSave"><i className="fas fa-heart"></i></Nav.Link>
+                        <Nav.Link href="/WhishList_Admin/WishList"><i className="fas fa-heart"></i></Nav.Link>
                     </Nav>
 
                         <div>
