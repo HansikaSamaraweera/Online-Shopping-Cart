@@ -5,96 +5,87 @@ import {connect} from "react-redux";
 import {addToWishList} from "../../actions/actions";
 import axios from "axios";
 import qs from 'query-string';
+import {Link} from "react-router-dom";
+import classnames from "classnames";
 
 class WishListSave extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            productName:"",
-            user:"",
-            name:"",
+            productName: "",
+            price: "",
+            user: "",
+            name: ""
 
         };
-        console.log(this.props);
-        this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        //alert(qs.parse(this.props.location.search, { ignoreQueryPrefix: true })._k);
     }
 
     componentDidMount() {
 
-        axios.get('http://localhost:8080/api/Products/'+qs.parse(this.props.location.search, { ignoreQueryPrefix: true })._k)
-            .then(response =>{
+        axios.get('/api/Products/' + qs.parse(this.props.location.search, {ignoreQueryPrefix: true})._k)
+            .then(responce => {
                 this.setState({
-                    name : response.data.name
-
+                    name: responce.data.name,
+                    price: responce.data.price,
                 });
+                console.log(this.state.name);
             })
             .catch(function (error) {
                 console.log(error)
             })
     }
 
-
-    onChange(e){
-        this.setState({[e.target.name]: e.target.value})
-    }
-    onSubmit(e){
+    onSubmit(e) {
         e.preventDefault();
-
-        if(sessionStorage.getItem("sessionName")!=null) {
+        if (sessionStorage.getItem("sessionName") == null) {
+            alert("You Should Register or Login First!!!")
+            window.location.replace("/Login")
+        } else {
             const newWishList = {
-                productName:this.state.name,
-                user: sessionStorage.getItem("sessionName")
+                productName: this.state.name,
+                user: sessionStorage.getItem("sessionName"),
+                price: this.state.price
             };
-            console.log(newWishList);
-            this.props.addToWishList(newWishList, this.props.history);
-        }else{
-            alert("Please Login or Register to add Item to WishList!!!");
+            this.props.addToWishList(newWishList, this.props.history)
+            alert("Added to WishList!")
         }
     }
 
-    render() {
-        return (
+    handleOnClick(){
 
-                   <div className="container">
-                       <div className="row">
-                           <div className="col">
-                               <h2>My Wish List</h2>
-                               <form onSubmit={this.onSubmit}>
-                                   <button type={"submit"}
-                                           className={"btn btn-block btn-primary mt-3" }>
-                                      Ok
-                                   </button>
-                               </form>
-                           </div>
-                           <ul className={"list-group my-5 "}>
-                               <WishList/>
-                           </ul>
-                       </div>
-                   </div>
-                   /*bnn*/
-                   /*<div className="container">
-                       <h2>My Wish List</h2>
-                       <button type="button" className="btn btn-outline-indigo" data-toggle="modal" data-target="#myModal">Open My Wish List</button>
-                   <div className="modal fade" id="myModal" role="dialog">
-                       <div className="modal-dialog modal-lg">
-                           <div className="modal-content">
-                               <div className="modal-header">
-                                   <button type="button" className="close" data-dismiss="modal" >&times;</button>
-                                   <div className="modal-body">
-                                       <ul className={"list-group my-5 "}>
-                                           <WishList/>
-                                       </ul>
-                                   </div>
-                                   <div className="modal-footer">
-                                       <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-                   </div>*/
-        );
+        this.props.history.push('/WhishList_Admin/WishList/'+this.state.id)
+    }
+
+    render() {
+        return(
+        <div className="col-md-7 m-auto">
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-9 m-auto">
+                        <br/>
+                        <h1 className="text-center" id="tit"> My Wish List</h1>
+                        <div className="card card-body my-5 col-sm-11">
+                            <div className="card-body">
+                                <h5 className="card-title">Item Name:{this.state.name} </h5>
+                                <h6 className="card-text">Price:{this.state.price} </h6>
+                            </div>
+                            <div className="card-body">
+                                <form onSubmit={this.onSubmit}>
+                                    <button type="submit" className="btn btn-primary btn-block" onClick={'/WhishList_Admin/WishList'+this.state.id} >Save</button>
+                                    <Link to="/WhishList_Admin/WishList" className="btn btn-block btn-danger m-auto">
+                                        More Actions <i className="fas fa-arrow-alt-circle-right"></i>
+                                    </Link>
+                                </form>
+                            </div>
+                        <p><br/><br/></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
     }
 }
 addToWishList.propTypes ={

@@ -1,49 +1,65 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {Link} from "react-router-dom";
 
-const WishLists = props => (
-
-    <p>{props.todo.productName}</p>
-
-
-)
-class WishList extends Component {
+class WishList extends Component{
     constructor(props) {
         super(props);
-        this.state = {product:[]};
+        this.state = {
+            wishList:[],
+            user:sessionStorage.getItem("sessionName")
+        };
     }
+
     componentDidMount() {
-        axios.get("http://localhost:8080/wishList/get")
-            .then(response=>{
-                this.setState({product: response.data});
+        console.log(this.props.match.params.id);
+        axios.get('/wishList/name/'+sessionStorage.getItem("sessionName"))
+            .then(responce =>{
+                this.setState({
+                    wishList: responce.data,
+
+                });
             })
             .catch(function (error) {
                 console.log(error)
             })
+
     }
-    wList() {
-        return this.state.product.map(function (current, i) {
-            return <WishLists todo={current} key={i}/>;
+
+    onDeleteClick(id){
+        axios.delete("/wishList/delete/" + id).then((response) => {
+            window.location.replace("/")
         });
     }
 
     render() {
-        return (
-            <div className={"container"}>
-                        <div className="card card-body my-3 col-sm-4">
+
+        const wishlist =this.state.wishList.map((current) => {
+                return (
+                    <div className={"container"} >
+                        <div className={"row"}>
+                            <div className="card card-body my-3 col-sm-4">
+                            <h6>Item Name:{current.productName}</h6>
+                            <h6>Price:{current.price}</h6>
                             <div className="card-body">
-                                {this.wList()}
-                                <button type="button" className="btn btn-danger text-white btn-block">Add To Cart
-                                </button>
-                                <button type="button" className="btn btn-danger text-white btn-block">Remove</button>
-                            </div>
+                                <button type="button" className="btn btn-danger text-white btn-block" onClick={this.onDeleteClick.bind(this,current.id)}>Remove</button>
+                                <Link to={"/ViewProduct/id?_k="+current.id} className="btn btn-danger text-white btn-block">Add To Cart</Link>
                         </div>
+                            </div>
+                    </div>
+                    </div>
+                )
+            }
+        );
+
+        return (
+
+            <div className={"container"}>
+                {wishlist}
             </div>
-        )
+        );
     }
 }
 export default WishList;
-
-
 
 
