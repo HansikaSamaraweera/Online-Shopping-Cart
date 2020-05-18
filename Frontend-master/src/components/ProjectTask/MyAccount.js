@@ -1,30 +1,40 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import axios from 'axios';
+import {deleteAccount} from "../../actions/projectTaskActions";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 class MyAccount extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: {}
+            user_1:[],
+            user:sessionStorage.getItem("sessionName")
         };
     }
 
     componentDidMount() {
-        axios.get('/Users/'+this.props.match.params.id)
-            .then(res => {
-                this.setState({ user: res.data });
-                console.log(this.state.user);
-            });
+        console.log(this.props.match.params.id);
+        axios.get('/api/Users/name/'+sessionStorage.getItem("sessionName"))
+            .then(responce =>{
+                this.setState({
+                    user_1: responce.data,
+
+                });
+            })
+            .catch(function (error) {
+                console.log(error)
+            })
+
     }
 
-    delete(id){
-        console.log(id);
-        axios.delete('/api/Users/all'+id)
-            .then((result) => {
-                this.props.history.push("/")
-            });
+    onDeleteClick(id){
+        axios.delete("/api/Users/delete/" + id).then((response) => {
+            window.location.replace("/")
+        });
     }
+
     onClickMethod=()=>{
         window.localStorage.setItem('CREDENTIALS_FLUSH', Date.now().toString())
         window.localStorage.removeItem('CREDENTIALS_FLUSH')
@@ -33,6 +43,8 @@ class MyAccount extends Component {
         window.location.replace("/login");
 
     }
+
+
 
 
     render() {
@@ -50,9 +62,9 @@ class MyAccount extends Component {
                                     <div className="card-body">
                                         <h4 className="card-title">Name:{sessionStorage.getItem("sessionName")}</h4>
                                                 <p className="card-text text-truncate">
-                                                    Email:
+                                                    Email:{this.state.user_1.email}
                                                 </p>
-                                        <button onClick={this.delete.bind(this, this.state.user.id)}className="btn btn-primary">Delete Account</button>
+                                        <button className="btn btn-primary">Delete Account</button>
                                             </div>
                             </div>
                             </div>
