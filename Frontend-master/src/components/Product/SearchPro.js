@@ -86,13 +86,13 @@ class SearchPro extends Component {
                        <div className="card-body"><p className="card-text">Rs.{post.price}.00</p></div>
                    </div>))}       </div>
 
-               <div className="col-md-3 m-auto">
+               <div className="col-md-3 m-auto btn-group-toggle">
                    <br/>
-                   <h5>Search History</h5>
+                   <h5 id="s0">Search History</h5>
                    <br/>
                    {history.map((post123) => (
                        <div className="card" >
-                           <div className="btn-group">{post123.name}<button type="submit" onClick={this.onSubmit123.bind(this,post123._id)} >Clear History</button></div>
+                           <div className="btn-group display-6"><h6 id={"s7"}>{post123.name}</h6><button id="s5" className="alert-light" type="submit" onClick={this.onSubmit123.bind(this,post123._id)} >Clear</button></div>
                        </div>))}
                </div>
                <br/><br/>

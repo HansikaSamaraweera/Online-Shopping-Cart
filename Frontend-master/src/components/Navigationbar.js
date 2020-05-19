@@ -25,7 +25,7 @@ function Navigationbar() {
                         <Nav.Link><Link to="/ViewCart"><i className="fas fa-shopping-cart"></i></Link></Nav.Link>
 
                         <Nav.Link href="">CHECKOUT</Nav.Link>
-                        <NavDropdown title="Dashboard" id="collasible-nav-dropdown">
+                        <NavDropdown title="CUSTOMIZED" id="collasible-nav-dropdown">
                             <NavDropdown.Item href="/search">SEARCH</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="/AdminAsCategory/AddCategory" >ADD PRODUCTS TYPES</NavDropdown.Item>
