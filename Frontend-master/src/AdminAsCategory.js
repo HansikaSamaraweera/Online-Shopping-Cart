@@ -7,7 +7,7 @@ import cry from "../src/components/images/cry.gif";
 import "./admin.css";
 import AddCategory from "./components/Category/AddCategory";
 import CategoryList from "./components/Category/CategoryList";
-
+import EditCategory from "./components/Category/EditCategory";
 
 class AdminAsCategory extends Component {
 
@@ -27,6 +27,7 @@ class AdminAsCategory extends Component {
                                 <div className="pre-scrollable blockquote h-25" id="scoll">
                                     <Route  exact path="/AdminAsCategory/AddCategory" component={AddCategory}/>
                                     <Route  exact path="/AdminAsCategory/CategoryList" component={CategoryList}/>
+                                    <Route  exact path="/AdminAsCategory/EditCategory" component={EditCategory}/>
 
                                 </div>
                                 :<div className="text-center">
