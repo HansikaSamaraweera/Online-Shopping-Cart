@@ -16,7 +16,7 @@ class SearchPro extends Component {
         this.onSubmit = this.onSubmit.bind(this);
     }
     componentDidMount() {
-        axios.get("http://localhost:3500/expressapi/getHistory")
+        axios.get("https://genuine-episode-247219.el.r.appspot.com/expressapi/getHistory")
             .then(response => {
                 this.setState({history: response.data});
                 console.log(this.state);
@@ -36,7 +36,7 @@ class SearchPro extends Component {
         console.log(this.name);
 
         this.name=this.state.name;
-        axios.get("http://localhost:3500/expressapi/getByName/"+this.name)
+        axios.get("https://genuine-episode-247219.el.r.appspot.com/expressapi/getByName/"+this.name)
             .then(response => {
                 this.setState({products: response.data});
                 console.log(this.state);
@@ -53,13 +53,13 @@ class SearchPro extends Component {
                 name:this.name,
             })
         };
-        fetch('http://localhost:3500/expressapi/addHistory', requestOptions)
+        fetch('https://genuine-episode-247219.el.r.appspot.com/expressapi/addHistory', requestOptions)
             .then(response => response.json())
             .then(data => this.setState({ newuser: data.id }));
 
     }
     onSubmit123(id){
-        axios.delete("http://localhost:3500/expressapi/delete/"+id ).then((response) => {
+        axios.delete("https://genuine-episode-247219.el.r.appspot.com/expressapi/delete/"+id ).then((response) => {
             window.location.replace("/Search")
         });
     }
