@@ -9,13 +9,22 @@ class SearchPro extends Component {
         super();
         this.state={
             products : [],
-            name:""
+            name:"",
+            history:[]
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
     componentDidMount() {
+        axios.get("http://localhost:3500/expressapi/getHistory")
+            .then(response => {
+                this.setState({history: response.data});
+                console.log(this.state);
+            } )
+            .catch(function (error) {
+                console.log(error);
 
+            })
     }
 
     onChange(e){
@@ -37,10 +46,27 @@ class SearchPro extends Component {
 
             })
 
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                name:this.name,
+            })
+        };
+        fetch('http://localhost:3500/expressapi/addHistory', requestOptions)
+            .then(response => response.json())
+            .then(data => this.setState({ newuser: data.id }));
+
+    }
+    onSubmit123(id){
+        axios.delete("http://localhost:3500/expressapi/delete/"+id ).then((response) => {
+            window.location.replace("/Search")
+        });
     }
 
     render() {
        const {products} = this.state;
+       const {history}=this.state;
        return (
            <div>
                <div className="pre-scrollable" id="s1">
@@ -59,6 +85,17 @@ class SearchPro extends Component {
                        <div className="card-header"> {post.name} #{post.category} </div>
                        <div className="card-body"><p className="card-text">Rs.{post.price}.00</p></div>
                    </div>))}       </div>
+
+               <div className="col-md-3 m-auto">
+                   <br/>
+                   <h5>Search History</h5>
+                   <br/>
+                   {history.map((post123) => (
+                       <div className="card" >
+                           <div className="btn-group">{post123.name}<button type="submit" onClick={this.onSubmit123.bind(this,post123._id)} >Clear History</button></div>
+                       </div>))}
+               </div>
+               <br/><br/>
 
            </div>
         );
