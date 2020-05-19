@@ -1,48 +1,34 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
+import {updateCustomer} from "../../actions/projectTaskActions";
 import PropTypes from "prop-types";
-import {
-    getUser,
-    addNewUserCus,
-} from "../../actions/projectTaskActions";
-import axios from "axios";
+import {connect} from "react-redux";
+
 
 class EditProfile extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            user_prof: {}
+            name: "",
+            email: "",
+            errors: {}
         };
+        this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
-    componentDidMount() {
-        axios.get('/api/Users/name/${sessionStorage.getItem("sessionName")')
-            .then(res => {
-                this.setState({ user_prof: res.data });
-                console.log(this.state.user_prof);
-            });
+    onChange(e) {
+        this.setState({ [e.target.name]: e.target.value });
     }
 
-    onChange = (e) => {
-        this.setState({
-            name: e.target.value,
-            email: e.target.value
-        });
-    }
-
-    onSubmit = (e) => {
+    onSubmit(e) {
         e.preventDefault();
-
-        const { name, email } = this.state.user_prof;
-
-        axios.put('/api/Users/'+this.props.match.params.id, { name, email })
-            .then((result) => {
-                this.props.history.push("/"+this.props.match.params.id)
-            });
+        const editUser = {
+            name: this.state.name,
+            email: this.state.email
+        };
+        // console.log(editUser);
+        this.props.updateCustomer(editUser, this.props.history);
     }
-
-
-
     render() {
         return(
             <div className="col-md-6 m-auto alert-info">
@@ -56,7 +42,7 @@ class EditProfile extends Component{
                         <input type="text"
                                className="form-control"
                                name="name"
-                               value={this.state.user_prof.name}
+                               value={this.state.name}
                                placeholder="User Name"
                                onChange={this.onChange}
                                 />
@@ -65,8 +51,9 @@ class EditProfile extends Component{
                         <label>Email: </label>
                         <input type="text"
                                className="form-control"
+                               name="email"
                                placeholder="Email"
-                               value={this.state.user_prof.email}
+                               value={this.state.email}
                                onChange={this.onChange}
                                  />
                     </div>
@@ -82,4 +69,16 @@ class EditProfile extends Component{
         );
     }
 }
-export default EditProfile;
+updateCustomer.propTypes = {
+    updateCustomer: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    errors: state.errors
+});
+
+export default connect(
+    mapStateToProps,
+    { updateCustomer }
+)(EditProfile);
