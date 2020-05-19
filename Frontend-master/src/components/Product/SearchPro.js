@@ -9,8 +9,11 @@ class SearchPro extends Component {
         super();
         this.state={
             products : [],
+            products1 : [],
             name:"",
-            history:[]
+            history:[],
+            ff:""
+
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -25,6 +28,7 @@ class SearchPro extends Component {
                 console.log(error);
 
             })
+
     }
 
     onChange(e){
@@ -34,39 +38,62 @@ class SearchPro extends Component {
         e.preventDefault();
         this.name=this.state.name;
         console.log(this.name);
-
         this.name=this.state.name;
+
+        this.setState({products: []});
+
         axios.get("https://genuine-episode-247219.el.r.appspot.com/expressapi/getByName/"+this.name)
             .then(response => {
                 this.setState({products: response.data});
-                console.log(this.state);
+                if(this.state.products.length >= 1) {
+                    this.func2(this.name)
+                }else{
+                    alert("Details not found.....Please refer most searched categories.")
+                }
             } )
             .catch(function (error) {
                 console.log(error);
 
             })
-
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                name:this.name,
-            })
-        };
-        fetch('https://genuine-episode-247219.el.r.appspot.com/expressapi/addHistory', requestOptions)
-            .then(response => response.json())
-            .then(data => this.setState({ newuser: data.id }));
-
     }
-    onSubmit123(id){
+    func2(kk){
+        let y="";
+        this.state.history.map(check=>{
+            console.log(check.name);
+            if(check.name===kk){
+                y="done";
+            }
+        }
+        )
+        if(y!=="done") {
+            this.func1(kk);
+        }
+    }
+    func1(kk){
+            const requestOptions = {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    name: kk,
+                })
+            };
+            fetch('https://genuine-episode-247219.el.r.appspot.com/expressapi/addHistory', requestOptions)
+                .then(response => response.json())
+                .then(data => this.setState({newuser: data.id}));
+        }
+
+        onSubmit123(id){
         axios.delete("https://genuine-episode-247219.el.r.appspot.com/expressapi/delete/"+id ).then((response) => {
             window.location.replace("/Search")
         });
-    }
+        }
 
-    render() {
+
+        render() {
        const {products} = this.state;
+        const {products1} = this.state;
        const {history}=this.state;
+
        return (
            <div>
                <div className="pre-scrollable" id="s1">
@@ -88,12 +115,21 @@ class SearchPro extends Component {
 
                <div className="col-md-3 m-auto btn-group-toggle">
                    <br/>
-                   <h5 id="s0">Search History</h5>
+                   <h5 id="s0">Most Searched Categories.........</h5>
                    <br/>
                    {history.map((post123) => (
-                       <div className="card" >
-                           <div className="btn-group display-6"><h6 id={"s7"}>{post123.name}</h6><button id="s5" className="alert-light" type="submit" onClick={this.onSubmit123.bind(this,post123._id)} >Clear</button></div>
-                       </div>))}
+                       <div className="card">
+                                   <div className="btn-group display-6"><h6 id={"s7"}>{post123.name}</h6>
+                                       {sessionStorage.getItem("sessionPost") === 'STORE_MANAGER'?
+                                           <button id="s5" className="alert-light" type="submit" onClick={this.onSubmit123.bind(this,post123._id)} >Clear</button>
+                                           :null
+                                       }
+                                   </div>
+                                   </div>
+
+
+                       ))
+                                   }
                </div>
                <br/><br/>
 
