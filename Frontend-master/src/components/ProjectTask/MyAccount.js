@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import axios from 'axios';
-import {deleteAccount} from "../../actions/projectTaskActions";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import {bindActionCreators} from "redux";
+
 
 class MyAccount extends Component {
     constructor(props) {
@@ -31,6 +30,8 @@ class MyAccount extends Component {
 
     onDeleteClick(id){
         axios.delete("/api/Users/delete/" + id).then((response) => {
+            window.localStorage.removeItem('CREDENTIALS_FLUSH')
+            sessionStorage.clear();
             window.location.replace("/")
         });
     }
@@ -43,9 +44,6 @@ class MyAccount extends Component {
         window.location.replace("/login");
 
     }
-
-
-
 
     render() {
         if(sessionStorage.getItem("sessionName")!==null) {
@@ -60,11 +58,11 @@ class MyAccount extends Component {
                         </div>
                             <img className="card-img-top" src="" alt=""/>
                                     <div className="card-body">
-                                        <h4 className="card-title">Name:{sessionStorage.getItem("sessionName")}</h4>
+                                        <h4 className="card-title">Name:{this.state.user_1.name}</h4>
                                                 <p className="card-text text-truncate">
                                                     Email:{this.state.user_1.email}
                                                 </p>
-                                        <button className="btn btn-primary">Delete Account</button>
+                                        <button className="btn btn-primary" onClick={this.onDeleteClick.bind(this,this.state.user_1.id)}>Delete Account</button>
                                             </div>
                             </div>
                             </div>
