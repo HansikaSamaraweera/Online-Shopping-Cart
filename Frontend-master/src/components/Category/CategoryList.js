@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import "../../category.css";
+import axios from "axios";
 
 class CategoryList extends Component {
     constructor(props) {
@@ -11,10 +12,16 @@ class CategoryList extends Component {
     }
 
     componentDidMount() {
-        const url = "http://localhost:8080/api/categories/all";
+        const url = "/api/categories/all";
         fetch(url)
             .then(response => response.json())
             .then(json => this.setState({categories: json}))
+    }
+
+    onDeleteClick(id){
+        axios.delete("/api/categories/delete/" + id).then((response) => {
+            window.location.replace("/")
+        });
     }
 
     render() {
@@ -28,7 +35,7 @@ class CategoryList extends Component {
                 </Link></div>
                     <h1 className="bg-primary display-5">Category List</h1>
                 {categories.map((post) => (
-                    <div className="card" key={post.id} id="catList">
+                    <div className="card mb-auto" key={post.id} id="catList">
                         <div className="row-cols-7">
                             <div className="col-md-6">
                         <div className="card-header">
@@ -42,7 +49,7 @@ class CategoryList extends Component {
                                 <p className="card-text text-truncate text-center">
                                     Date:{post.cDate}
                                 </p>
-                                <p><i className="fas fa-edit"></i>  <i className="fas fa-trash"></i></p>
+                                <p><Link to="/AdminAsCategory/EditCategory"><i className="fas fa-edit"></i></Link>  <i className="fas fa-trash" onClick={this.onDeleteClick.bind(this,post.id)}></i></p>
 
                         </div>
                         </div>
