@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from "axios";
 import "../../admin.css";
 import p1 from "../images/pic1.gif";
+import {Link} from "react-router-dom";
 
 class SearchPro extends Component {
 
@@ -96,6 +97,7 @@ class SearchPro extends Component {
 
        return (
            <div>
+
                <div className="pre-scrollable" id="s1">
                    <br/>
                    <img src={p1} height="250" width="300" alt=""/>
@@ -105,12 +107,14 @@ class SearchPro extends Component {
                        <button type="submit" className={"btn-primary"} onChange={this.onChange}>Search Categories</button>
                    </form>
                </div>
-               <div className="container btn-outline-mdb-color">
+               <div className="container col-md-3 m-auto btn-group-toggle">
                    <br/>
                    {products.map((post) => (
                        <div className="card" key={post.name}>
-                       <div className="card-header"> {post.name} #{post.category} </div>
-                       <div className="card-body"><p className="card-text">Rs.{post.price}.00</p></div>
+                       <div className="card-header "> {post.name} #{post.category} </div>
+                       <div className="card-body"><p className="card-text">Rs.{post.price}.00</p>
+                           <button className="alert-dark"><Link to={"/ViewProduct/id?_k="+post._id}>View More</Link></button>
+                       </div>
                    </div>))}       </div>
 
                <div className="col-md-3 m-auto btn-group-toggle">
