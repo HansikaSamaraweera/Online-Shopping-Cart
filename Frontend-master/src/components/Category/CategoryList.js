@@ -28,11 +28,11 @@ class CategoryList extends Component {
                 </Link></div>
                     <h1 className="bg-primary display-5">Category List</h1>
                 {categories.map((post) => (
-                    <div className="card w-50 m-auto" key={post.id} id="catList">
-                        <div className="row">
+                    <div className="card" key={post.id} id="catList">
+                        <div className="row-cols-7">
+                            <div className="col-md-6">
                         <div className="card-header">
                             <div className="card mb-sm-n1 bg-light">
-                                <div className="card-header text-white bg-success">ID: {post.id}</div>
                                 <p className="card-text text-truncate text-center">
                                     Category Name:{post.cName}
                                 </p>
@@ -42,8 +42,10 @@ class CategoryList extends Component {
                                 <p className="card-text text-truncate text-center">
                                     Date:{post.cDate}
                                 </p>
-                        </div>
+                                <p><i className="fas fa-edit"></i>  <i className="fas fa-trash"></i></p>
 
+                        </div>
+                        </div>
                     </div>
                     </div>
                     </div>

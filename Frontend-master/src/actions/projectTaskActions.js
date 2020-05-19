@@ -66,6 +66,25 @@ export const login = name =>async dispatch=>{
 
 };
 
+export const updateCustomer=(user,history)=>async dispatch=>{
+    try{
+        await  axios.post('/api/Users/update',user);
+        sessionStorage.setItem("sessionName",user.name);
+        sessionStorage.setItem("sessionPost",user.post);
+        window.location.replace("/")
+        dispatch({
+            type:GET_ERRORS,
+            payload:{}
+        })
+    }
+    catch(error){
+        dispatch({
+            type:GET_ERRORS,
+            payload:error.response.data
+        })
+    }
+};
+
 export const addProduct = (product,history) => async dispatch => {
     try {
         await axios.post('http://localhost:8080/api/Products', product);
