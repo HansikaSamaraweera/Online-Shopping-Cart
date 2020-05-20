@@ -158,3 +158,17 @@ export const getUser = (id, history) => async dispatch => {
         history.push("/");
     }
 };
+
+export const getProduct1 = (p_id, history) => async dispatch =>{
+    try{
+        const res = await axios.get('http://localhost:8080/api/Products/${p_id}');
+        dispatch({
+            type: GET_PRODUCT1,
+            payload: res.data
+        });
+
+    }catch (error) {
+        history.push("/ProductList")
+
+    }
+}

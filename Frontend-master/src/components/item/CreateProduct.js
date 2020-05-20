@@ -1,11 +1,14 @@
 import React,{Component} from 'react';
 import {Link} from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 import PropTypes from "prop-types";
 import {connect} from "react-redux"
 import {addProduct} from "../../actions/projectTaskActions"
-import classnames from "classnames";
+import axios from "axios";
+import {Button} from "reactstrap";
+import category from "../../reducers/category";
 
- class CreateProduct extends Component{
+class CreateProduct extends Component{
 
     constructor(props) {
         super(props);
@@ -19,19 +22,25 @@ import classnames from "classnames";
             product_name: '',
             product_price: '',
             product_category: '',
-            errors: ''
+            errors: '',
+            category:[]
 
         }
+        console.log(category)
 
     }
+    componentDidMount() {
+        axios.get("http://localhost:8080/api/categories/all")
+            .then(response => {
+                this.setState({category: response.data});
+            } )
+            .catch(function (error) {
+                console.log(error);
 
-    componentWillReceiveProps(nextProps) {
-        if(nextProps.errors){
-            this.setState({errors:nextProps.errors});
-        }
+            })
     }
 
-     onChangeProductName(e){
+    onChangeProductName(e){
         this.setState({
             product_name: e.target.value
         });
@@ -60,40 +69,44 @@ import classnames from "classnames";
         };
         console.log(newProductTask);
         this.props.addProduct(newProductTask, this.props.history);
-
-        /*this.setState({
-            product_name: '',
-            product_price: '',
-            product_category: ''
-        })*/
     }
 
     render() {
+
         return(
 
             <div style={{marginTop: 20}}>
-                <Link to="/ProductList" >View Products</Link>
+                <div style={{marginRight: 2000,marginTop: 20}}>
+                    <Link to={"/ProductList"}>List</Link>
+                </div>
                 <h3>Add a New Product</h3>
-                <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
+                <form onSubmit={this.onSubmit} style={{marginTop: 20}}>
+                    <div className="form-group " style={{marginRight: 600, marginLeft: 600}}>
                         <label> Name:</label>
                         <input type="text" className="form-control"
-                               name="name"
+                               name="name" required
                                value={this.state.product_name}
                                onChange={this.onChangeProductName}/>
 
                     </div>
-                    <div className="form-group">
+                    <div className="form-group" style={{marginRight: 600, marginLeft: 600}}>
                         <label> Price:</label>
-                        <input type="text" className="form-control"
+                        <input type="text" className="form-control" required
                                value={this.state.product_price}
                                onChange={this.onChangeProductPrice}/>
                     </div>
                     <div className="form-group">
-                        <label> Category:</label>
-                        <input type="text" className="form-control"
-                               value={this.state.product_category}
-                               onChange={this.onChangeProductCategory}/>
+                        <div className="dropdown">
+                            <p> Select Category</p>
+
+                            <select onChange={this.onChangeProductCategory}>{
+                                this.state.category.map(category => <option value={category.cName}
+                                                                            onChange={this.onChangeProductCategory}>
+                                    {category.cName}
+                                </option> )
+                            }
+                            </select>
+                        </div>
                     </div>
                     <div className="form-group">
                         <input type="submit" value=" Add Product" className="btn btn-primary"/>
@@ -107,7 +120,7 @@ import classnames from "classnames";
 }
 
 CreateProduct.propTypes = {
-     addProduct: PropTypes.func.isRequired,
+    addProduct: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired
 }
 const mapStateToProps = state => ({

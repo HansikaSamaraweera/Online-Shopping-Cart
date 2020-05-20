@@ -29,7 +29,7 @@ class Storeman extends Component {
                                 <div className="pre-scrollable blockquote h-25" id="scoll">
                                     <Route exact path="/Products" component={CreateProduct}/>
                                     <Route exact path="/ProductList" component={ProductList}/>
-                                    <Route  path="/EditProduct" component={EditProduct}/>
+                                    <Route  path="/EditProduct/:id" component={EditProduct}/>
 
 
                                 </div>

@@ -51,6 +51,7 @@ class App extends Component{
                             <Route path="/WhishList_Admin" component={WhishList_Admin} />
                             <Route path="/WhishList_Admin/WishListSave" component={WishListSave} />
                             <Route path="/Products" component={Products} />
+
                             <Route path="/Search" component={SearchPro} />
                         </Switch>
 
