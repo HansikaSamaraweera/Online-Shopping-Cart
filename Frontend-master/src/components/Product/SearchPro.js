@@ -20,7 +20,8 @@ class SearchPro extends Component {
         this.onSubmit = this.onSubmit.bind(this);
     }
     componentDidMount() {
-        axios.get("https://genuine-episode-247219.el.r.appspot.com/expressapi/getHistory")
+        //http://localhost:3500/ for run in local machine https://genuine-episode-247219.el.r.appspot.com/  express has deployed in cloud.can use this url.instead of localhost
+        axios.get("http://localhost:3500/expressapi/getHistory")
             .then(response => {
                 this.setState({history: response.data});
                 console.log(this.state);
@@ -43,7 +44,7 @@ class SearchPro extends Component {
 
         this.setState({products: []});
 
-        axios.get("https://genuine-episode-247219.el.r.appspot.com/expressapi/getByName/"+this.name)
+        axios.get("http://localhost:3500/expressapi/getByName/"+this.name)
             .then(response => {
                 this.setState({products: response.data});
                 if(this.state.products.length >= 1) {
@@ -78,13 +79,13 @@ class SearchPro extends Component {
                     name: kk,
                 })
             };
-            fetch('https://genuine-episode-247219.el.r.appspot.com/expressapi/addHistory', requestOptions)
+            fetch('http://localhost:3500/expressapi/addHistory', requestOptions)
                 .then(response => response.json())
                 .then(data => this.setState({newuser: data.id}));
         }
 
         onSubmit123(id){
-        axios.delete("https://genuine-episode-247219.el.r.appspot.com/expressapi/delete/"+id ).then((response) => {
+        axios.delete("http://localhost:3500/expressapi/delete/"+id ).then((response) => {
             window.location.replace("/Search")
         });
         }
