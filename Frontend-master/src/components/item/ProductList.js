@@ -15,6 +15,7 @@ class ProductList extends Component{
             id: '',
             name: '',
             price: '',
+            photo: '',
             category: ''
         },
 
@@ -57,10 +58,10 @@ class ProductList extends Component{
 
             })
     }
-    editProduct(id,name,price,category){
+    editProduct(id,name,price,category,photo){
         console.log(id)
         this.setState({
-            editProductData: {id, name, price, category}, editProductModal: !this.state.editProductModal
+            editProductData: {id, name, price, category,photo}, editProductModal: !this.state.editProductModal
         });
 
     }
@@ -82,6 +83,7 @@ class ProductList extends Component{
                         <td>{product1.name}</td>
                         <td>{product1.price}</td>
                         <td>{product1.category}</td>
+                        <td>{product1.photo}</td>
                         <td>
                             <Link to={"/EditProduct/"+product1.id} style={{marginRight: 20}}>Edit</Link>
                             <Link to={"/DiscountProduct/"+product1.id} style={{marginRight: 20}}>Discount</Link>
@@ -108,6 +110,7 @@ class ProductList extends Component{
                         <th>Name</th>
                         <th>price</th>
                         <th>Category</th>
+                        <th>Photo</th>
                         <th>Action</th>
                     </tr>
                     </thead>

@@ -16,6 +16,7 @@ class EditProduct extends Component{
             product_name: '',
             product_price: '',
             product_category: '',
+            product_photo: '',
             category:[]
 
         };
@@ -24,6 +25,7 @@ class EditProduct extends Component{
         this.onChangeProductName = this.onChangeProductName.bind(this);
         this.onChangeProductPrice = this.onChangeProductPrice.bind(this);
         this.onChangeProductCategory = this.onChangeProductCategory.bind(this);
+        this.onChangeProductPhoto = this.onChangeProductPhoto.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
 
@@ -39,6 +41,7 @@ class EditProduct extends Component{
                     id:response.data.id,
                     product_name: response.data.name,
                     product_price : response.data.price,
+                    product_photo : response.data.photo,
                     product_category : response.data.category
 
                 })
@@ -72,6 +75,12 @@ class EditProduct extends Component{
         });
     }
 
+    onChangeProductPhoto(e){
+        this.setState({
+            product_photo: e.target.value
+        });
+    }
+
     onChangeProductCategory(e){
         this.setState({
             product_category: e.target.value
@@ -84,6 +93,7 @@ class EditProduct extends Component{
             id: this.state.id,
             name: this.state.product_name,
             price: this.state.product_price,
+            photo: this.state.product_photo,
             category: this.state.product_category
         };
         console.log(obj);
@@ -114,6 +124,14 @@ class EditProduct extends Component{
                                className="form-control"
                                value={this.state.product_price}
                                onChange={this.onChangeProductPrice} />
+                    </div>
+
+                    <div className="form-group" style={{marginRight: 600, marginLeft: 600}}>
+                        <label>Url: </label>
+                        <input type="text"
+                               className="form-control"
+                               value={this.state.product_photo}
+                               onChange={this.onChangeProductPhoto} />
                     </div>
                     <div className="form-group">
                         <div className="dropdown">

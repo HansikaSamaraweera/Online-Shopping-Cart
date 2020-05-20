@@ -9,6 +9,7 @@ public interface ProductRepositary extends MongoRepository<Product,Long> {
     Product getById(String id);
     Product getByName(String name);
     Product getByPrice(String price);
+    Product getByPhoto(String photo);
     Product getByCategory(String category);
 
 
