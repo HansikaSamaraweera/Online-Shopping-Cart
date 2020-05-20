@@ -1,10 +1,10 @@
 import React,{Component} from 'react';
 import axios from 'axios';
-import {connect} from "classnames";
+import {connect} from "react-redux";
 import classnames from "classnames";
 import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
-import {getProduct} from "../../actions/projectTaskActions";
+import {getProduct1, addProduct} from "../../actions/projectTaskActions";
 
 class EditProduct extends Component{
 
@@ -12,11 +12,14 @@ class EditProduct extends Component{
         super(props);
 
         this.state = {
+            id: '',
             product_name: '',
             product_price: '',
-            product_category: ''
+            product_category: '',
+            category:[]
 
         };
+        console.log(props.id);
 
         this.onChangeProductName = this.onChangeProductName.bind(this);
         this.onChangeProductPrice = this.onChangeProductPrice.bind(this);
@@ -26,21 +29,33 @@ class EditProduct extends Component{
 
     }
 
+
     componentDidMount() {
 
-        axios.get('http://localhost:8080/api/Products/EditProduct'+this.props.match.params.id)
+        axios.get('http://localhost:8080/api/Products/'+this.props.match.params.id)
             .then(response => {
 
                 this.setState({
+                    id:response.data.id,
                     product_name: response.data.name,
                     product_price : response.data.price,
                     product_category : response.data.category
+
                 })
-    
+
 
             })
             .catch(function (error) {
                 console.log(error)
+
+            })
+
+        axios.get("http://localhost:8080/api/categories/all")
+            .then(response => {
+                this.setState({category: response.data});
+            } )
+            .catch(function (error) {
+                console.log(error);
 
             })
     }
@@ -66,31 +81,34 @@ class EditProduct extends Component{
     onSubmit(e){
         e.preventDefault();
         const obj = {
+            id: this.state.id,
             name: this.state.product_name,
             price: this.state.product_price,
             category: this.state.product_category
         };
-        axios.post("http://localhost:8080/api/Products/"+this.props.match.params.id,obj)
-            .then(res => console.log(res.data));
+        console.log(obj);
+        this.props.addProduct(obj, this.props.history);
 
-        this.props.history.push('/ProductList')
+
 
     }
 
     render() {
+        console.log(this.props);
         return(
 
             <div>
+
                 <h3> Update Product </h3>
-                <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
+                <form onSubmit={this.onSubmit} style={{marginTop: 20}}>
+                    <div className="form-group" style={{marginRight: 600, marginLeft: 600}}>
                         <label>Name: </label>
                         <input type="text"
                                className="form-control"
                                value={this.state.product_name}
                                onChange={this.onChangeProductName} />
                     </div>
-                    <div className="form-group">
+                    <div className="form-group" style={{marginRight: 600, marginLeft: 600}}>
                         <label>Price: </label>
                         <input type="text"
                                className="form-control"
@@ -98,11 +116,17 @@ class EditProduct extends Component{
                                onChange={this.onChangeProductPrice} />
                     </div>
                     <div className="form-group">
-                        <label>Category: </label>
-                        <input type="text"
-                               className="form-control"
-                               value={this.state.product_category}
-                               onChange={this.onChangeProductCategory} />
+                        <div className="dropdown">
+                            <p> Select Category</p>
+
+                            <select onChange={this.onChangeProductCategory}>{
+                                this.state.category.map(category => <option value={this.state.product_category}
+                                                                            onChange={this.onChangeProductCategory}>
+                                    {category.cName}
+                                </option> )
+                            }
+                            </select>
+                        </div>
                     </div>
                     <div className="form-group">
                         <input type="submit" value=" Update Product" className="btn btn-primary"/>
@@ -113,4 +137,14 @@ class EditProduct extends Component{
         );
     }
 }
-export default EditProduct;
+EditProduct.propTypes = {
+    product_task1: PropTypes.object.isRequired,
+    errors : PropTypes.object.isRequired,
+    getProduct1: PropTypes.func.isRequired,
+    addProduct: PropTypes.func.isRequired
+};
+const  mapStateToProps = state =>({
+    product_task1: state.product_task.product_task1,
+    errors: state.errors
+});
+export default connect(mapStateToProps ,{getProduct1,addProduct}) (EditProduct);
