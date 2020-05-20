@@ -6,6 +6,7 @@ import CreateProduct from "./components/item/CreateProduct";
 import HomeBody from "./components/Product/HomeBody";
 import ProductList from "./components/item/ProductList";
 import EditProduct from "./components/item/EditProduct";
+import DiscountProduct from "./components/item/DiscountProduct";
 
 class Storeman extends Component {
 
@@ -30,6 +31,7 @@ class Storeman extends Component {
                                     <Route exact path="/Products" component={CreateProduct}/>
                                     <Route exact path="/ProductList" component={ProductList}/>
                                     <Route  path="/EditProduct/:id" component={EditProduct}/>
+                                    <Route  path="/DiscountProduct/:id" component={DiscountProduct}/>
 
 
                                 </div>

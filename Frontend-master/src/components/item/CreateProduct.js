@@ -23,6 +23,7 @@ class CreateProduct extends Component{
             product_price: '',
             product_category: '',
             errors: '',
+            select:'',
             category:[]
 
         }
@@ -97,11 +98,13 @@ class CreateProduct extends Component{
                     </div>
                     <div className="form-group">
                         <div className="dropdown">
-                            <p> Select Category</p>
 
-                            <select onChange={this.onChangeProductCategory}>{
-                                this.state.category.map(category => <option value={category.cName}
-                                                                            onChange={this.onChangeProductCategory}>
+                            <select onChange={this.onChangeProductCategory} value={this.state.product_category}>
+                                <option value="select">Select Category</option>
+                                {
+                                this.state.category.map(category =>
+
+                                    <option value={category.cName} required>
                                     {category.cName}
                                 </option> )
                             }

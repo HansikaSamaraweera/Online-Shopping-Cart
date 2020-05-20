@@ -84,6 +84,7 @@ class ProductList extends Component{
                         <td>{product1.category}</td>
                         <td>
                             <Link to={"/EditProduct/"+product1.id} style={{marginRight: 20}}>Edit</Link>
+                            <Link to={"/DiscountProduct/"+product1.id} style={{marginRight: 20}}>Discount</Link>
                             <Button color="danger" size="sm" className="mr-2"
                                     onClick={this.onDeleteClick.bind(this, product1.id)}>Delete
                             </Button>

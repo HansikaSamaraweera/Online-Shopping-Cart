@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 import {getProduct1, addProduct} from "../../actions/projectTaskActions";
 
-class EditProduct extends Component{
+class DiscountProduct extends Component{
 
     constructor(props) {
         super(props);
@@ -16,7 +16,9 @@ class EditProduct extends Component{
             product_name: '',
             product_price: '',
             product_category: '',
-            category:[]
+            category:[],
+            select:'',
+
 
         };
         console.log(props.id);
@@ -24,6 +26,8 @@ class EditProduct extends Component{
         this.onChangeProductName = this.onChangeProductName.bind(this);
         this.onChangeProductPrice = this.onChangeProductPrice.bind(this);
         this.onChangeProductCategory = this.onChangeProductCategory.bind(this);
+
+        this.onChangeValue = this.onChangeValue.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
 
@@ -72,22 +76,68 @@ class EditProduct extends Component{
         });
     }
 
+    onChangeValue(e){
+        this.setState({
+            select: e.target.value
+        });
+    }
+
     onChangeProductCategory(e){
         this.setState({
             product_category: e.target.value
         });
     }
 
+
     onSubmit(e){
         e.preventDefault();
-        const obj = {
-            id: this.state.id,
-            name: this.state.product_name,
-            price: this.state.product_price,
-            category: this.state.product_category
-        };
-        console.log(obj);
-        this.props.addProduct(obj, this.props.history);
+
+        if(this.state.select == 1) {
+            const obj = {
+                id: this.state.id,
+                name: this.state.product_name+"( 5% Discounted )",
+                price: (parseInt(this.state.product_price)*95)/100,
+                category: this.state.product_category
+            };
+
+            console.log(obj);
+            this.props.addProduct(obj, this.props.history);
+        }
+        else if(this.state.select == 2) {
+            const obj = {
+                id: this.state.id,
+                name: this.state.product_name+"( 10% Discounted )",
+                price: (parseInt(this.state.product_price)*90)/100,
+                category: this.state.product_category
+            };
+
+            console.log(obj);
+            this.props.addProduct(obj, this.props.history);
+        }
+
+        else if(this.state.select == 3) {
+            const obj = {
+                id: this.state.id,
+                name: this.state.product_name+"( 15% Discounted )",
+                price: (parseInt(this.state.product_price)*85)/100,
+                category: this.state.product_category
+            };
+
+            console.log(obj);
+            this.props.addProduct(obj, this.props.history);
+        }
+
+        else if(this.state.select == 4) {
+            const obj = {
+                id: this.state.id,
+                name: this.state.product_name+"( 50% Discounted )",
+                price: (parseInt(this.state.product_price)*50)/100,
+                category: this.state.product_category
+            };
+
+            console.log(obj);
+            this.props.addProduct(obj, this.props.history);
+        }
 
 
 
@@ -106,32 +156,29 @@ class EditProduct extends Component{
                         <input type="text"
                                className="form-control"
                                value={this.state.product_name}
-                               onChange={this.onChangeProductName} />
+                        />
                     </div>
                     <div className="form-group" style={{marginRight: 600, marginLeft: 600}}>
                         <label>Price: </label>
                         <input type="text"
                                className="form-control"
-                               value={this.state.product_price}
-                               onChange={this.onChangeProductPrice} />
+                               value={this.state.product_price}/>
                     </div>
                     <div className="form-group">
                         <div className="dropdown">
 
-                            <select onChange={this.onChangeProductCategory} value={this.state.product_category}>
-
-                                {
-                                    this.state.category.map(category =>
-
-                                        <option value={category.cName}>
-                                            {category.cName}
-                                        </option> )
-                                }
+                            <select id = "dropdown" value={this.state.select}
+                                    onChange={this.onChangeValue}>
+                                <option value="0">Select Discount</option>
+                                <option value="1">5% Discount</option>
+                                <option value="2">10% Discount</option>
+                                <option value="3">15% Discount</option>
+                                <option value="4">50% Discount</option>
                             </select>
                         </div>
                     </div>
                     <div className="form-group">
-                        <input type="submit" value=" Update Product" className="btn btn-primary"/>
+                        <input type="submit" value=" Add Discount" className="btn btn-primary"/>
                         <Link to={"/ProductList"} style={{marginLeft: 6}}> Cancel </Link>
 
                     </div>
@@ -140,7 +187,7 @@ class EditProduct extends Component{
         );
     }
 }
-EditProduct.propTypes = {
+DiscountProduct.propTypes = {
     product_task1: PropTypes.object.isRequired,
     errors : PropTypes.object.isRequired,
     getProduct1: PropTypes.func.isRequired,
@@ -150,4 +197,4 @@ const  mapStateToProps = state =>({
     product_task1: state.product_task.product_task1,
     errors: state.errors
 });
-export default connect(mapStateToProps ,{getProduct1,addProduct}) (EditProduct);
+export default connect(mapStateToProps ,{getProduct1,addProduct}) (DiscountProduct);
