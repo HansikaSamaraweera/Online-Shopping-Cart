@@ -17,6 +17,7 @@ class DiscountProduct extends Component{
             product_price: '',
             product_category: '',
             category:[],
+            prodduct_photo:'',
             select:'',
 
 
@@ -26,6 +27,7 @@ class DiscountProduct extends Component{
         this.onChangeProductName = this.onChangeProductName.bind(this);
         this.onChangeProductPrice = this.onChangeProductPrice.bind(this);
         this.onChangeProductCategory = this.onChangeProductCategory.bind(this);
+        this.onChangeProductPhoto = this.onChangeProductPhoto.bind(this);
 
         this.onChangeValue = this.onChangeValue.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -43,7 +45,8 @@ class DiscountProduct extends Component{
                     id:response.data.id,
                     product_name: response.data.name,
                     product_price : response.data.price,
-                    product_category : response.data.category
+                    product_category : response.data.category,
+                    product_photo: response.data.photo
 
                 })
 
@@ -76,6 +79,11 @@ class DiscountProduct extends Component{
         });
     }
 
+    onChangeProductPhoto(e){
+        this.setState({
+            product_price: e.target.value
+        });
+    }
     onChangeValue(e){
         this.setState({
             select: e.target.value
@@ -97,7 +105,8 @@ class DiscountProduct extends Component{
                 id: this.state.id,
                 name: this.state.product_name+"( 5% Discounted )",
                 price: (parseInt(this.state.product_price)*95)/100,
-                category: this.state.product_category
+                category: this.state.product_category,
+                photo: this.state.product_photo
             };
 
             console.log(obj);
@@ -108,7 +117,8 @@ class DiscountProduct extends Component{
                 id: this.state.id,
                 name: this.state.product_name+"( 10% Discounted )",
                 price: (parseInt(this.state.product_price)*90)/100,
-                category: this.state.product_category
+                category: this.state.product_category,
+                photo: this.state.product_photo
             };
 
             console.log(obj);
@@ -120,7 +130,8 @@ class DiscountProduct extends Component{
                 id: this.state.id,
                 name: this.state.product_name+"( 15% Discounted )",
                 price: (parseInt(this.state.product_price)*85)/100,
-                category: this.state.product_category
+                category: this.state.product_category,
+                photo: this.state.product_photo
             };
 
             console.log(obj);
@@ -132,7 +143,8 @@ class DiscountProduct extends Component{
                 id: this.state.id,
                 name: this.state.product_name+"( 50% Discounted )",
                 price: (parseInt(this.state.product_price)*50)/100,
-                category: this.state.product_category
+                category: this.state.product_category,
+                photo: this.state.product_photo
             };
 
             console.log(obj);
