@@ -26,6 +26,7 @@ import EditProfile from "./components/ProjectTask/EditProfile";
 import Products from "./Storeman"
 import NavBar from "./components/NavBar";
 import SearchPro from "./components/Product/SearchPro";
+import Payment from "./components/Product/Payment";
 class App extends Component{
     render() {
         return (
@@ -51,6 +52,7 @@ class App extends Component{
                             <Route path="/WhishList_Admin" component={WhishList_Admin} />
                             <Route path="/WhishList_Admin/WishListSave" component={WishListSave} />
                             <Route path="/Products" component={Products} />
+                            <Route path="/Payment" component={Payment}/>
 
                             <Route path="/Search" component={SearchPro} />
                         </Switch>

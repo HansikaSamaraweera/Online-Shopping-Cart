@@ -56,12 +56,10 @@ calculate(price){
 
 }
 
-payment(){
-        alert(" Pay Your Total Amount! ")
-}
-    onClearArray = () => {
-        this.setState({ cart: [] });
-    };
+
+    // onClearArray = () => {
+    //     this.setState({ cart: [] });
+    // };
 
     onDeleteClick(id){
             axios.delete("/cart/delete/" + id).then((response) => {
@@ -111,9 +109,9 @@ payment(){
                             <h5>Rs.{this.state.total}</h5>
 
                     </div>
-
-                        <button type="button" className="btn btn-info btn-block" data-toggle="modal" data-target="#exampleModal" onClick={this.payment}>Payment</button>
-                        <button type="button" className="btn btn-primary btn-block" onClick={this.onClearArray}>CheckOut</button>
+                        <Link to={"/Payment/id?_k="+this.state.total} className="btn btn-info btn-block">Payment</Link>
+                        {/*<button type="button" className="btn btn-info btn-block"   onClick={this.payment}>Payment</button>*/}
+                        {/*<button type="button" className="btn btn-primary btn-block" onClick={this.onClearArray}>CheckOut</button>*/}
                         <Link  to="/" className="btn btn-info btn-block">
                             Edit Cart
                         </Link>
