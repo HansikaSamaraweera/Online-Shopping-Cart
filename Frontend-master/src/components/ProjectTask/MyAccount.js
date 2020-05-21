@@ -60,7 +60,7 @@ class MyAccount extends Component {
                             <h2 className="text-left m-auto">My Account</h2>
                         </div>
                             <div className="flex-md-column-reverse text-right text-justify">
-                                <button className="btn btn-secondary rounded"><Link to="/ResetPassword">Reset Password</Link></button><button className="btn btn-secondary"><Link to="/EditProfile">Edit Profile</Link></button>
+                                <button className="btn btn-success"><Link to="/ResetPassword"><h6 className="text-white">Reset Password</h6></Link></button><button className="btn btn-info"><Link to="/EditProfile"><h6 className="text-white">Edit Profile</h6></Link></button>
                             </div>
                             <br/>
                             <img src={acc} height="195" width="250" alt=""/>

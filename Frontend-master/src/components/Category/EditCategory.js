@@ -23,7 +23,7 @@ class EditCategory extends Component{
 
     componentDidMount() {
 
-        axios.get('/api/categories' +this.props.match.params.id)
+        axios.get('/api/categories/all' +this.props.match.params.id)
             .then(response => {
 
                 this.setState({

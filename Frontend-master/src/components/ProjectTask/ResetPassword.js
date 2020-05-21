@@ -100,7 +100,7 @@ class ResetPassword extends Component{
                         <br/>
                         <form onSubmit={this.onSubmit}>
                             {/*current password*/}
-                            <div className="form-group">
+                            <div className="form-group alert-link">
                                 <input type={this.state.hidden ? "password":"text"}
                                        name="passwordcurrent"
                                        placeholder="Current Password"
@@ -111,7 +111,7 @@ class ResetPassword extends Component{
                                 <button onClick={this.toggleShow}><i className="fa fa-eye-slash" aria-hidden="true"></i></button>
                             </div>
                             {/*password*/}
-                            <div className="form-group">
+                            <div className="form-group alert-link">
                                 <input type={this.state.hidden ? "password":"text"}
                                        id="pswrd"
                                        name="password"
@@ -123,7 +123,7 @@ class ResetPassword extends Component{
                                 <button onClick={this.toggleShow}><i className="fa fa-eye-slash" aria-hidden="true"></i></button>
                             </div>
                             {/*confirm password*/}
-                            <div className="form-group">
+                            <div className="form-group alert-link">
                                 <input type={this.state.hidden ? "password":"text"}
                                        id="cpswrd"
                                        name="cpassword"

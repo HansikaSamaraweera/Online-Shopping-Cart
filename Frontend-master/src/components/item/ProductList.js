@@ -15,7 +15,6 @@ class ProductList extends Component{
             id: '',
             name: '',
             price: '',
-            photo: '',
             category: ''
         },
 
@@ -58,32 +57,14 @@ class ProductList extends Component{
 
             })
     }
-    editProduct(id,name,price,category,photo){
-        console.log(id)
-        this.setState({
-            editProductData: {id, name, price, category,photo}, editProductModal: !this.state.editProductModal
-        });
-
-    }
-    toggleEditProductModal(){
-        this.setState({
-            editProductModal: ! this.state.editProductModal
-        })
-    }
-    updateProduct(){
-
-    }
-
-
 
     render() {
         let product = this.state.product.map((product1) => {
                 return(
                     <tr key={ product1.id}>
-                        <td>{product1.name}</td>
+                        <td >{product1.name}</td>
                         <td>{product1.price}</td>
                         <td>{product1.category}</td>
-                        <td>{product1.photo}</td>
                         <td>
                             <Link to={"/EditProduct/"+product1.id} style={{marginRight: 20}}>Edit</Link>
                             <Link to={"/DiscountProduct/"+product1.id} style={{marginRight: 20}}>Discount</Link>
@@ -110,11 +91,10 @@ class ProductList extends Component{
                         <th>Name</th>
                         <th>price</th>
                         <th>Category</th>
-                        <th>Photo</th>
                         <th>Action</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody maxWidth= "200">
                     {product}
 
                     </tbody>

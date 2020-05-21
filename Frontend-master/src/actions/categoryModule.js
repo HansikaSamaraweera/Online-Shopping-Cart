@@ -20,7 +20,7 @@ export const addCategory = (category, history) => async dispatch => {
 };
 
 {/*Update Categories*/}
-export const updateCategory=(category,history)=>async dispatch=>{
+/*export const updateCategory=(category,history)=>async dispatch=>{
     try{
         await axios.post("/api/categories/updateCategory");
         history.push('/');
@@ -34,7 +34,7 @@ export const updateCategory=(category,history)=>async dispatch=>{
             payload:error.response.data
         });
     }
-};
+};*/
 
 {/*Get category by id*/}
 export const getCategory = (id, history) => async dispatch =>{

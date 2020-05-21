@@ -25,7 +25,8 @@ class EditProfile extends Component{
         axios.get('/api/Users/name/'+sessionStorage.getItem("sessionName"))
             .then(responce =>{
                 this.setState({
-                    user_ed: responce.data,
+                    name:responce.data.name,
+                    email:responce.data.email
 
                 });
             })
@@ -66,24 +67,24 @@ class EditProfile extends Component{
                 <div className="m-6">
                     <div className="row">
                         <div className="col-md-6 m-auto">
-                            <img src={acc} height="195" width="250" alt=""/>
+                            <img src={acc} height="190" width="240" alt=""/>
                 <h3> Edit Profile </h3>
                 <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
+                    <div className="form-group alert-link">
                         <input type="text"
                                className="form-control"
                                name="name"
-                               value={this.state.user_ed.name}
+                               value={this.state.name}
                                placeholder="User Name"
                                onChange={this.onChangeName}
                                 />
                     </div>
                     <div className="form-group">
                         <input type="text"
-                               className="form-control"
+                               className="form-control alert-link"
                                name="email"
                                placeholder="Email"
-                               value={this.state.user_ed.email}
+                               value={this.state.email}
                                onChange={this.onChangeEmail}
                                  />
                     </div>

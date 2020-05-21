@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import "../../category.css";
 import axios from "axios";
-import {Button} from "reactstrap";
+
 
 class CategoryList extends Component {
     constructor(props) {
