@@ -41,8 +41,8 @@ class EditProduct extends Component{
                     id:response.data.id,
                     product_name: response.data.name,
                     product_price : response.data.price,
+                    product_category : response.data.category,
                     product_photo : response.data.photo,
-                    product_category : response.data.category
 
                 })
 
