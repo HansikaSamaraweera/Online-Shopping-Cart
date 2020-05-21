@@ -19,6 +19,7 @@ class ViewProduct extends Component {
             itemNo : "",
             pName:"",
             user:"",
+            photo:"",
             curTime : new Date().toLocaleString(),
             day: (new Date().getDate() + "/"+ parseInt(new Date().getMonth()+1) +"/"+ new Date().getFullYear()).toLocaleString()
         }
@@ -33,7 +34,8 @@ class ViewProduct extends Component {
                     name : responce.data.name,
                     category : responce.data.category,
                     price: responce.data.price,
-                    id : responce.data.id
+                    id : responce.data.id,
+                    photo: responce.data.photo
                 });
                 console.log(this.state.name);
             })
@@ -71,7 +73,7 @@ class ViewProduct extends Component {
                 <div className={"row justify-content-center jumbotron"}>
 
                         <div className="card card-body my-3 col-sm-4">
-                            <img className="card-img-top" src="https://rukminim1.flixcart.com/image/332/398/k4hcjgw0/top/y/x/w/m-cm-kt69-cobio-man-original-imafn4xfvjgmagqa.jpeg?q=50" alt="Card image cap">
+                            <img className="card-img-top" src={this.state.photo} alt="Card image cap">
 
                             </img>
                         </div>

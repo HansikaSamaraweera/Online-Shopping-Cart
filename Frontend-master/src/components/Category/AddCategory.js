@@ -18,6 +18,7 @@ class AddCategory extends Component {
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
+
     componentWillReceiveProps(nextProps) {
         if (nextProps.errors) {
             this.setState({ errors: nextProps.errors });
@@ -47,6 +48,7 @@ class AddCategory extends Component {
                     <div className="row">
                         <div className="col-md-9 m-auto">
                             <br/>
+                            {/*Link to display all categories*/}
                             <Link to="/AdminAsCategory/CategoryList" className="btn btn-outline-success m-3">
                                 Category List <i className="fas fa-arrow-alt-circle-right"></i>
                             </Link>

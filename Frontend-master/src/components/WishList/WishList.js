@@ -27,34 +27,37 @@ class WishList extends Component{
     }
 
     onDeleteClick(id){
-        axios.delete("/wishList/delete/" + id).then((response) => {
-            window.location.replace("/")
-        });
+        if(window.confirm('Do you want to delete this Item from the wishlist')) {
+            axios.delete("/wishList/delete/" + id).then((response) => {
+                window.location.replace("/")
+            });
+        }
     }
 
     render() {
-
-        const wishlist =this.state.wishList.map((current) => {
-                return (
-                    <div className={"container"} >
-                        <div className={"row"}>
-                            <div className="card card-body my-3 col-sm-4">
-                            <h6>Item Name:{current.productName}</h6>
-                            <h6>Price:{current.price}</h6>
-                            <div className="card-body">
-                                <button type="button" className="btn btn-danger text-white btn-block" onClick={this.onDeleteClick.bind(this,current.id)}>Remove</button>
-                                <Link to={"/ViewProduct/id?_k="+current.id} className="btn btn-danger text-white btn-block">Add To Cart</Link>
-                        </div>
+        const {wishList}=this.state;
+        const wishlist =this.state.wishList.map((wish) => {
+                    return (
+                        <div className={"container"}>
+                                <div className="card card-body my-3 col-sm-4 m-auto">
+                                    <h6>Item Name:{wish.productName}</h6>
+                                    <h6>Price:{wish.price}</h6>
+                                    <div className="card-body">
+                                        <button type="button" className="btn btn-danger text-white btn-block"
+                                                onClick={this.onDeleteClick.bind(this, wish.id)}>Remove
+                                        </button>
+                                        <Link to={"/ViewCart/"}
+                                              className="btn btn-danger text-white btn-block">Add To Cart</Link>
+                                    </div>
+                                </div>
                             </div>
-                    </div>
-                    </div>
-                )
+                    )
             }
         );
 
         return (
-
             <div className={"container"}>
+                <div><h2 className="text-capitalize card card-body bg-info text-white">My WishList</h2></div>
                 {wishlist}
             </div>
         );

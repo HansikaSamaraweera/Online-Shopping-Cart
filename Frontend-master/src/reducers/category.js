@@ -4,5 +4,5 @@ import formReducer from "./formReducer"
 
 export  default combineReducers({
     errors:formErrors,
-    new_task:formReducer
+    cat_task:formReducer
 });

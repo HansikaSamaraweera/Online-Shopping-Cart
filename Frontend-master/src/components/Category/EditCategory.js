@@ -1,81 +1,98 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import {updateCategory} from "../../actions/categoryModule";
-import classnames from "classnames";
-import "../../category.css";
+import React, {Component} from "react";
 import axios from "axios";
+import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {getCategory,addCategory} from "../../actions/categoryModule";
+import {Link} from "react-router-dom";
+
 
 class EditCategory extends Component{
     constructor(props) {
         super(props);
-        this.state = {
-            cName: "",
-            cType: "",
-            cDate: "",
-            categoryUp:[],
-            errors: {}
+        this.state={
+            id: '',
+            cName: '',
+            cType: '',
+            cDate: '',
+            errors:{}
+
         };
-        this.onChange = this.onChange.bind(this);
+        this.onChange=this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
 
     componentDidMount() {
-        const url = "/api/categories/all";
-        fetch(url)
-            .then(response => response.json())
-            .then(json => this.setState({categoryUp: json}))
+
+        axios.get('/api/categories/all' +this.props.match.params.id)
+            .then(response => {
+
+                this.setState({
+                    id: response.data.id,
+                    cName: response.data.cName,
+                    cType: response.data.cType,
+                    cDate: response.data.cDate
+
+                })
+
+
+            })
+            .catch(function (error) {
+                console.log(error)
+
+            })
     }
 
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value });
     }
 
-    onSubmit(e) {
+    onSubmit(e){
         e.preventDefault();
-        const editCategory = {
+        const edit = {
+            id: this.state.id,
             cName: this.state.cName,
             cType: this.state.cType,
             cDate: this.state.cDate
         };
-        // console.log(editCategory);
-        this.props.updateCategory(editCategory, this.props.history);
+        console.log(edit);
+        this.props.addCategory(edit, this.props.history);
+
     }
 
+
+
     render() {
-        const { errors } = this.state;
-        const { categoryUp } = this.state;
         return (
             <div className="col-md-7 m-auto alert-danger">
-                <div className="container" id="addCategory">
+                <div className="container" id="updateCategory">
                     <div className="row">
                         <div className="col-md-9 m-auto">
                             <br/>
-                            <h6 className="text-center" id="tit">Update Category</h6>
+                            <Link to="/AdminAsCategory/CategoryList" className="btn btn-outline-success m-3">
+                                <i className="fas fa-arrow-alt-circle-left"></i>  Category List
+                            </Link>
+                            <br/>
+                            <h6 className="text-center" id="tit"> Update Category</h6>
                             <form onSubmit={this.onSubmit}>
                                 <div className="form-group">
                                     {/*Category Name*/}
                                     <input
                                         type="text"
-                                        className={classnames("form-control", {
-                                            "is-invalid": errors.cName
-                                        })}
+                                        className="form-control"
                                         name="cName"
+                                        value={this.state.cName}
                                         placeholder="Category Name"
-                                        value={this.state.categoryUp.cName}
                                         onChange={this.onChange}
                                         required
                                     />
-                                    {errors.cName && (
-                                        <div className="invalid-feedback">{errors.cName}</div>
-                                    )}
                                 </div>
+
                                 {/*Category Type*/}
                                 <div className="form-group">
                                     <select
                                         className="form-control"
                                         name="cType"
-                                        value={this.state.categoryUp.cType}
+                                        value={this.state.cType}
                                         onChange={this.onChange}
                                         required
                                     >
@@ -90,7 +107,7 @@ class EditCategory extends Component{
                                         type="date"
                                         className="form-control"
                                         name="cDate"
-                                        value={this.state.categoryUp.cDate}
+                                        value={this.state.cDate}
                                         onChange={this.onChange}
                                         required
                                     />
@@ -99,24 +116,24 @@ class EditCategory extends Component{
                                 <input type="submit" value="Update" className="btn btn-primary btn-block col-md-7 m-auto"/>
                                 <br/>
                             </form>
+
                             <p><br/><br/></p>
                         </div>
                     </div>
                 </div>
             </div>
+
         );
     }
 }
-updateCategory.propTypes = {
-    updateCategory: PropTypes.func.isRequired,
-    errors: PropTypes.object.isRequired
+EditCategory.propTypes = {
+    errors : PropTypes.object.isRequired,
+    getCategory:PropTypes.func.isRequired,
+    addCategory:PropTypes.func.isRequired,
+    cat_task: PropTypes.object.isRequired
 };
-
-const mapStateToProps = state => ({
-    errors: state.errors
+const  mapStateToProps = state =>({
+    cat_task: state.cat_tasks
 });
+export default connect(mapStateToProps ,{getCategory,addCategory}) (EditCategory);
 
-export default connect(
-    mapStateToProps,
-    { updateCategory }
-)(EditCategory);

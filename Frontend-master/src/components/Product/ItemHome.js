@@ -9,7 +9,7 @@ import WishListSave from "../WishList/WishListSave";
 const Product = props => (
  <div className={"row justify-content-center"}>
 <div className="card card-body my-3 col-sm-4">
-    <img className="card-img-top" src="https://rukminim1.flixcart.com/image/332/398/k4hcjgw0/top/y/x/w/m-cm-kt69-cobio-man-original-imafn4xfvjgmagqa.jpeg?q=50" alt="Card image cap">
+    <img className="card-img-top" src={props.todo.photo} alt="Card image cap">
 
     </img>
 </div>

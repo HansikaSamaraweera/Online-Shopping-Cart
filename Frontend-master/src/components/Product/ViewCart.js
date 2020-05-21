@@ -3,6 +3,7 @@ import ItemHome from "./ItemHome";
 import CartList from "./CartList";
 import {Link, Route} from "react-router-dom";
 import axios from "axios";
+import qs from "query-string";
 
 // const Message = props => (
 //
@@ -28,6 +29,7 @@ class ViewCart extends Component {
 
         this.state = {
             cart:[],
+            wishList_Items:[],
             user:sessionStorage.getItem("sessionName"),
             day :(new Date().getDate() + "/"+ parseInt(new Date().getMonth()+1) +"/"+ new Date().getFullYear()).toLocaleString(),
             curTime : new Date().toLocaleString(),
@@ -49,6 +51,17 @@ componentDidMount() {
             console.log(error)
         })
 
+    axios.get('/wishList/name/'+sessionStorage.getItem("sessionName"))
+        .then(response =>{
+            this.setState({
+                wishList_Items: response.data,
+
+            });
+        })
+        .catch(function (error) {
+            console.log(error)
+        })
+
 }
 
 calculate(price){
@@ -56,12 +69,10 @@ calculate(price){
 
 }
 
-payment(){
-        alert(" Pay Your Total Amount! ")
-}
-    onClearArray = () => {
-        this.setState({ cart: [] });
-    };
+
+    // onClearArray = () => {
+    //     this.setState({ cart: [] });
+    // };
 
     onDeleteClick(id){
             axios.delete("/cart/delete/" + id).then((response) => {
@@ -69,8 +80,9 @@ payment(){
             });
     }
 
-    render() {
 
+
+    render() {
         let list =this.state.cart.map((current) => {
             this.calculate(current.price);
                 return (
@@ -90,7 +102,24 @@ payment(){
                 )
             }
         );
+        let wish_list =this.state.wishList_Items.map((post) => {
+                this.calculate(post.price);
+                return (
+                    <li className={"list-group-item text-capitalize d-flex justify-content-between my-2"}>
+                        <h6>{post.productName}</h6>
+                        <p className={"text-sm-left"}>{post.price}</p>
+                        <div className={"todo-icon"}>
 
+                            <button type="button" onClick={this.onDeleteClick.bind(this,post.id)}>
+                    <span className={"mx-2 text-danger"}>
+                        <i className={"fas fa-trash"}>  </i>
+                    </span>
+                            </button>
+                        </div>
+                    </li>
+                )
+            }
+        );
         return (
 
             <div className={"container"}>
@@ -102,6 +131,7 @@ payment(){
                 {/*<CartList/>*/}
                 {/*    {this.cartList()}*/}
                     {list}
+                    {wish_list}
                 </ul>
                     <hl className="text-dark"/>
 
@@ -111,9 +141,9 @@ payment(){
                             <h5>Rs.{this.state.total}</h5>
 
                     </div>
-
-                        <button type="button" className="btn btn-info btn-block" data-toggle="modal" data-target="#exampleModal" onClick={this.payment}>Payment</button>
-                        <button type="button" className="btn btn-primary btn-block" onClick={this.onClearArray}>CheckOut</button>
+                        <Link to={"/Payment/id?_k="+this.state.total} className="btn btn-info btn-block">Payment</Link>
+                        {/*<button type="button" className="btn btn-info btn-block"   onClick={this.payment}>Payment</button>*/}
+                        {/*<button type="button" className="btn btn-primary btn-block" onClick={this.onClearArray}>CheckOut</button>*/}
                         <Link  to="/" className="btn btn-info btn-block">
                             Edit Cart
                         </Link>
@@ -124,6 +154,7 @@ payment(){
 
         </div>
         );
+
     }
 }
 

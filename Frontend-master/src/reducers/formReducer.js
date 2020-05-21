@@ -1,20 +1,32 @@
-import {
-    GET_PROJECT_TASK
-} from "../actions/types";
+import {GET_CATEGORY,
+    GET_UPDATE_CATEGORY
+} from "../actions/moduleTypes";
 
-const initialState = {
-    new_tasks: [],
-    //new_task: {}
-}
 
-export default function(state = initialState, action) {
+let initialState;
+initialState = {
+    cat_task: [],
+    cat_tasks: {}
+
+};
+export default function (state=initialState,action) {
     switch (action.type) {
-        case GET_PROJECT_TASK:
+
+        case GET_CATEGORY:
+            return{
+                ...state,
+                cat_task: action.payload
+            };
+
+        case GET_UPDATE_CATEGORY:
             return {
                 ...state,
-                new_tasks: action.payload
-            };
+                cat_tasks: action.payload
+            }
         default:
             return state;
+
+
     }
+
 }
