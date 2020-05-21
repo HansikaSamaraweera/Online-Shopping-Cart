@@ -25,7 +25,8 @@ class EditProfile extends Component{
         axios.get('/api/Users/name/'+sessionStorage.getItem("sessionName"))
             .then(responce =>{
                 this.setState({
-                    user_ed: responce.data,
+                    name:responce.data.name,
+                    email:responce.data.email
 
                 });
             })
@@ -73,7 +74,7 @@ class EditProfile extends Component{
                         <input type="text"
                                className="form-control"
                                name="name"
-                               value={this.state.user_ed.name}
+                               value={this.state.name}
                                placeholder="User Name"
                                onChange={this.onChangeName}
                                 />
@@ -83,7 +84,7 @@ class EditProfile extends Component{
                                className="form-control"
                                name="email"
                                placeholder="Email"
-                               value={this.state.user_ed.email}
+                               value={this.state.email}
                                onChange={this.onChangeEmail}
                                  />
                     </div>
