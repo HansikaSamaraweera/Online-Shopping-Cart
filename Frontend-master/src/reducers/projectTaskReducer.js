@@ -1,4 +1,5 @@
 import {GET_PROJECT_TASK,DELETE_PRODUCT,GET_PRODUCT1} from "../actions/types";
+import {GET_CATEGORY} from "../actions/moduleTypes";
 
 const initialState={
     user_tasks:[],
@@ -18,6 +19,11 @@ export default function (state=initialState,action) {
                 ...state,
                 product_task1: action.payload
 
+            };
+        case GET_CATEGORY:
+            return {
+                ...state,
+                cat_tasks:action.payload
             };
         /*case GET_USER:
             return{
