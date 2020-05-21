@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import axios from 'axios';
 import {bindActionCreators} from "redux";
+import acc from "../images/acc.png";
 
 
 class MyAccount extends Component {
@@ -29,11 +30,13 @@ class MyAccount extends Component {
     }
 
     onDeleteClick(id){
-        axios.delete("/api/Users/delete/" + id).then((response) => {
-            window.localStorage.removeItem('CREDENTIALS_FLUSH')
-            sessionStorage.clear();
-            window.location.replace("/")
-        });
+        if (window.confirm('Do you want to delete this account')) {
+            axios.delete("/api/Users/delete/" + id).then((response) => {
+                window.localStorage.removeItem('CREDENTIALS_FLUSH')
+                sessionStorage.clear();
+                window.location.replace("/")
+            });
+        }
     }
 
     onClickMethod=()=>{
@@ -49,19 +52,23 @@ class MyAccount extends Component {
         if(sessionStorage.getItem("sessionName")!==null) {
             return (
                 <div>
+                    <br/>
                     <div className="container">
                     <div className="card">
-                        <div className="col-md-6">
-                        <div className="card-header">
+                        <div className="flex-md-column-reverse">
+                        <div className="card-header w-150">
                             <h2 className="text-left m-auto">My Account</h2>
-                            <button className="text-right"><Link to="/ResetPassword">Reset Password</Link></button><button className="text-right"><Link to="/EditProfile">Edit Profile</Link></button>
                         </div>
-                            <img className="card-img-top" src="" alt=""/>
+                            <div className="flex-md-column-reverse text-right text-justify">
+                                <button className="btn btn-secondary rounded"><Link to="/ResetPassword">Reset Password</Link></button><button className="btn btn-secondary"><Link to="/EditProfile">Edit Profile</Link></button>
+                            </div>
+                            <br/>
+                            <img src={acc} height="195" width="250" alt=""/>
                                     <div className="card-body">
-                                        <h4 className="card-title">Name:{this.state.user_1.name}</h4>
-                                                <p className="card-text text-truncate">
+                                        <h6 className="card-title">Name:{this.state.user_1.name}</h6>
+                                                <h6 className="card-text text-truncate">
                                                     Email:{this.state.user_1.email}
-                                                </p>
+                                                </h6>
                                         <button className="btn btn-primary" onClick={this.onDeleteClick.bind(this,this.state.user_1.id)}>Delete Account</button>
                                             </div>
                             </div>

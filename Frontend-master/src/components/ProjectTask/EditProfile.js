@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import {updateCustomer} from "../../actions/projectTaskActions";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
+import axios from "axios";
+import acc from "../images/acc.png";
 
 
 class EditProfile extends Component{
@@ -10,14 +12,39 @@ class EditProfile extends Component{
         this.state = {
             name: "",
             email: "",
+            user_ed:[],
             errors: {}
         };
-        this.onChange = this.onChange.bind(this);
+        this.onChangeName = this.onChangeName.bind(this);
+        this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
 
-    onChange(e) {
-        this.setState({ [e.target.name]: e.target.value });
+    componentDidMount() {
+        console.log(this.props.match.params.id);
+        axios.get('/api/Users/name/'+sessionStorage.getItem("sessionName"))
+            .then(responce =>{
+                this.setState({
+                    user_ed: responce.data,
+
+                });
+            })
+            .catch(function (error) {
+                console.log(error)
+            })
+
+    }
+
+    onChangeName(e){
+        this.setState({
+            name: e.target.value
+        });
+    }
+
+    onChangeEmail(e){
+        this.setState({
+            email: e.target.value
+        })
     }
 
     onSubmit(e) {
@@ -28,33 +55,36 @@ class EditProfile extends Component{
         };
         // console.log(editUser);
         this.props.updateCustomer(editUser, this.props.history);
+        window.alert("Profile Update Successfully...!!");
     }
     render() {
         return(
+            <div>
+                <br/>
             <div className="col-md-6 m-auto alert-info">
                 <div className="container">
+                <div className="m-6">
                     <div className="row">
-                        <div className="col-md-9 m-auto">
+                        <div className="col-md-6 m-auto">
+                            <img src={acc} height="195" width="250" alt=""/>
                 <h3> Edit Profile </h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <label>User Name: </label>
                         <input type="text"
                                className="form-control"
                                name="name"
-                               value={this.state.name}
+                               value={this.state.user_ed.name}
                                placeholder="User Name"
-                               onChange={this.onChange}
+                               onChange={this.onChangeName}
                                 />
                     </div>
                     <div className="form-group">
-                        <label>Email: </label>
                         <input type="text"
                                className="form-control"
                                name="email"
                                placeholder="Email"
-                               value={this.state.email}
-                               onChange={this.onChange}
+                               value={this.state.user_ed.email}
+                               onChange={this.onChangeEmail}
                                  />
                     </div>
                     <div className="form-group">
@@ -64,7 +94,9 @@ class EditProfile extends Component{
                 </form>
             </div>
                     </div>
+                    </div>
                 </div>
+            </div>
             </div>
         );
     }
