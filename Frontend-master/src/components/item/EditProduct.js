@@ -116,14 +116,16 @@ class EditProduct extends Component{
                         <input type="text"
                                className="form-control"
                                value={this.state.product_name}
-                               onChange={this.onChangeProductName} />
+                               onChange={this.onChangeProductName}
+                                required/>
                     </div>
                     <div className="form-group" style={{marginRight: 600, marginLeft: 600}}>
                         <label>Price: </label>
                         <input type="text"
                                className="form-control"
                                value={this.state.product_price}
-                               onChange={this.onChangeProductPrice} />
+                               onChange={this.onChangeProductPrice}
+                                required/>
                     </div>
 
                     <div className="form-group" style={{marginRight: 600, marginLeft: 600}}>
@@ -131,7 +133,8 @@ class EditProduct extends Component{
                         <input type="text"
                                className="form-control"
                                value={this.state.product_photo}
-                               onChange={this.onChangeProductPhoto} />
+                               onChange={this.onChangeProductPhoto}
+                                required/>
                     </div>
                     <div className="form-group">
                         <div className="dropdown">
