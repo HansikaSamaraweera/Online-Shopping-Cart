@@ -16,12 +16,15 @@ class CreateProduct extends Component{
         this.onChangeProductName = this.onChangeProductName.bind(this);
         this.onChangeProductPrice = this.onChangeProductPrice.bind(this);
         this.onChangeProductCategory = this.onChangeProductCategory.bind(this);
+        this.onChangeProductPhoto = this.onChangeProductPhoto.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             product_name: '',
             product_price: '',
             product_category: '',
+            product_photo:'',
+
             errors: '',
             select:'',
             category:[]
@@ -53,6 +56,12 @@ class CreateProduct extends Component{
         });
     }
 
+    onChangeProductPhoto(e){
+        this.setState({
+            product_photo: e.target.value
+        });
+    }
+
     onChangeProductCategory(e){
         this.setState({
             product_category: e.target.value
@@ -66,6 +75,7 @@ class CreateProduct extends Component{
             name: this.state.product_name,
             category: this.state.product_category,
             price: this.state.product_price,
+            photo: this.state.product_photo
 
         };
         console.log(newProductTask);
@@ -96,6 +106,13 @@ class CreateProduct extends Component{
                                value={this.state.product_price}
                                onChange={this.onChangeProductPrice}/>
                     </div>
+
+                    <div className="form-group" style={{marginRight: 600, marginLeft: 600}}>
+                        <label> Photo Url:</label>
+                        <input type="text" className="form-control" required
+                               value={this.state.product_photo}
+                               onChange={this.onChangeProductPhoto}/>
+                    </div>
                     <div className="form-group">
                         <div className="dropdown">
 
@@ -111,6 +128,8 @@ class CreateProduct extends Component{
                             </select>
                         </div>
                     </div>
+
+
                     <div className="form-group">
                         <input type="submit" value=" Add Product" className="btn btn-primary"/>
 

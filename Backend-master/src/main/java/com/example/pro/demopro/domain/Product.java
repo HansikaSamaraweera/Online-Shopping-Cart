@@ -7,7 +7,7 @@ public class Product {
     @Id
     private String id;
 
-
+    private String photo;
     private String name;
     private String category;
     private String price;
@@ -40,6 +40,14 @@ public class Product {
         this.price = price;
     }
 
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
     public String getCategory() {
         return category;
     }
@@ -55,6 +63,7 @@ public class Product {
                 ", name='" + name + '\'' +
                 ", price='" + price + '\'' +
                 ", category='" + category + '\'' +
+                ", photo='" + photo + '\'' +
 
                 '}';
     }
