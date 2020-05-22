@@ -11,10 +11,11 @@ class WishListSave extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            id:'',
             productName: "",
             price: "",
             user: "",
-            name: ""
+            name: "",
 
         };
         this.onSubmit = this.onSubmit.bind(this);
@@ -26,6 +27,7 @@ class WishListSave extends Component {
         axios.get('/api/Products/' + qs.parse(this.props.location.search, {ignoreQueryPrefix: true})._k)
             .then(responce => {
                 this.setState({
+                    id:responce.data.id,
                     name: responce.data.name,
                     price: responce.data.price,
                 });
@@ -43,6 +45,7 @@ class WishListSave extends Component {
             window.location.replace("/Login")
         } else {
             const newWishList = {
+                id: this.state.id,
                 productName: this.state.name,
                 user: sessionStorage.getItem("sessionName"),
                 price: this.state.price
