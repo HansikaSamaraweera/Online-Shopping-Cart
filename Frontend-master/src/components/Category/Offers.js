@@ -3,7 +3,7 @@ import c1 from "../images/c1.PNG"
 import c2 from "../images/c2.PNG"
 import c3 from "../images/c3.PNG"
 import c4 from "../images/c4.PNG"
-import d1 from "../images/d1.jpg"
+import b from "../images/b.PNG"
 import c6 from "../images/c6.PNG"
 import c7 from "../images/c7.PNG"
 import c8 from "../images/c8.PNG"
@@ -50,15 +50,6 @@ const Offers = () => {
                     </MDBCardText>
                 </MDBCardBody>
             </MDBCard>
-            <MDBCard style={{ width: "26rem" ,height:"15rem"}}>
-                <MDBCardImage className="img-fluid" src={c4} waves />
-            </MDBCard>
-            <MDBCard style={{ width: "26rem",height:"15rem" }}>
-                <MDBCardImage className="img-fluid" src={d1} waves />
-            </MDBCard>
-            <MDBCard style={{ width: "26rem",height:"15rem" }}>
-                <MDBCardImage className="img-fluid" src={c6} waves />
-            </MDBCard>
             <MDBCard style={{ width: "26rem" }}>
                 <MDBCardImage className="img-fluid" src={c7} waves />
                 <MDBCardBody>
@@ -94,6 +85,15 @@ const Offers = () => {
                         Rs.2350.00
                     </MDBCardText>
                 </MDBCardBody>
+            </MDBCard>
+            <MDBCard style={{ width: "26rem" ,height:"15rem"}}>
+                <MDBCardImage className="img-fluid" src={c4} waves />
+            </MDBCard>
+            <MDBCard style={{ width: "26rem",height:"15rem" }}>
+                <MDBCardImage className="img-fluid" src={b} waves />
+            </MDBCard>
+            <MDBCard style={{ width: "26rem",height:"15rem" }}>
+                <MDBCardImage className="img-fluid" src={c6} waves />
             </MDBCard>
         </MDBRow>
 
