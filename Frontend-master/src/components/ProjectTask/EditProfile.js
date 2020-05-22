@@ -25,9 +25,11 @@ class EditProfile extends Component{
         axios.get('/api/Users/name/'+sessionStorage.getItem("sessionName"))
             .then(responce =>{
                 this.setState({
+                    id:responce.data.id,
                     name:responce.data.name,
-                    email:responce.data.email
-
+                    post:responce.data.post,
+                    email:responce.data.email,
+                    password:responce.data.password,
                 });
             })
             .catch(function (error) {
@@ -51,8 +53,11 @@ class EditProfile extends Component{
     onSubmit(e) {
         e.preventDefault();
         const editUser = {
+            id:this.state.id,
             name: this.state.name,
-            email: this.state.email
+            post:this.state.post,
+            email: this.state.email,
+            password:this.state.password
         };
         // console.log(editUser);
         this.props.updateCustomer(editUser, this.props.history);
@@ -70,9 +75,9 @@ class EditProfile extends Component{
                             <img src={acc} height="190" width="240" alt=""/>
                 <h3> Edit Profile </h3>
                 <form onSubmit={this.onSubmit}>
-                    <div className="form-group alert-link">
+                    <div className="form-group">
                         <input type="text"
-                               className="form-control"
+                               className="form-control alert-link"
                                name="name"
                                value={this.state.name}
                                placeholder="User Name"
