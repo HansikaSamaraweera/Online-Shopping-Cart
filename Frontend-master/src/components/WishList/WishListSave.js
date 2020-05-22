@@ -16,6 +16,7 @@ class WishListSave extends Component {
             price: "",
             user: "",
             name: "",
+            pid:"",
 
         };
         this.onSubmit = this.onSubmit.bind(this);
@@ -45,7 +46,7 @@ class WishListSave extends Component {
             window.location.replace("/Login")
         } else {
             const newWishList = {
-                id: this.state.id,
+                pid: this.state.id,
                 productName: this.state.name,
                 user: sessionStorage.getItem("sessionName"),
                 price: this.state.price
