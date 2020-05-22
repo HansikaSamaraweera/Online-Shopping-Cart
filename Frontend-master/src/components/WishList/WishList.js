@@ -54,6 +54,7 @@ class WishList extends Component{
                     id : responce.data.id,
                     photo: responce.data.photo
                 });
+                this.method();
                 console.log(this.state.name);
             })
             .catch(function (error) {
@@ -63,16 +64,13 @@ class WishList extends Component{
             //*******************************************************
             //store the data in mycart table
             //store below data in my cart
-           /* const newCart = {
-                itemNo: this.state.id,
-                pname: this.state.name,
-                user: sessionStorage.getItem("sessionName"),
-                price: this.state.price,
-                date: this.state.curTime
-            };*/
+
             //********************************************************
 
-            //console.log(newCart);
+
+
+    }
+    method(){
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -85,7 +83,7 @@ class WishList extends Component{
 
             })
         };
-        fetch('http://localhost:8080/api/cart/add/', requestOptions)
+        fetch('/cart/add/', requestOptions)
             .then(response => response.json())
             .then(data => this.setState({ newuser: data.id }));
         alert("successfully inserted");
