@@ -71,7 +71,7 @@ export const updateCustomer=(user,history)=>async dispatch=>{
         await  axios.post('/api/Users/update',user);
         sessionStorage.setItem("sessionName",user.name);
         sessionStorage.setItem("sessionPost",user.post);
-        window.location.replace("/")
+        window.location.replace("/MyAccount")
         dispatch({
             type:GET_ERRORS,
             payload:{}

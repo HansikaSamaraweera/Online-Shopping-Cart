@@ -112,6 +112,7 @@ class SearchPro extends Component {
                    <br/>
                    {products.map((post) => (
                        <div className="card" key={post.name}>
+                           <img className="card-img-top" src={post.photo} alt="Card image cap"/>
                        <div className="card-header "> {post.name} #{post.category} </div>
                        <div className="card-body"><p className="card-text">Rs.{post.price}.00</p>
                            <button className="alert-dark"><Link to={"/ViewProduct/id?_k="+post._id}>View More</Link></button>

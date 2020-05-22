@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {getCategory,addCategory} from "../../actions/categoryModule";
 import {Link} from "react-router-dom";
+import qs from "query-string";
 
 
 class EditCategory extends Component{
@@ -22,8 +23,8 @@ class EditCategory extends Component{
     }
 
     componentDidMount() {
-
-        axios.get('/api/categories/all' +this.props.match.params.id)
+        //alert(qs.parse(this.props.location.search, { ignoreQueryPrefix: true })._k);
+        axios.get('/api/categories/' +qs.parse(this.props.location.search, { ignoreQueryPrefix: true })._k)
             .then(response => {
 
                 this.setState({

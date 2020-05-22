@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import "../../category.css";
 import axios from "axios";
-import {Button} from "reactstrap";
+
 
 class CategoryList extends Component {
     constructor(props) {
@@ -42,7 +42,7 @@ class CategoryList extends Component {
                         <td className="text-truncate" id="cs">{post.cType}</td>
                         <td className="text-truncate" id="cs">{post.cDate}</td>
                         <td>
-                            <Link to={"/AdminAsCategory/EditCategory"}><i className="fas fa-edit"></i></Link>     <i className="fas fa-trash" onClick={this.onDeleteClick.bind(this,post.id)}></i>
+                            <Link to={"/AdminAsCategory/EditCategory/id?_k="+post.id}><i className="fas fa-edit"></i></Link>     <i className="fas fa-trash" onClick={this.onDeleteClick.bind(this,post.id)}></i>
                     </td>
                     </tr>
                 )

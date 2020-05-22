@@ -27,7 +27,7 @@ class AdminAsCategory extends Component {
                                 <div className="pre-scrollable blockquote h-25" id="scoll">
                                     <Route  exact path="/AdminAsCategory/AddCategory" component={AddCategory}/>
                                     <Route  exact path="/AdminAsCategory/CategoryList" component={CategoryList}/>
-                                    <Route  exact path="/AdminAsCategory/EditCategory" component={EditCategory}/>
+                                    <Route  path="/AdminAsCategory/EditCategory" component={EditCategory}/>
 
                                 </div>
                                 :<div className="text-center">

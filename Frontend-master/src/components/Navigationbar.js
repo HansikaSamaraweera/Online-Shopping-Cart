@@ -28,7 +28,7 @@ function Navigationbar() {
                         <NavDropdown title="CUSTOMIZED" id="collasible-nav-dropdown">
                             <NavDropdown.Item href="/search">SEARCH</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="/AdminAsCategory/AddCategory" >ADD PRODUCTS TYPES</NavDropdown.Item>
+                            <NavDropdown.Item href="/AdminAsCategory/AddCategory" >ADD CATEGORY TYPES</NavDropdown.Item>
                             <NavDropdown.Item><Link to="/Admin" >ADD STORE MANAGERS </Link></NavDropdown.Item>
 
                     </NavDropdown>

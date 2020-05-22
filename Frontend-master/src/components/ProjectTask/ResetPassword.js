@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import {GET_USER} from "../../actions/types";
+import {Link} from "react-router-dom";
 
 
 
@@ -13,11 +14,11 @@ class ResetPassword extends Component{
             cpassword:"",
             user123:[],
             newuser:[],
-            hidden:true
+
         };
         this.OnChange=this.OnChange.bind(this);
         this.onSubmit=this.onSubmit.bind(this);
-        this.toggleShow = this.toggleShow.bind(this);
+
 
     }
     componentDidMount() {
@@ -35,11 +36,6 @@ class ResetPassword extends Component{
         this.setState({[e.target.name]:e.target.value})
 
     }
-
-    toggleShow() {
-        this.setState({ hidden: !this.state.hidden });
-    }
-
 
     onSubmit(e){
         e.preventDefault();
@@ -96,23 +92,27 @@ class ResetPassword extends Component{
             <div className="container">
                 <div className="row">
                     <div className="col-md-8 m-auto">
+                        <br/>
+                        <Link to="/MyAccount">
+                            <i className="fas fa-angle-double-left"> Back </i>
+                        </Link>
                         <label className="btn-block m-2 h4">Reset Password</label>
                         <br/>
                         <form onSubmit={this.onSubmit}>
                             {/*current password*/}
-                            <div className="form-group">
-                                <input type={this.state.hidden ? "password":"text"}
+                            <div className="form-group alert-link">
+                                <input type="password"
                                        name="passwordcurrent"
                                        placeholder="Current Password"
                                        onChange={this.OnChange}
                                        required
 
                                 />
-                                <button onClick={this.toggleShow}><i className="fa fa-eye-slash" aria-hidden="true"></i></button>
+
                             </div>
                             {/*password*/}
-                            <div className="form-group">
-                                <input type={this.state.hidden ? "password":"text"}
+                            <div className="form-group alert-link">
+                                <input type="password"
                                        id="pswrd"
                                        name="password"
                                        value={this.state.password["password"]}
@@ -120,11 +120,11 @@ class ResetPassword extends Component{
                                        onChange={this.OnChange}
                                        required
                                 />
-                                <button onClick={this.toggleShow}><i className="fa fa-eye-slash" aria-hidden="true"></i></button>
+
                             </div>
                             {/*confirm password*/}
-                            <div className="form-group">
-                                <input type={this.state.hidden ? "password":"text"}
+                            <div className="form-group alert-link">
+                                <input type="password"
                                        id="cpswrd"
                                        name="cpassword"
                                        value={this.state.cpassword["cpassword"]}
@@ -132,10 +132,10 @@ class ResetPassword extends Component{
                                        onChange={this.OnChange}
                                        required
                                 />
-                                <button onClick={this.toggleShow}><i className="fa fa-eye-slash" aria-hidden="true"></i></button>
+
                             </div>
                             <br/>
-                            <input type="submit" value="Reset Password" className="btn btn-outline-info btn-block col-md-6 m-auto"/>
+                            <input type="submit" value="Reset Password" className="btn btn-outline-info btn-block col-md-5 m-auto"/>
                         </form>
                         <p><br/><br/><br/></p>
                     </div>

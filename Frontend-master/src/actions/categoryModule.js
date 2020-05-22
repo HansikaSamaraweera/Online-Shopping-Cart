@@ -6,7 +6,7 @@ export const addCategory = (category, history) => async dispatch => {
     try {
         await axios.post("/api/categories", category);
         history.push("/");
-        window.location.replace("/AdminAsCategory/AddCategory")
+        window.location.replace("/AdminAsCategory/CategoryList")
         dispatch({
             type: GET_ERRORS,
             payload: {}
