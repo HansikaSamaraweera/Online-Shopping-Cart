@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class WishList {
     @Id
     private String id;
+    private String pid;
     private String productName;
     private String user;
     private String price;
@@ -19,6 +20,13 @@ public class WishList {
         this.id = id;
     }
 
+    public String getPid(){
+        return pid;
+    }
+
+    public void setPid(String pid){
+        this.pid=pid;
+    }
     public String getProductName() {
         return productName;
     }
