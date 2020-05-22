@@ -60,7 +60,7 @@ class MyAccount extends Component {
                             <h2 className="text-left m-auto">My Account</h2>
                         </div>
                             <div className="flex-md-column-reverse text-right text-justify">
-                                <button className="btn btn-success"><Link to="/ResetPassword"><h6 className="text-white">Reset Password</h6></Link></button><button className="btn btn-info"><Link to="/EditProfile"><h6 className="text-white">Edit Profile</h6></Link></button>
+                                <button className="btn btn-success"><Link to="/ResetPassword"><h6 className="text-white">Reset Password</h6></Link></button><button className="btn btn-primary" onClick={this.onDeleteClick.bind(this,this.state.user_1.id)}><h6 className="text-white">Delete Account</h6></button>
                             </div>
                             <br/>
                             <img src={acc} height="195" width="250" alt=""/>
@@ -69,7 +69,7 @@ class MyAccount extends Component {
                                                 <h6 className="card-text text-truncate">
                                                     Email:{this.state.user_1.email}
                                                 </h6>
-                                        <button className="btn btn-primary" onClick={this.onDeleteClick.bind(this,this.state.user_1.id)}>Delete Account</button>
+
                                             </div>
                             </div>
                             </div>
