@@ -161,7 +161,7 @@ class DiscountProduct extends Component{
 
             <div>
 
-                <h3> Update Product </h3>
+                <h3> Add Discount </h3>
                 <form onSubmit={this.onSubmit} style={{marginTop: 20}}>
                     <div className="form-group" style={{marginRight: 600, marginLeft: 600}}>
                         <label>Name: </label>
