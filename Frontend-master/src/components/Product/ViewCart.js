@@ -51,16 +51,6 @@ componentDidMount() {
             console.log(error)
         })
 
-    axios.get('/wishList/name/'+sessionStorage.getItem("sessionName"))
-        .then(response =>{
-            this.setState({
-                wishList_Items: response.data,
-
-            });
-        })
-        .catch(function (error) {
-            console.log(error)
-        })
 
 }
 
@@ -102,24 +92,7 @@ calculate(price){
                 )
             }
         );
-        let wish_list =this.state.wishList_Items.map((post) => {
-                this.calculate(post.price);
-                return (
-                    <li className={"list-group-item text-capitalize d-flex justify-content-between my-2"}>
-                        <h6>{post.productName}</h6>
-                        <p className={"text-sm-left"}>{post.price}</p>
-                        <div className={"todo-icon"}>
 
-                            <button type="button" onClick={this.onDeleteClick.bind(this,post.id)}>
-                    <span className={"mx-2 text-danger"}>
-                        <i className={"fas fa-trash"}>  </i>
-                    </span>
-                            </button>
-                        </div>
-                    </li>
-                )
-            }
-        );
         return (
 
             <div className={"container"}>
@@ -131,7 +104,7 @@ calculate(price){
                 {/*<CartList/>*/}
                 {/*    {this.cartList()}*/}
                     {list}
-                    {wish_list}
+
                 </ul>
                     <hl className="text-dark"/>
 

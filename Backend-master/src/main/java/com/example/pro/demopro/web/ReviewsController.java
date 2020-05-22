@@ -27,7 +27,7 @@ public class ReviewsController {
     }
     @GetMapping("/name/{p}")
     public Iterable<Reviews> getByP(@PathVariable String p){
-        System.out.println(p);
+
         return reviewsService.getByP(p);
 
     }

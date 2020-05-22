@@ -29,7 +29,7 @@ public class CartController {
     }
     @GetMapping("/name/{user}")
     public Iterable<Cart> getByUser(@PathVariable String user){
-        System.out.println(user);
+
            return cartService.getByUser(user);
 
     }
