@@ -43,7 +43,7 @@ class WishList extends Component{
         }
     }
     onAddtocart(id){
-        alert(id);
+        //alert(id);
         //Need to get the details by giving product id then store in state
         axios.get(' /api/Products/'+id)
             .then(responce =>{
@@ -86,7 +86,8 @@ class WishList extends Component{
         fetch('/cart/add/', requestOptions)
             .then(response => response.json())
             .then(data => this.setState({ newuser: data.id }));
-        alert("successfully inserted");
+        alert("Add to Cart");
+        window.location.replace('/ViewCart');
     }
 
     render() {
