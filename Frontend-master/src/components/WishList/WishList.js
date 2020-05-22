@@ -14,7 +14,8 @@ class WishList extends Component{
             photo:"",
             itemNo : "",
             wishList:[],
-            productid:"",
+            pid:"",
+            newuser:"",
             user:sessionStorage.getItem("sessionName")
         };
     }
@@ -42,6 +43,7 @@ class WishList extends Component{
         }
     }
     onAddtocart(id){
+        alert(id);
         //Need to get the details by giving product id then store in state
         axios.get(' /api/Products/'+id)
             .then(responce =>{
@@ -61,16 +63,32 @@ class WishList extends Component{
             //*******************************************************
             //store the data in mycart table
             //store below data in my cart
-            const newCart = {
+           /* const newCart = {
                 itemNo: this.state.id,
                 pname: this.state.name,
                 user: sessionStorage.getItem("sessionName"),
                 price: this.state.price,
                 date: this.state.curTime
-            };
+            };*/
             //********************************************************
 
+            //console.log(newCart);
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                itemNo: this.state.id,
+                pname: this.state.name,
+                user: sessionStorage.getItem("sessionName"),
+                price: this.state.price,
+                date: this.state.curTime
 
+            })
+        };
+        fetch('http://localhost:8080/api/cart/add/', requestOptions)
+            .then(response => response.json())
+            .then(data => this.setState({ newuser: data.id }));
+        alert("successfully inserted");
     }
 
     render() {
@@ -89,7 +107,7 @@ class WishList extends Component{
                                               className="btn btn-danger text-white btn-block">Add To Cart</Link>*/}
                                         {/*below product id is wish list product id*/}
                                         <button type="button" className="btn btn-danger text-white btn-block"
-                                                onClick={this.onAddtocart.bind(this, wish.productid)}>Add To Cart
+                                                onClick={this.onAddtocart.bind(this, wish.pid)}>Add To Cart
                                         </button>
                                     </div>
                                 </div>
