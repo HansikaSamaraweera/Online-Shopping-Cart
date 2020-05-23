@@ -18,7 +18,7 @@ class Comment extends Component {
             p:"",
             user:"",
             name:"",
-
+            pid:""
         };
         console.log(this.props);
         this.onChange = this.onChange.bind(this);
@@ -32,8 +32,8 @@ componentDidMount() {
     axios.get('/api/Products/'+qs.parse(this.props.location.search, { ignoreQueryPrefix: true })._k)
         .then(responce =>{
             this.setState({
-                name : responce.data.name
-
+                name : responce.data.name,
+                pid: responce.data.id
             });
             console.log(this.state.name);
         })
@@ -53,7 +53,8 @@ componentDidMount() {
             const newMessage = {
                 message: this.state.message,
                 p:this.state.name,
-                user: sessionStorage.getItem("sessionName")
+                user: sessionStorage.getItem("sessionName"),
+                pid: this.state.pid
             };
             console.log(newMessage);
             this.props.addComment(newMessage, this.props.history);
@@ -83,7 +84,7 @@ componentDidMount() {
                                         </div>
                                     </div>
 
-                                    <input type={"text"} className={"form-control"} placeholder={"Add Your Comment"} name={"message"} value={this.state.message} onChange={this.onChange}/>
+                                    <input type={"text"} className={"form-control"} placeholder={"Add Your Comment"} name={"message"} value={this.state.message} onChange={this.onChange} required/>
                                 </div>
 
                                 <button type={"submit"}
@@ -97,7 +98,7 @@ componentDidMount() {
 
                         {/*Load Comment & Revie List*/}
                         <ul className={"list-group my-5 "}>
-                            <CommentList id={this.state.name}/>
+                            <CommentList id={this.state.pid}/>
                         </ul>
                     </div>
                 </div>

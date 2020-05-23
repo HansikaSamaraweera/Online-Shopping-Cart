@@ -25,10 +25,10 @@ public class ReviewsController {
     public Iterable<Reviews> getByName( ){
         return reviewsService.getByName( );
     }
-    @GetMapping("/name/{p}")
-    public Iterable<Reviews> getByP(@PathVariable String p){
-
-        return reviewsService.getByP(p);
+    @GetMapping("/pid/{pid}")
+    public Iterable<Reviews> getByPid(@PathVariable String pid){
+        System.out.println(pid);
+        return reviewsService.getByPid(pid);
 
     }
 }

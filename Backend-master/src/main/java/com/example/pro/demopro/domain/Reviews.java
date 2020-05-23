@@ -11,6 +11,7 @@ public class Reviews {
     private String p;
     private String message;
     private String user;
+    private String pid;
 
     public String getId() {
         return id;
@@ -18,6 +19,14 @@ public class Reviews {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getPid() {
+        return pid;
+    }
+
+    public void setPid(String pid) {
+        this.pid = pid;
     }
 
     public String getP() {

@@ -20,7 +20,7 @@ public class ReviewsService {
         return reviewsRepository.findAll();
     }
 
-    public Iterable<Reviews> getByP(String p) {
-        return reviewsRepository.getByP(p);
+    public Iterable<Reviews> getByPid(String pid) {
+        return reviewsRepository.getByPid(pid);
     }
 }

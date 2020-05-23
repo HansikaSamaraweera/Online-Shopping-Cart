@@ -5,5 +5,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface ReviewsRepository extends MongoRepository<Reviews,Integer> {
 
-    Iterable<Reviews> getByP(String p);
+    Iterable<Reviews> getByPid(String pid);
 }
